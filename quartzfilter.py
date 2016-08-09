@@ -31,9 +31,7 @@ def main(argv):
          filter = arg
       elif opt in ("-o", "--output"):
          outputfile = arg
-   print 'Input file is ', inputfile
-   print "Filter is ", filter
-   print 'Output file is ', outputfile
+
    if outputfile == "": outputfile = inputfile
    pdf_url = NSURL.fileURLWithPath_(inputfile)
    pdf_doc = PDFDocument.alloc().initWithURL_(pdf_url)
