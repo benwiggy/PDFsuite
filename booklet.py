@@ -18,7 +18,6 @@
 import sys
 import os
 import copy
-import getopt
 from CoreFoundation import *
 from Quartz.CoreGraphics import *
 
