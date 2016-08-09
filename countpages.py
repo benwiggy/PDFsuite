@@ -3,6 +3,7 @@
 # by Ben Byram-Wigfield
 
 # Script returns the total number of pages in all PDFs supplied as arguments
+# Makes no attempt to sanitize input.
 
 import sys
 from CoreGraphics import *
