@@ -12,6 +12,7 @@ This replaces Apple's own quartzfilter command, which was removed from OS X (in 
 3. Count pages in PDF
 This again uses Core Graphics objects and methods to count the number of pages in one or more PDF files passed to it. It provides a cumulative count for multiple files.
 
-Other scripts are planned: such as one for the rotation of pages within a PDF.
+4. Rotate
+This will rotate all the pages of any PDF files by 90˚.
 
 Ben Byram-Wigfield
