@@ -4,12 +4,10 @@
 #
 import sys
 import os
-import getopt
-import tempfile
 import shutil
 from Quartz.CoreGraphics import *
 
-verbose = True
+verbose = False
 
 # Creates a PDF Object from incoming file.
 def createPDFDocumentFromPath(path):
@@ -51,7 +49,7 @@ def writePageFromDoc(writeContext, doc, pageNum, angle):
 		CGContextDrawPDFPage(writeContext, page)
 		CGContextEndPage(writeContext)
 		if verbose:
-			print "Copied page %d from %s" % (pageNum, doc)
+			print "Rotating page %d from %s" % (pageNum, doc)
 	
 		
 if __name__ == '__main__':

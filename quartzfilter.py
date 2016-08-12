@@ -15,20 +15,20 @@ def main(argv):
    outputfile = ""
    filter = ""
    try:
-      opts, args = getopt.getopt(argv,"hi:f:o:",["input=","filter=","output="])
+      opts, args = getopt.getopt(argv,"hf:i:o:",["filter=", "input=", "output="])
    except getopt.GetoptError:
-      print 'test.py -i <inputfile> -f <filter> -o <outputfile>'
+      print 'quartzfilter.py -f <filter> -i <inputfile> -o <outputfile>'
       sys.exit(2)
    for opt, arg in opts:
       if opt == '-h':
-         print 'test.py -i <inputfile> -f <filter> -o <outputfile>'
-         print 'longnames are: --input, --filter, --output'
+         print 'quartzfilter.py -f <filter> -i <inputfile> -o <outputfile>'
+         print 'longnames are: --filter, --input, --output'
          print "If no output is specified, the input will be over-written."
          sys.exit()
-      elif opt in ("-i", "--input"):
-         inputfile = arg
       elif opt in ("-f", "--filter"):
          filter = arg
+      elif opt in ("-i", "--input"):
+         inputfile = arg
       elif opt in ("-o", "--output"):
          outputfile = arg
 
@@ -36,9 +36,9 @@ def main(argv):
    pdf_url = NSURL.fileURLWithPath_(inputfile)
    pdf_doc = PDFDocument.alloc().initWithURL_(pdf_url)
    furl = NSURL.fileURLWithPath_(filter)
-   fobj = QuartzFilter.quartzFilterWithURL_(furl)
-   fdict = { 'QuartzFilter': fobj }
-   pdf_doc.writeToFile_withOptions_(outputfile, fdict)
+   value = QuartzFilter.quartzFilterWithURL_(furl)
+   dict = { 'QuartzFilter': value }
+   pdf_doc.writeToFile_withOptions_(outputfile, dict)
 
 if __name__ == "__main__":
    main(sys.argv[1:])
