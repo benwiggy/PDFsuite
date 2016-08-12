@@ -15,4 +15,7 @@ This again uses Core Graphics objects and methods to count the number of pages i
 4. Rotate
 This will rotate all the pages of any PDF files by 90˚.
 
+5. Creator
+This will write a copy of the PDF, changing the "Creator" metadata to the value supplied. Other metadata keys are supplied, allowing the script to be easily modified for other metadata values.
+
 Ben Byram-Wigfield
