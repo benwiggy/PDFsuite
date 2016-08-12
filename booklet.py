@@ -25,6 +25,7 @@ from Quartz.CoreGraphics import *
 verbose = False
 
 # define Page and Sheet Sizes in points
+# You could use CGMakeRect, but seems no need.
 A4 = [[0,0], [841.88, 595.28]]
 A3 = [[0,0], [1190.55, 841.88]]
 
