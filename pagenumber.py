@@ -70,7 +70,7 @@ xOffset, yOffset, angle, scale, opacity = 45.0, 45.0, 0.0, 1.0, 1.0
 font = CTFontCreateWithName('TimesNewRomanPSMT', 12.0, None)
 
 if pdf:
-    for i in range(1, (pages+2)):
+    for i in range(1, (pages+1)):
         page = CGPDFDocumentGetPage(pdf, i)
         if page:
             mbox = CGPDFPageGetBoxRect(page, kCGPDFMediaBox)
