@@ -5,7 +5,7 @@
 # Script returns the total number of pages in all PDFs supplied as arguments
 
 import sys
-from CoreGraphics import *
+from Quartz.CoreGraphics import (CGPDFDocumentCreateWithProvider, CGDataProviderCreateWithFilename, CGPDFDocumentGetNumberOfPages)
 
 pdfnum=0
 
@@ -13,7 +13,7 @@ def pageCount(pdfPath):
 	# "Return the number of pages for some PDF file."
  
     pdf = CGPDFDocumentCreateWithProvider (CGDataProviderCreateWithFilename (pdfPath))
-    return pdf.getNumberOfPages()
+    return CGPDFDocumentGetNumberOfPages(pdf)
 
 if __name__ == '__main__':
 

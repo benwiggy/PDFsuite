@@ -13,13 +13,14 @@
 # Still to do: 
 # 1. Test for incoming page size and scale/rotate accordingly
 # 		(Currently, MacOS automatically centres and scales DOWN.)
-# 2. Allow for multiple booklets from one PDF file.
+# 2. Allow for multiple booklets of size n from one PDF file.
 # ----------------------------------------------------------------
 import sys
 import os
 import copy
-from CoreFoundation import *
-from Quartz.CoreGraphics import *
+from Quartz.CoreGraphics import (CGContextBeginPage, CGContextConcatCTM, CGContextDrawPDFPage, CGContextEndPage, CGContextRestoreGState, CGContextRotateCTM, CGContextSaveGState, CGContextScaleCTM, CGContextSetAlpha, CGContextSetTextPosition, CGContextTranslateCTM, CGContextTranslateCTM, CGContextTranslateCTM, CGPDFContextClose, CGPDFContextCreateWithURL, CGPDFDocumentCreateWithURL, CGPDFDocumentGetNumberOfPages, CGPDFDocumentGetPage, CGPDFPageGetBoxRect, CGPDFPageGetDrawingTransform, CGRectGetHeight, CGRectGetWidth, CGRectIsEmpty, CGRectMake, kCGPDFMediaBox)
+from CoreFoundation import (CFAttributedStringCreate, CFURLCreateFromFileSystemRepresentation, kCFAllocatorDefault)
+
 
 # For debugging, turn this on.
 verbose = False
@@ -42,7 +43,7 @@ creep = 0.5 # in points. NB: Eventually, the pages will collide.
 # Change this to one of the sizes listed above, if you want.
 sheetSize = A3
 # ----------------------------------------------------------------
-# For future: non-zero value will make booklets no bigger than _signature
+# For future: non-zero value will make booklets no bigger than signature
 signature = 0 
 # ----------------------------------------------------------------
 # Dont change this.
@@ -62,14 +63,6 @@ def createPDFDocumentWithPath(path):
 		print "Creating PDF document from file %s" % (path)
 	return CGPDFDocumentCreateWithURL(CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False))
 
-
-def pageCount(pdfPath):
-	global verbose
-	if verbose:
-		print "Getting number of pages..."
-		
-	pdf = CGPDFDocumentCreateWithProvider(CGDataProviderCreateWithFilename (pdfPath))
-	return pdf.getNumberOfPages()
     
 def imposition(pages):
 	global verbose
