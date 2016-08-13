@@ -70,14 +70,15 @@ xOffset, yOffset, angle, scale, opacity = 45.0, 45.0, 0.0, 1.0, 1.0
 font = CTFontCreateWithName('TimesNewRomanPSMT', 12.0, None)
 
 if pdf:
-    for i in range(1, pages+1):
-        page = CGPDFDocumentGetPage(pdf, i + 1)
+    for i in range(1, (pages+2)):
+        page = CGPDFDocumentGetPage(pdf, i)
         if page:
             mbox = CGPDFPageGetBoxRect(page, kCGPDFMediaBox)
             if CGRectIsEmpty(mbox): mbox = None
             CGContextBeginPage(ctx, mbox)
             CGContextDrawPDFPage(ctx, page)
             text = str(i)
+            print i
             astr = CFAttributedStringCreate(kCFAllocatorDefault, text, { kCTFontAttributeName : font })
             line = CTLineCreateWithAttributedString(astr)
             x = CGRectGetWidth(mbox)
