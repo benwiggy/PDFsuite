@@ -23,7 +23,7 @@ This will rotate all the pages of any PDF files by 90˚.
 
 This will write a copy of the PDF, changing the "Creator" metadata to the value supplied. Other metadata keys are supplied, allowing the script to be easily modified for other metadata values. If no output file is set, it will overwrite the input file.
 
-6.Add Pages
+6. Page Number
 
 This script adds a page number to facing pages of PDFs. Users can set the offset position from the outer top corner, font, size. There are also settings for the scale, opacity and angle of text.
 
