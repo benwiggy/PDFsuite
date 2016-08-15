@@ -9,7 +9,7 @@ This script is set to work as a PDF Service. However, it could easily be adjuste
 
 2.Apply Quartz Filter
 
-This replaces Apple's own quartzfilter command, which was removed from OS X (in Lion?). It has three filepath arguments: quartz filter, input file and output file. If no output file is set, it will overwrite the input file.
+This replaces Apple's own quartzfilter command, which was removed from OS X (in Lion?). (Also, there was a sample script in Xcode, which used now-deprecated APIs.) Like its predecessors, it has three filepath arguments: quartz filter, input file and output file.
 
 3.Count pages in PDF
 
@@ -17,7 +17,7 @@ This again uses Core Graphics objects and methods to count the number of pages i
 
 4.Rotate
 
-This will rotate all the pages of any PDF files by 90˚.
+This will rotate all the pages of any PDF files by 90˚ into a new file suffixed "NUM".
 
 5.Creator
 
@@ -27,6 +27,6 @@ This will write a copy of the PDF, changing the "Creator" metadata to the value 
 
 This script adds a page number to facing pages of PDFs. Users can set the offset position from the outer top corner, font, size. There are also settings for the scale, opacity and angle of text.
 
-More scripts are planned: Querying PDF data; .... and on!
+More scripts are planned: Exporting as bitmaps, Querying PDF data; .... and on!
 
 Ben Byram-Wigfield
