@@ -6,40 +6,46 @@
 import sys
 import os
 import getopt
-from Quartz.CoreGraphics import (CGContextBeginPage, CGContextConcatCTM, CGContextDrawPDFPage, CGContextEndPage, CGContextRestoreGState, CGContextRotateCTM, CGContextSaveGState, CGContextScaleCTM, CGContextSetAlpha, CGContextSetTextPosition, CGContextTranslateCTM, CGContextTranslateCTM, CGContextTranslateCTM, CGPDFContextClose, CGPDFContextCreateWithURL, CGPDFDocumentCreateWithURL, CGPDFDocumentGetNumberOfPages, CGPDFDocumentGetPage, CGPDFPageGetBoxRect, CGPDFPageGetDrawingTransform, CGRectGetHeight, CGRectGetWidth, CGRectIsEmpty, CGRectMake, kCGPDFMediaBox, PDFDocument, QuartzFilter)
-from CoreText import (kCTFontAttributeName, CTFontCreateWithName, CTLineDraw, CTLineCreateWithAttributedString, kCTFontAttributeName, CTLineGetImageBounds)
-from CoreFoundation import (NSURL, CFAttributedStringCreate, CFURLCreateFromFileSystemRepresentation, kCFAllocatorDefault)
+import Quartz.CoreGraphics as CG
+from CoreFoundation import (NSURL, QuartzFilter)
 
 
 def main(argv):
-   inputfile = ""
-   outputfile = ""
-   filter = ""
-   try:
-      opts, args = getopt.getopt(argv,"hf:i:o:",["filter=", "input=", "output="])
-   except getopt.GetoptError:
-      print 'quartzfilter.py -f <filter> -i <inputfile> -o <outputfile>'
-      sys.exit(2)
-   for opt, arg in opts:
-      if opt == '-h':
-         print 'quartzfilter.py -f <filter> -i <inputfile> -o <outputfile>'
-         print 'longnames are: --filter, --input, --output'
-         print "If no output is specified, the input will be over-written."
-         sys.exit()
-      elif opt in ("-f", "--filter"):
-         filter = arg
-      elif opt in ("-i", "--input"):
-         inputfile = arg
-      elif opt in ("-o", "--output"):
-         outputfile = arg
+	inputfile = ""
+	outputfile = ""
+	filter = ""
 
-   if outputfile == "": outputfile = inputfile
-   pdf_url = NSURL.fileURLWithPath_(inputfile)
-   pdf_doc = PDFDocument.alloc().initWithURL_(pdf_url)
-   furl = NSURL.fileURLWithPath_(filter)
-   value = QuartzFilter.quartzFilterWithURL_(furl)
-   dict = { 'QuartzFilter': value }
-   pdf_doc.writeToFile_withOptions_(outputfile, dict)
+	try:
+		opts,args = getopt.getopt (sys.argv[1:], '', [])
+	except getopt.GetoptError:
+		usage ()
+		sys.exit (1)
+
+	if len (args) != 3:
+		usage ()
+		sys.exit (1)
+
+	filter = args[0]
+	if not filter:
+		print 'Unable to create context filter'
+		sys.exit (1)
+
+	inputfile =args[1]
+	if not inputfile:
+		print 'Unable to open input file'
+		sys.exit (1)
+
+	outputfile = args[2]
+	if not outputfile:
+		print 'Unable to create output context'
+		sys.exit (1)
+
+	pdf_url = NSURL.fileURLWithPath_(inputfile)
+	pdf_doc = CG.PDFDocument.alloc().initWithURL_(pdf_url)
+	furl = NSURL.fileURLWithPath_(filter)
+	value = QuartzFilter.quartzFilterWithURL_(furl)
+	dict = { 'QuartzFilter': value }
+	pdf_doc.writeToFile_withOptions_(outputfile, dict)
 
 if __name__ == "__main__":
    main(sys.argv[1:])

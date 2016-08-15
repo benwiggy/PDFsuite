@@ -6,10 +6,9 @@
 import sys
 import os
 import getopt
-from Quartz.CoreGraphics import (CGContextBeginPage, CGContextConcatCTM, CGContextDrawPDFPage, CGContextEndPage, CGContextRestoreGState, CGContextRotateCTM, CGContextSaveGState, CGContextScaleCTM, CGContextSetAlpha, CGContextSetTextPosition, CGContextTranslateCTM, CGContextTranslateCTM, CGContextTranslateCTM, CGPDFContextClose, CGPDFContextCreateWithURL, CGPDFDocumentCreateWithURL, CGPDFDocumentGetNumberOfPages, CGPDFDocumentGetPage, CGPDFPageGetBoxRect, CGPDFPageGetDrawingTransform, CGRectGetHeight, CGRectGetWidth, CGRectIsEmpty, CGRectMake, kCGPDFMediaBox, kCGPDFContextCreator, kCGPDFContextAuthor, PDFDocument, QuartzFilter)
+import Quartz.CoreGraphics  as CG
 
-from CoreFoundation import (NSURL, CFAttributedStringCreate, CFURLCreateFromFileSystemRepresentation, kCFAllocatorDefault)
-
+from CoreFoundation import NSURL
 
 def main(argv):
    inputfile = ""
@@ -33,9 +32,10 @@ def main(argv):
       elif opt in ("-o", "--output"):
          outputfile = arg
 
+   print value, inputfile, outputfile
    if outputfile == "": outputfile = inputfile
    pdf_url = NSURL.fileURLWithPath_(inputfile)
-   pdf_doc = PDFDocument.alloc().initWithURL_(pdf_url)
+   pdf_doc = CG.PDFDocument.alloc().initWithURL_(pdf_url)
 # Default value option:
 #   if value == "": value = "Uncle Bob Silly" 
    dict = { 'kCGPDFContextCreator': value }
@@ -45,7 +45,7 @@ if __name__ == "__main__":
    main(sys.argv[1:])
    
 """
-Other Dict keys include: (Don't forget to add them to the header)
+Other Dict keys include: 
 
 kCGPDFContextAuthor (string)
 kCGPDFContextTitle

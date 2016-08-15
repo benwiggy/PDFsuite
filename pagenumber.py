@@ -6,7 +6,7 @@
 import sys
 import os
 import math
-from Quartz.CoreGraphics import (CGContextBeginPage, CGContextConcatCTM, CGContextDrawPDFPage, CGContextEndPage, CGContextRestoreGState, CGContextRotateCTM, CGContextSaveGState, CGContextScaleCTM, CGContextSetAlpha, CGContextSetTextPosition, CGContextTranslateCTM, CGContextTranslateCTM, CGContextTranslateCTM, CGPDFContextClose, CGPDFContextCreateWithURL, CGPDFDocumentCreateWithURL, CGPDFDocumentGetNumberOfPages, CGPDFDocumentGetPage, CGPDFPageGetBoxRect, CGPDFPageGetDrawingTransform, CGRectGetHeight, CGRectGetWidth, CGRectIsEmpty, CGRectMake, kCGPDFMediaBox)
+import Quartz.CoreGraphics as CG
 from CoreText import (kCTFontAttributeName, CTFontCreateWithName, CTLineDraw, CTLineCreateWithAttributedString, kCTFontAttributeName, CTLineGetImageBounds)
 from CoreFoundation import (CFAttributedStringCreate, CFURLCreateFromFileSystemRepresentation, kCFAllocatorDefault)
 
@@ -17,19 +17,19 @@ def createPDFDocumentFromPath(path):
 	global verbose
 	if verbose:
 		print "Creating PDF document from file %s" % (path)
-	return CGPDFDocumentCreateWithURL(CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False))
+	return CG.CGPDFDocumentCreateWithURL(CG.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False))
 	
 # Creates a Context for drawing
 def createOutputContextWithPath(path):
 	global verbose
 	if verbose:
 		print "Setting %s as the destination." % (path)
-	return CGPDFContextCreateWithURL(CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False), None, None)
+	return CG.CGPDFContextCreateWithURL(CG.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False), None, None)
 
 # Closes the Context
 def contextDone(context):
 	if context:
-		CGPDFContextClose(context)
+		CG.CGPDFContextClose(context)
 		del context
 
 def drawWatermarkText(ctx, line, xOffset, yOffset, angle, scale, opacity):
@@ -41,16 +41,16 @@ def drawWatermarkText(ctx, line, xOffset, yOffset, angle, scale, opacity):
         imageWidth = rect.size.width
         imageHeight = rect.size.height
         
-        CGContextSaveGState(ctx)
-        CGContextSetAlpha(ctx, opacity)
-        CGContextTranslateCTM(ctx, xOffset, yOffset)
-        CGContextScaleCTM(ctx, scale, scale)
-        CGContextTranslateCTM(ctx, imageWidth / 2, imageHeight / 2)
-        CGContextRotateCTM(ctx, angle * math.pi / 180)
-        CGContextTranslateCTM(ctx, -imageWidth / 2, -imageHeight / 2)
-        CGContextSetTextPosition(ctx, 0.0, 0.0);
+        CG.CGContextSaveGState(ctx)
+        CG.CGContextSetAlpha(ctx, opacity)
+        CG.CGContextTranslateCTM(ctx, xOffset, yOffset)
+        CG.CGContextScaleCTM(ctx, scale, scale)
+        CG.CGContextTranslateCTM(ctx, imageWidth / 2, imageHeight / 2)
+        CG.CGContextRotateCTM(ctx, angle * math.pi / 180)
+        CG.CGContextTranslateCTM(ctx, -imageWidth / 2, -imageHeight / 2)
+        CG.CGContextSetTextPosition(ctx, 0.0, 0.0);
         CTLineDraw(line, ctx);
-        CGContextRestoreGState(ctx)
+        CG.CGContextRestoreGState(ctx)
 
 
 if __name__ == '__main__':
@@ -60,7 +60,7 @@ if __name__ == '__main__':
 		outFilename = shortName + " NUM.pdf"
 		pdf = createPDFDocumentFromPath(filename)
 		ctx = createOutputContextWithPath(outFilename)
-		pages = CGPDFDocumentGetNumberOfPages(pdf)
+		pages = CG.CGPDFDocumentGetNumberOfPages(pdf)
 
 
 # OPTIONS: Set the RELATIVE distance from outside top corner of page;
@@ -71,18 +71,18 @@ font = CTFontCreateWithName('TimesNewRomanPSMT', 12.0, None)
 
 if pdf:
     for i in range(1, (pages+1)):
-        page = CGPDFDocumentGetPage(pdf, i)
+        page = CG.CGPDFDocumentGetPage(pdf, i)
         if page:
-            mbox = CGPDFPageGetBoxRect(page, kCGPDFMediaBox)
-            if CGRectIsEmpty(mbox): mbox = None
-            CGContextBeginPage(ctx, mbox)
-            CGContextDrawPDFPage(ctx, page)
+            mbox = CG.CGPDFPageGetBoxRect(page, CG.kCGPDFMediaBox)
+            if CG.CGRectIsEmpty(mbox): mbox = None
+            CG.CGContextBeginPage(ctx, mbox)
+            CG.CGContextDrawPDFPage(ctx, page)
             text = str(i)
             print i
             astr = CFAttributedStringCreate(kCFAllocatorDefault, text, { kCTFontAttributeName : font })
             line = CTLineCreateWithAttributedString(astr)
-            x = CGRectGetWidth(mbox)
-            y = CGRectGetHeight(mbox)
+            x = CG.CGRectGetWidth(mbox)
+            y = CG.CGRectGetHeight(mbox)
             y -= yOffset
             if i%2 == 1:
             	x = xOffset
@@ -92,6 +92,6 @@ if pdf:
             	drawWatermarkText(ctx, line, x , y, angle, scale, opacity)
             
 
-            CGContextEndPage(ctx)
+            CG.CGContextEndPage(ctx)
     del pdf
     contextDone(ctx)
