@@ -36,21 +36,21 @@ def drawWatermarkText(ctx, line, xOffset, yOffset, angle, scale, opacity):
     #   CGContextRef ctx
     #   CTLineRef line
     #   float xOffset, yOffset, angle ([degree]), scale, opacity ([0.0, 1.0])
-    if line:
-        rect = CTLineGetImageBounds(line, ctx)
-        imageWidth = rect.size.width
-        imageHeight = rect.size.height
-        
-        CG.CGContextSaveGState(ctx)
-        CG.CGContextSetAlpha(ctx, opacity)
-        CG.CGContextTranslateCTM(ctx, xOffset, yOffset)
-        CG.CGContextScaleCTM(ctx, scale, scale)
-        CG.CGContextTranslateCTM(ctx, imageWidth / 2, imageHeight / 2)
-        CG.CGContextRotateCTM(ctx, angle * math.pi / 180)
-        CG.CGContextTranslateCTM(ctx, -imageWidth / 2, -imageHeight / 2)
-        CG.CGContextSetTextPosition(ctx, 0.0, 0.0);
-        CTLineDraw(line, ctx);
-        CG.CGContextRestoreGState(ctx)
+	if line:
+		rect = CTLineGetImageBounds(line, ctx)
+		imageWidth = rect.size.width
+		imageHeight = rect.size.height
+
+		CG.CGContextSaveGState(ctx)
+		CG.CGContextSetAlpha(ctx, opacity)
+		CG.CGContextTranslateCTM(ctx, xOffset, yOffset)
+		CG.CGContextScaleCTM(ctx, scale, scale)
+		CG.CGContextTranslateCTM(ctx, imageWidth / 2, imageHeight / 2)
+		CG.CGContextRotateCTM(ctx, angle * math.pi / 180)
+		CG.CGContextTranslateCTM(ctx, -imageWidth / 2, -imageHeight / 2)
+		CG.CGContextSetTextPosition(ctx, 0.0, 0.0);
+		CTLineDraw(line, ctx);
+		CG.CGContextRestoreGState(ctx)
 
 
 if __name__ == '__main__':
@@ -61,37 +61,36 @@ if __name__ == '__main__':
 		pdf = createPDFDocumentFromPath(filename)
 		ctx = createOutputContextWithPath(outFilename)
 		pages = CG.CGPDFDocumentGetNumberOfPages(pdf)
-
-
 # OPTIONS: Set the RELATIVE distance from outside top corner of page;
 # For other uses, set the angle, scale, and opacity of text
 # Font must be the PostScript name (i.e. no spaces) (See Get Info in FontBook)
-xOffset, yOffset, angle, scale, opacity = 45.0, 45.0, 0.0, 1.0, 1.0
-font = CTFontCreateWithName('TimesNewRomanPSMT', 12.0, None)
+		xOffset, yOffset, angle, scale, opacity = 45.0, 45.0, 0.0, 1.0, 1.0
+		font = CTFontCreateWithName('TimesNewRomanPSMT', 12.0, None)
 
-if pdf:
-    for i in range(1, (pages+1)):
-        page = CG.CGPDFDocumentGetPage(pdf, i)
-        if page:
-            mbox = CG.CGPDFPageGetBoxRect(page, CG.kCGPDFMediaBox)
-            if CG.CGRectIsEmpty(mbox): mbox = None
-            CG.CGContextBeginPage(ctx, mbox)
-            CG.CGContextDrawPDFPage(ctx, page)
-            text = str(i)
-            print i
-            astr = CFAttributedStringCreate(kCFAllocatorDefault, text, { kCTFontAttributeName : font })
-            line = CTLineCreateWithAttributedString(astr)
-            x = CG.CGRectGetWidth(mbox)
-            y = CG.CGRectGetHeight(mbox)
-            y -= yOffset
-            if i%2 == 1:
-            	x = xOffset
-            	drawWatermarkText(ctx, line, x, y, angle, scale, opacity)
-            else:
-            	x = x - xOffset
-            	drawWatermarkText(ctx, line, x , y, angle, scale, opacity)
-            
+		if pdf:
+			for i in range(1, (pages+1)):
+				page = CG.CGPDFDocumentGetPage(pdf, i)
+				if page:
+					mbox = CG.CGPDFPageGetBoxRect(page, CG.kCGPDFMediaBox)
+					if CG.CGRectIsEmpty(mbox): mbox = None
+					CG.CGContextBeginPage(ctx, mbox)
+					CG.CGContextDrawPDFPage(ctx, page)
+					text = str(i)
+					print i
+					astr = CFAttributedStringCreate(kCFAllocatorDefault, text, { kCTFontAttributeName : font })
+					line = CTLineCreateWithAttributedString(astr)
+					x = CG.CGRectGetWidth(mbox)
+					y = CG.CGRectGetHeight(mbox)
+					y -= yOffset
+					if i == 1: # Don't put number on page 1
+						pass
+					elif i%2 == 1:
+						x = xOffset
+						drawWatermarkText(ctx, line, x, y, angle, scale, opacity)
+					else:
+						x = x - xOffset
+						drawWatermarkText(ctx, line, x , y, angle, scale, opacity)
 
-            CG.CGContextEndPage(ctx)
-    del pdf
-    contextDone(ctx)
+					CG.CGContextEndPage(ctx)
+		del pdf
+		contextDone(ctx)
