@@ -13,7 +13,7 @@ This replaces Apple's own quartzfilter command, which was removed from OS X (in 
 
 3. Count pages in PDF (countpages.py)
 
-This again uses Core Graphics objects and methods to count the number of pages in one or more PDF files passed to it. It provides a cumulative count for multiple files.
+This uses Core Graphics objects and methods to count the number of pages in one or more PDF files passed to it. It provides a cumulative count for multiple file arguments.
 
 4. Rotate (rotate.py)
 
@@ -27,6 +27,10 @@ This will write a copy of the PDF, changing the "Creator" metadata to the value 
 
 This script adds a page number to facing pages of PDFs. Users can set the offset position from the outer top corner, font, size. There are also settings for the scale, opacity and angle of text.
 
-More scripts are planned: Exporting as bitmaps, Querying PDF data; .... and on!
+7. Export pages as images (pdf2tiff.py)
+
+This script exports each page as a 300dpi RGB TIFF image. Options in the script alow for JPEG and PNG filetypes, resolution, transparency and other parameters.
+
+More scripts are planned: Querying PDF data; .... and on!
 
 Ben Byram-Wigfield
