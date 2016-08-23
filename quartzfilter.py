@@ -6,7 +6,7 @@
 import sys
 import os
 import getopt
-import Quartz.CoreGraphics as CG
+from Quartz.CoreGraphics import *
 from CoreFoundation import (NSURL, QuartzFilter)
 
 

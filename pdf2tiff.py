@@ -24,6 +24,7 @@ transparency = CG.kCGImageAlphaNoneSkipLast
 def writeImage (image, url, type, options):
 	destination = CG.CGImageDestinationCreateWithURL(url, type, 1, None)
 	CG.CGImageDestinationAddImage(destination, image, options)
+	CG.CGImageDestinationSetProperties(destination, options)
 	CG.CGImageDestinationFinalize(destination)
 	return
 
@@ -68,6 +69,7 @@ if __name__ == '__main__':
 				type = kUTTypeTIFF
 		# For some reason, this doesn't seem to be passed to the TIFF file.
 				options = {
+					CG.kCGImagePropertyTIFFDictionary: 'TIFFDictionary',
 					CG.kCGImagePropertyTIFFXResolution: 300,
 					CG.kCGImagePropertyTIFFYResolution: 300,
 					}
