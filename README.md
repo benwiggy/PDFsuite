@@ -31,6 +31,9 @@ This script adds a page number to facing pages of PDFs. Users can set the offset
 
 This script exports each page as a 300dpi RGB TIFF image. Options in the script alow for JPEG and PNG filetypes, resolution, transparency and other parameters.
 
+8. Combine images to one PDF (imagestopdf.py)
+Modified version of an Apple open source script (I hope that's ok!), which takes any number of image files and combines them into pages of one PDF file. 
+
 More scripts are planned: Querying PDF data; .... and on!
 
 Ben Byram-Wigfield
