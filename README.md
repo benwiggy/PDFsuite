@@ -45,6 +45,6 @@ There are some python scripts written by Apple, in /System/Library/Automator, in
 
 LICENCE:
 
-"I have gathered a garland of other men's flowers, and nothing is mine but the cord that binds them." These scripts were not possible without looking at other code examples; nor without help and advice from a range of people. I cannot make any claim to them, and they are free to be used and adapted in any way, though I ask that you retain the acknowledgements within. 
+"I have gathered a garland of other men's flowers, and nothing is mine but the cord that binds them." These scripts were not possible without looking at other code examples; nor without help and advice from a range of people. I cannot make any claim to them, and they are free to be used and adapted in any way, though I ask that you retain the acknowledgements within. I welcome help in improving them.
 
 Ben Byram-Wigfield
