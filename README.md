@@ -1,7 +1,7 @@
 # PDFsuite
 Python scripts for MacOS (OS X) that create, manipulate, and query PDF files
 
-These scripts provide 'front ends' to MacOS's Core Graphics APIs, thereby allowing the automation of a variety of tasks, such as creating bookets, applying Quartz Filters and querying page count of input PDFs.
+These scripts provide 'front ends' to MacOS's Core Graphics APIs, thereby allowing the automation of a variety of tasks, such as creating bookets, applying Quartz Filters and querying page count of input PDFs. Most can be used directly in a shell, taking one or more PDF files as their argument. (The first two are slightly different.) As a result, they can be used in Automator actions very easily to produce Services or Drop-applets.
 
 1. Booklet Imposition (booklet.py)
 
@@ -9,7 +9,7 @@ This script is set to work as a PDF Service. However, it could easily be adjuste
 
 2. Apply Quartz Filter (quartzfilter.py)
 
-This replaces Apple's own quartzfilter command, which was removed from OS X (in Lion?). (Also, there was a sample script in Xcode, which used now-deprecated APIs.) Like its predecessors, it has three filepath arguments: quartz filter, input file and output file.
+This replaces Apple's own quartzfilter command, which was removed from OS X (in Lion?). (Also, there was a sample script in Xcode, which used now-deprecated APIs.) Like its predecessors, it takes three arguments: quartz filter, input file and output file.
 
 3. Count pages in PDF (countpages.py)
 
@@ -29,12 +29,15 @@ This script adds a page number to facing pages of PDFs. Users can set the offset
 
 7. Export pages as images (pdf2tiff.py)
 
-This script exports each page as a 300dpi RGB TIFF image. Options in the script alow for JPEG and PNG filetypes, resolution, transparency and other parameters.
+This script exports each page as a 300dpi RGB TIFF image. Options in the script alow for JPEG and PNG filetypes, resolution, transparency and other parameters. Images are saved to a folder with the name of the original file (minus file extension).
 
 8. Combine images to one PDF (imagestopdf.py)
 
 Modified version of an Apple open source script (I hope that's ok!), which takes any number of image files and combines them into pages of one PDF file. 
 
-More scripts are planned: Querying PDF data; .... and on!
+9. Split PDF into separate files (splitPDF.py)
+This script creates separate PDFs for each page in an existing PDF. The page files are saved inside a folder.
+
+More scripts are planned: Querying PDF data (tricky); .... and on! Also, learning how to make the numbers increment in this document.
 
 Ben Byram-Wigfield
