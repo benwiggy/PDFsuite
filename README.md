@@ -17,7 +17,7 @@ This uses Core Graphics objects and methods to count the number of pages in one 
 
 4. Rotate (rotate.py)
 
-This will rotate all the pages of any PDF files by 90˚ into a new file suffixed "NUM".
+This will rotate all the pages of any PDF files by 90˚ into a new file suffixed "+90".
 
 5. Creator (creator.py)
 
@@ -25,22 +25,26 @@ This will write a copy of the PDF, changing the "Creator" metadata to the value 
 
 6. Add Page Number (pagenumber.py)
 
-This script adds a page number to facing pages of PDFs. Users can set the offset position from the outer top corner, font, size. There are also settings for the scale, opacity and angle of text.
+This script adds a page number to facing pages of PDFs. Users can set the offset position from the outer top corner, font, size. There are also settings for the scale, opacity and angle of text. A new file is produced, suffixed "NUM".
 
 7. Export pages as images (pdf2tiff.py)
 
-This script exports each page as a 300dpi RGB TIFF image. Options in the script alow for JPEG and PNG filetypes, resolution, transparency and other parameters. Images are saved to a folder with the name of the original file (minus file extension).
+This script exports each page as a 300dpi RGB TIFF image. Options in the script alow for JPEG and PNG filetypes, resolution, transparency and other parameters. Images are saved to a folder with the name of the original file (minus file extension). If the folder cannot be created, the script fails.
 
 8. Combine images to one PDF (imagestopdf.py)
 
 Modified version of an Apple open source script (I hope that's ok!), which takes any number of image files and combines them into pages of one PDF file. 
 
 9. Split PDF into separate files (splitPDF.py)
-This script creates separate PDFs for each page in an existing PDF. The page files are saved inside a folder.
+This script creates separate PDFs for each page in an existing PDF. The page files are saved inside a folder with the name of the source file (minus .pdf extension). The script fails if the folder cannot be made.
 
 More scripts are planned: Querying PDF data (tricky); .... and on! Also, learning how to make the numbers increment in this document.
 
+NB:
+There are some python scripts written by Apple, in /System/Library/Automator, inside the bundles of PDF Automator actions for Combining PDF Pages, Extracting PDF pages, Watermarking PDFs, and adding gridlines to PDFs. They can be used as standalone scripts, or as the basis of new workflows.
+
 LICENCE:
+
 "I have gathered a garland of other men's flowers, and nothing is mine but the cord that binds them." These scripts were not possible without looking at other code examples; nor without help and advice from a range of people. I cannot make any claim to them, and they are free to be used and adapted in any way, though I ask that you retain the acknowledgements within. 
 
 Ben Byram-Wigfield
