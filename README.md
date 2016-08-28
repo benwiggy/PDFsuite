@@ -40,4 +40,7 @@ This script creates separate PDFs for each page in an existing PDF. The page fil
 
 More scripts are planned: Querying PDF data (tricky); .... and on! Also, learning how to make the numbers increment in this document.
 
+LICENCE:
+"I have gathered a garland of other men's flowers, and nothing is mine but the cord that binds them." These scripts were not possible without looking at other code examples; nor without help and advice from a range of people. I cannot make any claim to them, and they are free to be used and adapted in any way, though I ask that you retain the acknowledgements within. 
+
 Ben Byram-Wigfield
