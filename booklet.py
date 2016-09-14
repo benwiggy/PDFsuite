@@ -115,34 +115,23 @@ def main(argv):
 # If the source page number is 0, then move on without drawing.
 	count = 0
 	for n in range(Sides):
-		CGContextBeginPage(writeContext, sheetSize)
-		if imposedOrder[count]:
-			# Yes, these two should be a loop of some sort.
-			page = CGPDFDocumentGetPage(source, imposedOrder[count])
-			CGContextSaveGState(writeContext)
-			CGContextConcatCTM(writeContext, CGPDFPageGetDrawingTransform(page, kCGPDFMediaBox, leftPage, 0, True))
-			# Uncomment next line to draw box round each page
-			# CGContextStrokeRectWithWidth(writeContext, leftPage, 2.0)
-			CGContextDrawPDFPage(writeContext, page)
-			CGContextRestoreGState(writeContext)
-		count += 1	
-
-		if imposedOrder[count]:
-			# Yes, these two should be a loop of some sort.
-			page = CGPDFDocumentGetPage(source, imposedOrder[count])
-			CGContextSaveGState(writeContext)
-			CGContextConcatCTM(writeContext, CGPDFPageGetDrawingTransform(page, kCGPDFMediaBox, rightPage, 0, True))
-			# Uncomment next line to draw box round each page
-			# CGContextStrokeRectWithWidth(writeContext, leftPage, 2.0)
-			CGContextDrawPDFPage(writeContext, page)
-			CGContextRestoreGState(writeContext)
-		count += 1	
-		CGContextEndPage(writeContext)
+		Quartz.CGContextBeginPage(writeContext, sheetSize)
+		for position in [leftPage, rightPage]:
+			if imposedOrder[count]:
+				page = Quartz.CGPDFDocumentGetPage(source, imposedOrder[count])
+				Quartz.CGContextSaveGState(writeContext)
+				Quartz.CGContextConcatCTM(writeContext, Quartz.CGPDFPageGetDrawingTransform(page, Quartz.kCGPDFMediaBox, position, 0, True))
+				# Uncomment next line to draw box round each page
+				# Quartz.CGContextStrokeRectWithWidth(writeContext, leftPage, 2.0)
+				Quartz.CGContextDrawPDFPage(writeContext, page)
+				Quartz.CGContextRestoreGState(writeContext)
+			count += 1
+		Quartz.CGContextEndPage(writeContext) 
+		
 		# Set creep for next sheet.		
 		if count%4 == 0:
 			leftPage[0][0] += creep
 			rightPage[0][0] -= creep
-
 
 # Do tidying up
 	contextDone(writeContext)		
