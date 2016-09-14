@@ -18,12 +18,9 @@
 import sys
 import os
 import copy
-from Quartz.CoreGraphics import (CGContextBeginPage, CGContextConcatCTM, CGContextDrawPDFPage, CGContextEndPage, CGContextRestoreGState, CGContextRotateCTM, CGContextSaveGState, CGContextScaleCTM, CGContextSetAlpha, CGContextSetTextPosition, CGContextTranslateCTM, CGContextTranslateCTM, CGContextTranslateCTM, CGPDFContextClose, CGPDFContextCreateWithURL, CGPDFDocumentCreateWithURL, CGPDFDocumentGetNumberOfPages, CGPDFDocumentGetPage, CGPDFPageGetBoxRect, CGPDFPageGetDrawingTransform, CGRectGetHeight, CGRectGetWidth, CGRectIsEmpty, CGRectMake, kCGPDFMediaBox)
+import Quartz as Quartz
 from CoreFoundation import (CFAttributedStringCreate, CFURLCreateFromFileSystemRepresentation, kCFAllocatorDefault)
 
-
-# For debugging, turn this on.
-verbose = False
 
 # define Page and Sheet Sizes in points
 # You could use CGMakeRect, but seems no need.
@@ -58,14 +55,10 @@ rightPage[0][0] = shift
 # FUNCTIONS
 
 def createPDFDocumentWithPath(path):
-	global verbose
-	if verbose:
-		print "Creating PDF document from file %s" % (path)
-	return CGPDFDocumentCreateWithURL(CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False))
+	return Quartz.CGPDFDocumentCreateWithURL(CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False))
 
     
 def imposition(pages):
-	global verbose
 	blanks = 0
 	UnsortedOrder = range(1, pages+1)
 	if pages%pagesPerSheet:
@@ -80,28 +73,25 @@ def imposition(pages):
 		# And now we do verso
 		imposedOrder.append(UnsortedOrder[i])
 		imposedOrder.append(UnsortedOrder[(i+1)*-1])
-
-	if verbose:
-		print imposedOrder	
 	return imposedOrder
 
 def contextDone(context):
 	if context:
-		CGPDFContextClose(context)
+		Quartz.CGPDFContextClose(context)
 		del context
 		
 # MAIN 
 def main(argv):
+	#  Incoming arguments if used as PDF Service:
 	(title, options, pdfFile) = argv[0:3]
-	global verbose
 	writeContext = None
 	shortName = os.path.splitext(title)[0]
 	writeFilename = destination + shortName + suffix
-	writeContext = CGPDFContextCreateWithURL(CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, writeFilename, len(writeFilename), False), sheetSize, None)
+	writeContext = Quartz.CGPDFContextCreateWithURL(CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, writeFilename, len(writeFilename), False), sheetSize, None)
 
 # Initiate new PDF, get source PDF, number of pages.
 	source = createPDFDocumentWithPath(pdfFile)
-	pageNo = CGPDFDocumentGetNumberOfPages(source)
+	pageNo = Quartz.CGPDFDocumentGetNumberOfPages(source)
 
 # Get imposed page order
 	imposedOrder = imposition(pageNo)
@@ -110,7 +100,7 @@ def main(argv):
 	pagesPerSide = pagesPerSheet/2
 	Sides = len(imposedOrder) / pagesPerSide
 
-# There's probably a better way of doing this next bit. For each side of the sheet, we must...
+# For each side of the sheet, we must...
 # ... create a PDF page, take two source pages and place them differently, then close the page.
 # If the source page number is 0, then move on without drawing.
 	count = 0
@@ -132,6 +122,7 @@ def main(argv):
 		if count%4 == 0:
 			leftPage[0][0] += creep
 			rightPage[0][0] -= creep
+
 
 # Do tidying up
 	contextDone(writeContext)		
