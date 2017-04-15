@@ -3,10 +3,8 @@
 # by Ben Byram-Wigfield
 # Script to apply a MacOS Quartz Filter to a PDF file.
 #
-import sys
-import os
-import getopt
-from Quartz.CoreGraphics import *
+import os, getopt, sys
+import Quartz.CoreGraphics as CG
 from CoreFoundation import (NSURL, QuartzFilter)
 
 
@@ -16,33 +14,30 @@ def main(argv):
 	filter = ""
 
 	try:
-		opts,args = getopt.getopt (sys.argv[1:], '', [])
-	except getopt.GetoptError:
-		usage ()
-		sys.exit (1)
+		opts, args = getopt.getopt(sys.argv[1:], "fio", ["filter", "input", "output"])
+	except getopt.GetoptError as err:
+		print(err)
+		usage()
+		sys.exit(2)
 
-	if len (args) != 3:
-		usage ()
-		sys.exit (1)
+	if len(args) != 3:
+		print("Not enough arguments")
+		sys.exit(2)
 
-	filter = args[0]
+	filter = args[0].decode('utf-8')
 	if not filter:
 		print 'Unable to create context filter'
-		sys.exit (1)
+		sys.exit(2)
 
-	inputfile = args[1]
+	inputfile =args[1].decode('utf-8')
 	if not inputfile:
 		print 'Unable to open input file'
-		sys.exit (1)
-	else:
-		inputfile = inputfile.decode('utf-8')
+		sys.exit(2)
 
-	outputfile = args[2]
+	outputfile = args[2].decode('utf-8')
 	if not outputfile:
 		print 'Unable to create output context'
-		sys.exit (1)
-	else:
-		outputfile = outputfile.decode('utf-8')
+		sys.exit(2)
 
 	pdf_url = NSURL.fileURLWithPath_(inputfile)
 	pdf_doc = CG.PDFDocument.alloc().initWithURL_(pdf_url)
