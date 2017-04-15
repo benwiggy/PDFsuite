@@ -26,11 +26,11 @@ def main(argv):
          print "If no output is specified, the input will be over-written."
          sys.exit()
       elif opt in ("-c", "--creator"):
-         value = arg
+         value = arg.decode('utf-8')
       elif opt in ("-i", "--input"):
-         inputfile = arg
+         inputfile = arg.decode('utf-8')
       elif opt in ("-o", "--output"):
-         outputfile = arg
+         outputfile = arg.decode('utf-8')
 
    print value, inputfile, outputfile
    if outputfile == "": outputfile = inputfile

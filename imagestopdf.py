@@ -45,7 +45,7 @@ def main(argv):
 		
 		for arg in argv[:] :
 			image = None
-			url = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, arg, kCFURLPOSIXPathStyle, False)
+			url = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, arg.decode('utf-8'), kCFURLPOSIXPathStyle, False)
 			if url :
 				isr = CGImageSourceCreateWithURL(url, None)
 				if isr :

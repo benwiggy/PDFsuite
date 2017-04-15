@@ -30,15 +30,19 @@ def main(argv):
 		print 'Unable to create context filter'
 		sys.exit (1)
 
-	inputfile =args[1]
+	inputfile = args[1]
 	if not inputfile:
 		print 'Unable to open input file'
 		sys.exit (1)
+	else:
+		inputfile = inputfile.decode('utf-8')
 
 	outputfile = args[2]
 	if not outputfile:
 		print 'Unable to create output context'
 		sys.exit (1)
+	else:
+		outputfile = outputfile.decode('utf-8')
 
 	pdf_url = NSURL.fileURLWithPath_(inputfile)
 	pdf_doc = CG.PDFDocument.alloc().initWithURL_(pdf_url)
