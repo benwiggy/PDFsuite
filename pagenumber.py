@@ -88,7 +88,10 @@ if __name__ == '__main__':
 						x = xOffset
 						drawWatermarkText(ctx, line, x, y, angle, scale, opacity)
 					else:
+						# Substract width of text from starting co-ord.
+						textWidth = astr.size().width
 						x = x - xOffset
+						x = x - textWidth
 						drawWatermarkText(ctx, line, x , y, angle, scale, opacity)
 
 					CG.CGContextEndPage(ctx)
