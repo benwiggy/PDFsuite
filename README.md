@@ -43,10 +43,12 @@ This script creates separate PDFs for each page in an existing PDF. The page fil
 
 This replaces the PDF Service that Apple removed from MacOS, which saved the PDF after applying a filter that makes the PDF conform to PDF-X3 spec. It will even bring up a Save file dialog. Apple's built-in PDF-X filter is quite poor, so you may want to use a better one.
 
+The scrips have all been revised, to use the same API names, so that the code can be mixed and used in other scripts more easily.
+
 More scripts are planned, including one to query PDF metadata.
 
 NB:
-There are some python scripts written by Apple, in /System/Library/Automator, inside the bundles of PDF Automator actions for Combining PDF Pages, Extracting PDF pages, Watermarking PDFs, and adding gridlines to PDFs. They can be used as standalone scripts, or as the basis of new workflows.
+There are some python scripts written by Apple, in /System/Library/Automator, inside the bundles of PDF Automator actions for Combining PDF Pages, Extracting PDF pages, Watermarking PDFs, and adding gridlines to PDFs. You may want to have a look at those.
 
 LICENCE:
 
