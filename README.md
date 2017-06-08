@@ -1,7 +1,7 @@
 # PDFsuite
 Python scripts for MacOS (OS X) that create, manipulate, and query PDF files
 
-These scripts provide 'front ends' to MacOS's Core Graphics APIs, thereby allowing the automation of a variety of tasks, such as creating bookets, applying Quartz Filters and querying page count of input PDFs. Most can be used directly in a shell, taking one or more PDF files as their argument. (The first two are slightly different.) As a result, they can be used in Automator actions very easily to produce Services or Drop-applets.
+These scripts provide 'front ends' to MacOS's Core Graphics APIs, thereby allowing the automation of a variety of tasks, such as creating bookets, applying Quartz Filters and querying page count of input PDFs. Most can be used directly in a shell, taking one or more PDF files as their argument. (The first two are slightly different.) As a result, they can be used in Automator actions very easily to produce Services or Drop-applets. PDF Services need to go in the /Library/PDF Services folder (or the same folder in the User Library).
 
 1. Booklet Imposition (booklet.py)
 
@@ -17,7 +17,7 @@ This uses Core Graphics objects and methods to count the number of pages in one 
 
 4. Rotate (rotate.py)
 
-This will rotate all the pages of any PDF files by 90˚ into a new file suffixed "+90".
+This will rotate all the pages of any PDF files by 90˚ into a new file suffixed "+90". It actually loads in pages, applies a graphical transform and re-saves, using CGPDFDocument and CGPDFPage. It might be simpler to use MacOS PDFKit's PDFDocument and PDFPage objects, which allow the direct setting and getting of a rotation value. But not as much fun.
 
 5. Creator (creator.py)
 
@@ -41,9 +41,9 @@ This script creates separate PDFs for each page in an existing PDF. The page fil
 
 10. Save As PDF-X PDF Service (Save As PDF-X.py)
 
-This replaces the PDF Service that Apple removed from MacOS, which saved the PDF after applying a filter that makes the DPF conform to PDF-X3 spec. It will even bring up a Save file dialog. Apple's built-in PDF-X filter is quite poor, so you may want to use a better one.
+This replaces the PDF Service that Apple removed from MacOS, which saved the PDF after applying a filter that makes the PDF conform to PDF-X3 spec. It will even bring up a Save file dialog. Apple's built-in PDF-X filter is quite poor, so you may want to use a better one.
 
-More scripts are planned: Querying PDF data (tricky); .... and on! Also, learning how to make the numbers increment in this document.
+More scripts are planned, including one to query PDF metadata.
 
 NB:
 There are some python scripts written by Apple, in /System/Library/Automator, inside the bundles of PDF Automator actions for Combining PDF Pages, Extracting PDF pages, Watermarking PDFs, and adding gridlines to PDFs. They can be used as standalone scripts, or as the basis of new workflows.
