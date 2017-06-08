@@ -36,7 +36,12 @@ This script exports each page as a 300dpi RGB TIFF image. Options in the script 
 Modified version of an Apple open source script (I hope that's ok!), which takes any number of image files and combines them into pages of one PDF file. 
 
 9. Split PDF into separate files (splitPDF.py)
+
 This script creates separate PDFs for each page in an existing PDF. The page files are saved inside a folder with the name of the source file (minus .pdf extension). The script fails if the folder cannot be made.
+
+10. Save As PDF-X PDF Service (Save As PDF-X.py)
+
+This replaces the PDF Service that Apple removed from MacOS, which saved the PDF after applying a filter that makes the DPF conform to PDF-X3 spec. It will even bring up a Save file dialog. Apple's built-in PDF-X filter is quite poor, so you may want to use a better one.
 
 More scripts are planned: Querying PDF data (tricky); .... and on! Also, learning how to make the numbers increment in this document.
 
