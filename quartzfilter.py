@@ -4,7 +4,7 @@
 # Script to apply a MacOS Quartz Filter to a PDF file.
 #
 import os, getopt, sys
-import Quartz.CoreGraphics as CG
+from Quartz import PDFDocument
 from CoreFoundation import (NSURL, QuartzFilter)
 
 
@@ -40,7 +40,7 @@ def main(argv):
 		sys.exit(2)
 
 	pdf_url = NSURL.fileURLWithPath_(inputfile)
-	pdf_doc = CG.PDFDocument.alloc().initWithURL_(pdf_url)
+	pdf_doc = PDFDocument.alloc().initWithURL_(pdf_url)
 	furl = NSURL.fileURLWithPath_(filter)
 	value = QuartzFilter.quartzFilterWithURL_(furl)
 	dict = { 'QuartzFilter': value }

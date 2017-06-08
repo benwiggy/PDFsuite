@@ -6,7 +6,7 @@
 import sys
 import os
 import getopt
-import Quartz.CoreGraphics  as CG
+import Quartz.CoreGraphics  as Quartz
 
 from CoreFoundation import NSURL
 
@@ -15,7 +15,7 @@ def main(argv):
    outputfile = ""
    filter = ""
    try:
-      opts, args = getopt.getopt(argv,"hc:i:o:",["input=","creator=","output="])
+      opts, args = getopt.getopt(argv,"hc:i:o:",["creator=", "input=", "output="])
    except getopt.GetoptError:
       print 'creator.py -c <creator> -i <inputfile> -o <outputfile>'
       sys.exit(2)
@@ -35,7 +35,7 @@ def main(argv):
    print value, inputfile, outputfile
    if outputfile == "": outputfile = inputfile
    pdf_url = NSURL.fileURLWithPath_(inputfile)
-   pdf_doc = CG.PDFDocument.alloc().initWithURL_(pdf_url)
+   pdf_doc = Quartz.PDFDocument.alloc().initWithURL_(pdf_url)
 # Default value option:
 #   if value == "": value = "Uncle Bob Silly" 
    dict = { 'kCGPDFContextCreator': value }

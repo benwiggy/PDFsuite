@@ -5,19 +5,19 @@ by Ben Byram-Wigfield
 Takes an existing PDF and creates individual page documents
 """
 import os, sys, objc
-import Quartz as CG
+import Quartz as Quartz
 from LaunchServices import (kUTTypeJPEG, kUTTypeTIFF, kUTTypePNG, kCFAllocatorDefault) 
 from CoreFoundation import (CFAttributedStringCreate, CFURLCreateFromFileSystemRepresentation)
 
 
 # Creates a Context for drawing
 def createOutputContextWithPath(path):
-	return CG.CGPDFContextCreateWithURL(CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False), None, None)
+	return Quartz.CGPDFContextCreateWithURL(CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False), None, None)
 
 # Closes the Context
 def contextDone(context):
 	if context:
-		CG.CGPDFContextClose(context)
+		Quartz.CGPDFContextClose(context)
 		del context
 
 
@@ -25,8 +25,8 @@ def contextDone(context):
 
 def strip(filename):
 	# 
-	pdf = CG.CGPDFDocumentCreateWithProvider(CG.CGDataProviderCreateWithFilename(filename))
-	numPages = CG.CGPDFDocumentGetNumberOfPages(pdf)
+	pdf = Quartz.CGPDFDocumentCreateWithProvider(Quartz.CGDataProviderCreateWithFilename(filename))
+	numPages = Quartz.CGPDFDocumentGetNumberOfPages(pdf)
 	shortName = os.path.splitext(filename)[0]
 	prefix = os.path.splitext(os.path.basename(filename))[0]
 	try:
@@ -37,16 +37,16 @@ def strip(filename):
 		
 	# For each page, create a file
 	for i in range (1, numPages+1):
-		page = CG.CGPDFDocumentGetPage(pdf, i)
+		page = Quartz.CGPDFDocumentGetPage(pdf, i)
 		if page:
 	#Get mediabox
-			mediaBox = CG.CGPDFPageGetBoxRect(page, CG.kCGPDFMediaBox)
+			mediaBox = Quartz.CGPDFPageGetBoxRect(page, Quartz.kCGPDFMediaBox)
 			outFile = shortName +"//" + prefix + " %03d.pdf"%i
 	# get context?
 			ctx = createOutputContextWithPath(outFile)
-			CG.CGContextBeginPage(ctx, mediaBox)
-			CG.CGContextDrawPDFPage(ctx, page)
-			CG.CGContextEndPage(ctx)
+			Quartz.CGContextBeginPage(ctx, mediaBox)
+			Quartz.CGContextDrawPDFPage(ctx, page)
+			Quartz.CGContextEndPage(ctx)
 			contextDone(ctx)
 
 

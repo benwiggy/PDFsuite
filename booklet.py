@@ -2,7 +2,7 @@
 
 # ----------------------------------------------------------------
 # PDF Booklet Imposition Script for MacOS
-# by Ben Byram-Wigfield
+# by Ben Byram-Wigfield v.1.1
 # Feel free to use, modify and pass on with acknowledgement.
 
 # 1. Set OPTIONS below for output folder, sheet size, and creep
@@ -10,20 +10,21 @@
 # 3. It will then appear as an option in the PDF button of the Print dialog.
 # (if it has executable flags set.)
 
+# Script now checks for page rotation.
 # Still to do: 
-# 1. Test for incoming page size and scale/rotate accordingly
-# 		(Currently, MacOS automatically centres and scales DOWN.)
-# 2. Allow for multiple booklets of size n from one PDF file.
+# 1. Allow for multiple booklets from one PDF file.
 # ----------------------------------------------------------------
 import sys
 import os
 import copy
+import getopt
 import Quartz as Quartz
-from CoreFoundation import (CFAttributedStringCreate, CFURLCreateFromFileSystemRepresentation, kCFAllocatorDefault)
+from CoreFoundation import (CFURLCreateFromFileSystemRepresentation, kCFAllocatorDefault)
 
+# For debugging, turn this on.
+verbose = False
 
 # define Page and Sheet Sizes in points
-# You could use CGMakeRect, but seems no need.
 A4 = [[0,0], [841.88, 595.28]]
 A3 = [[0,0], [1190.55, 841.88]]
 
@@ -40,7 +41,7 @@ creep = 0.5 # in points. NB: Eventually, the pages will collide.
 # Change this to one of the sizes listed above, if you want.
 sheetSize = A3
 # ----------------------------------------------------------------
-# For future: non-zero value will make booklets no bigger than signature
+# For future: non-zero value will make booklets no bigger than _signature
 signature = 0 
 # ----------------------------------------------------------------
 # Dont change this.
@@ -55,10 +56,22 @@ rightPage[0][0] = shift
 # FUNCTIONS
 
 def createPDFDocumentWithPath(path):
+	global verbose
+	if verbose:
+		print "Creating PDF document from file %s" % (path)
 	return Quartz.CGPDFDocumentCreateWithURL(CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False))
 
+
+def pageCount(pdfPath):
+	global verbose
+	if verbose:
+		print "Getting number of pages..."
+		
+	pdf = Quartz.CGPDFDocumentCreateWithProvider(Quartz.CGDataProviderCreateWithFilename (pdfPath))
+	return pdf.getNumberOfPages()
     
 def imposition(pages):
+	global verbose
 	blanks = 0
 	UnsortedOrder = range(1, pages+1)
 	if pages%pagesPerSheet:
@@ -73,7 +86,22 @@ def imposition(pages):
 		# And now we do verso
 		imposedOrder.append(UnsortedOrder[i])
 		imposedOrder.append(UnsortedOrder[(i+1)*-1])
+
+	if verbose:
+		print imposedOrder	
 	return imposedOrder
+
+def getRotation(pdfpage):
+	displayAngle = 0
+	rotValue = Quartz.CGPDFPageGetRotationAngle(pdfpage)
+	mediaBox = Quartz.CGPDFPageGetBoxRect(pdfpage, Quartz.kCGPDFMediaBox)
+	if not Quartz.CGRectIsEmpty(mediaBox):
+		x = Quartz.CGRectGetWidth(mediaBox)
+		y = Quartz.CGRectGetHeight(mediaBox)
+		if (x > y): displayAngle = -90
+		displayAngle -=  rotValue
+		print(displayAngle, rotValue)
+	return displayAngle	
 
 def contextDone(context):
 	if context:
@@ -82,8 +110,8 @@ def contextDone(context):
 		
 # MAIN 
 def main(argv):
-	#  Incoming arguments if used as PDF Service:
 	(title, options, pdfFile) = argv[0:3]
+	global verbose
 	writeContext = None
 	shortName = os.path.splitext(title)[0]
 	writeFilename = destination + shortName + suffix
@@ -110,7 +138,9 @@ def main(argv):
 			if imposedOrder[count]:
 				page = Quartz.CGPDFDocumentGetPage(source, imposedOrder[count])
 				Quartz.CGContextSaveGState(writeContext)
-				Quartz.CGContextConcatCTM(writeContext, Quartz.CGPDFPageGetDrawingTransform(page, Quartz.kCGPDFMediaBox, position, 0, True))
+				# Check PDF page rotation AND mediabox orientation.
+				angle = getRotation(page)
+				Quartz.CGContextConcatCTM(writeContext, Quartz.CGPDFPageGetDrawingTransform(page, Quartz.kCGPDFMediaBox, position, angle, True))
 				# Uncomment next line to draw box round each page
 				# Quartz.CGContextStrokeRectWithWidth(writeContext, leftPage, 2.0)
 				Quartz.CGContextDrawPDFPage(writeContext, page)
@@ -122,11 +152,9 @@ def main(argv):
 		if count%4 == 0:
 			leftPage[0][0] += creep
 			rightPage[0][0] -= creep
-
-
-# Do tidying up
-	contextDone(writeContext)		
-
+			
+	# Do tidying up
+	contextDone(writeContext)	
 
 if __name__ == "__main__":
     main(sys.argv[1:])
