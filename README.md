@@ -5,7 +5,7 @@ These scripts provide 'front ends' to MacOS's Core Graphics APIs, thereby allowi
 
 1. Booklet Imposition (booklet.py)
 
-This script is set to work as a PDF Service. However, it could easily be adjusted to work as an Automator workflow. It takes the input PDF file and lays out the pages on a larger sheet, in booklet spread page order.
+This script is set to work as a PDF Service. However, it could easily be adjusted to work as an Automator workflow. It takes the input PDF file and lays out the pages on a larger sheet, in booklet spread page order. NEW: Checks for page rotation and adjusts if necessary.
 
 2. Apply Quartz Filter (quartzfilter.py)
 
