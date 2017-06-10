@@ -1,7 +1,7 @@
 # PDFsuite
 Python scripts for MacOS (OS X) that create, manipulate, and query PDF files
 
-These scripts provide 'front ends' to MacOS's Core Graphics APIs, thereby allowing the automation of a variety of tasks, such as creating bookets, applying Quartz Filters and querying page count of input PDFs. Most can be used directly in a shell, taking one or more PDF files as their argument. (The first two are slightly different.) As a result, they can be used in Automator actions very easily to produce Services or Drop-applets. PDF Services need to go in the /Library/PDF Services folder (or the same folder in the User Library).
+These scripts provide 'front ends' to MacOS's Core Graphics APIs, thereby allowing the automation of a variety of tasks, such as creating bookets, applying Quartz Filters and querying page count of input PDFs. Most can be used directly in a shell, taking one or more PDF files as their argument. As a result, they can be used in Automator actions very easily to produce Services or Drop-applets. One (Apply Quartz Filter) takes three arguments. A few others are PDF Services. PDF Services need to go in the /Library/PDF Services folder (or the same folder in the User Library).
 
 1. Booklet Imposition (booklet.py)
 
@@ -17,15 +17,15 @@ This uses Core Graphics objects and methods to count the number of pages in one 
 
 4. Rotate (rotate.py)
 
-This will rotate all the pages of any PDF files by 90˚ into a new file suffixed "+90". It actually loads in pages, applies a graphical transform and re-saves, using CGPDFDocument and CGPDFPage. It might be simpler to use MacOS PDFKit's PDFDocument and PDFPage objects, which allow the direct setting and getting of a rotation value. But not as much fun.
+This will rotate all the pages of any PDF files by 90˚ into a new file suffixed "+90". There are two rotate scripts: one uses CoreGraphics's CGPDFDocument and CGPDFPage, to create a PDF object, apply a graphical transform to each page and re-save. The second one uses PDFKit's PDFDocument and PDFPage, which allow the direct setting and getting of a rotation parameter for each page. Easier, but not as much fun.
 
 5. Creator (creator.py)
 
-This will write a copy of the PDF, changing the "Creator" metadata to the value supplied. Other metadata keys are supplied, allowing the script to be easily modified for other metadata values. If no output file is set, it will overwrite the input file.
+This script writes a copy of the PDF, changing the "Creator" metadata to the value supplied. Other metadata keys are supplied, allowing the script to be easily modified for other metadata values. If no output file is set, it will overwrite the input file.
 
 6. Add Page Number (pagenumber.py)
 
-This script adds a page number to facing pages of PDFs. Users can set the offset position from the outer top corner, font, size. There are also settings for the scale, opacity and angle of text. A new file is produced, suffixed "NUM".
+This script adds a folio number to facing pages of PDFs. Users can set the offset position from the outer top corner, font, size. There are also settings for the scale, opacity and angle of text. A new file is produced, suffixed "NUM".
 
 7. Export pages as images (pdf2tiff.py)
 
@@ -33,7 +33,7 @@ This script exports each page as a 300dpi RGB TIFF image. Options in the script 
 
 8. Combine images to one PDF (imagestopdf.py)
 
-Modified version of an Apple open source script (I hope that's ok!), which takes any number of image files and combines them into pages of one PDF file. 
+Modified (improved!) version of an Apple open source script (I hope that's ok!), which takes any number of image files and combines them into pages of one PDF file. 
 
 9. Split PDF into separate files (splitPDF.py)
 
@@ -43,7 +43,8 @@ This script creates separate PDFs for each page in an existing PDF. The page fil
 
 This replaces the PDF Service that Apple removed from MacOS, which saved the PDF after applying a filter that makes the PDF conform to PDF-X3 spec. It will even bring up a Save file dialog. Apple's built-in PDF-X filter is quite poor, so you may want to use a better one.
 
-The scrips have all been revised, to use the same API names, so that the code can be mixed and used in other scripts more easily.
+REVISION HISTORY
+Minor improvements continue to be made to all the scripts: this includes improved Unicode string handling; standardized variable and API naming conventions, so that the code can be mixed and used in other scripts more easily; and better sanity checking and error handling.
 
 More scripts are planned, including one to query PDF metadata.
 
