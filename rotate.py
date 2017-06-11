@@ -2,7 +2,8 @@
 # Produces new PDF file with all pages rotated by 90 degrees.
 # by Ben Byram-Wigfield v1.1
 
-# OF course, you could just use PDFDocument and PDFPage, which has a setRotation method.
+# This graphically transforms the page, rather the easier method of just changing the rotation
+# value associated with each page.
 #
 import sys
 import os

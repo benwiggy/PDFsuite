@@ -53,15 +53,15 @@ if __name__ == '__main__':
 				y *= scale
 				r = Quartz.CGRectMake(0,0,x, y)
 		# Create a Bitmap Context, draw a white background and add the PDF
-				ctx = Quartz.CGBitmapContextCreate(None, int(x), int(y), 8, 0, cs, transparency)
-				Quartz.CGContextSaveGState (ctx)
-				Quartz.CGContextScaleCTM(ctx, scale,scale)
-				Quartz.CGContextSetFillColorWithColor(ctx, whiteColor)
-				Quartz.CGContextFillRect(ctx, r)
-				Quartz.CGContextDrawPDFPage(ctx, page)
-				Quartz.CGContextRestoreGState(ctx)
+				writeContext = Quartz.CGBitmapContextCreate(None, int(x), int(y), 8, 0, cs, transparency)
+				Quartz.CGContextSaveGState (writeContext)
+				Quartz.CGContextScaleCTM(writeContext, scale,scale)
+				Quartz.CGContextSetFillColorWithColor(writeContext, whiteColor)
+				Quartz.CGContextFillRect(writeContext, r)
+				Quartz.CGContextDrawPDFPage(writeContext, page)
+				Quartz.CGContextRestoreGState(writeContext)
 		# Convert to an "Image"
-				image = Quartz.CGBitmapContextCreateImage(ctx)	
+				image = Quartz.CGBitmapContextCreateImage(writeContext)	
 		# Create unique filename per page
 				outFile = shortName +"//" + prefix + " %03d.tif"%i
 				url = Quartz.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, outFile, len(outFile), False)
@@ -70,10 +70,10 @@ if __name__ == '__main__':
 		# For some reason, this doesn't seem to be passed to the TIFF file.
 				options = {
 					Quartz.kCGImagePropertyTIFFDictionary: 'TIFFDictionary',
-					Quartz.kCGImagePropertyTIFFXResolution: 300,
-					Quartz.kCGImagePropertyTIFFYResolution: 300,
+					Quartz.kCGImagePropertyTIFFXResolution: '300',
+					Quartz.kCGImagePropertyTIFFYResolution: '300',
 					}
 				writeImage (image, url, type, options)
 				del page
-				#CGContextRelease(ctx) # Not needed apparently. Causes crash.
+				#CGContextRelease(writeContext) # Not needed apparently. Causes crash.
 	

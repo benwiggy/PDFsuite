@@ -32,25 +32,25 @@ def contextDone(context):
 		Quartz.CGPDFContextClose(context)
 		del context
 
-def drawWatermarkText(ctx, line, xOffset, yOffset, angle, scale, opacity):
-    #   CGContextRef ctx
+def drawWatermarkText(writeContext, line, xOffset, yOffset, angle, scale, opacity):
+    #   CGContextRef writeContext
     #   CTLineRef line
     #   float xOffset, yOffset, angle ([degree]), scale, opacity ([0.0, 1.0])
 	if line:
-		rect = CTLineGetImageBounds(line, ctx)
+		rect = CTLineGetImageBounds(line, writeContext)
 		imageWidth = rect.size.width
 		imageHeight = rect.size.height
 
-		Quartz.CGContextSaveGState(ctx)
-		Quartz.CGContextSetAlpha(ctx, opacity)
-		Quartz.CGContextTranslateCTM(ctx, xOffset, yOffset)
-		Quartz.CGContextScaleCTM(ctx, scale, scale)
-		Quartz.CGContextTranslateCTM(ctx, imageWidth / 2, imageHeight / 2)
-		Quartz.CGContextRotateCTM(ctx, angle * math.pi / 180)
-		Quartz.CGContextTranslateCTM(ctx, -imageWidth / 2, -imageHeight / 2)
-		Quartz.CGContextSetTextPosition(ctx, 0.0, 0.0);
-		CTLineDraw(line, ctx);
-		Quartz.CGContextRestoreGState(ctx)
+		Quartz.CGContextSaveGState(writeContext)
+		Quartz.CGContextSetAlpha(writeContext, opacity)
+		Quartz.CGContextTranslateCTM(writeContext, xOffset, yOffset)
+		Quartz.CGContextScaleCTM(writeContext, scale, scale)
+		Quartz.CGContextTranslateCTM(writeContext, imageWidth / 2, imageHeight / 2)
+		Quartz.CGContextRotateCTM(writeContext, angle * math.pi / 180)
+		Quartz.CGContextTranslateCTM(writeContext, -imageWidth / 2, -imageHeight / 2)
+		Quartz.CGContextSetTextPosition(writeContext, 0.0, 0.0);
+		CTLineDraw(line, writeContext);
+		Quartz.CGContextRestoreGState(writeContext)
 
 
 if __name__ == '__main__':
@@ -59,7 +59,7 @@ if __name__ == '__main__':
 		shortName = os.path.splitext(filename)[0]
 		outFilename = shortName + " NUM.pdf"
 		pdf = createPDFDocumentFromPath(filename)
-		ctx = createOutputContextWithPath(outFilename)
+		writeContext = createOutputContextWithPath(outFilename)
 		pages = Quartz.CGPDFDocumentGetNumberOfPages(pdf)
 
 
@@ -75,8 +75,8 @@ if pdf:
 		if page:
 			mbox = Quartz.CGPDFPageGetBoxRect(page, Quartz.kCGPDFMediaBox)
 			if Quartz.CGRectIsEmpty(mbox): mbox = None
-			Quartz.CGContextBeginPage(ctx, mbox)
-			Quartz.CGContextDrawPDFPage(ctx, page)
+			Quartz.CGContextBeginPage(writeContext, mbox)
+			Quartz.CGContextDrawPDFPage(writeContext, page)
 			text = str(i)
 			print i
 			astr = CFAttributedStringCreate(kCFAllocatorDefault, text, { kCTFontAttributeName : font })
@@ -90,11 +90,11 @@ if pdf:
 				textWidth = astr.size().width
 				x = x - xOffset
 				x = x - textWidth
-				drawWatermarkText(ctx, line, x , y, angle, scale, opacity)
+				drawWatermarkText(writeContext, line, x , y, angle, scale, opacity)
 			else:
 				x = xOffset
-				drawWatermarkText(ctx, line, x, y, angle, scale, opacity)
+				drawWatermarkText(writeContext, line, x, y, angle, scale, opacity)
 				
-			Quartz.CGContextEndPage(ctx)
+			Quartz.CGContextEndPage(writeContext)
 	del pdf
-contextDone(ctx)
+contextDone(writeContext)

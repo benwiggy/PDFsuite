@@ -13,8 +13,7 @@ def pageCount(pdfPath):
 	# "Return the number of pages for some PDF file."
  
     pdf = CGPDFDocumentCreateWithProvider (CGDataProviderCreateWithFilename (pdfPath))
-    return CGPDFDocumentGetNumberOfPages(pdf)	
-    # return  pdf.getNumberOfPages()
+    return CGPDFDocumentGetNumberOfPages(pdf)
 
 if __name__ == '__main__':
 

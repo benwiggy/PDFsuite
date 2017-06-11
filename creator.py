@@ -34,12 +34,12 @@ def main(argv):
 
    print value, inputfile, outputfile
    if outputfile == "": outputfile = inputfile
-   pdf_url = NSURL.fileURLWithPath_(inputfile)
-   pdf_doc = Quartz.PDFDocument.alloc().initWithURL_(pdf_url)
+   pdfURL = NSURL.fileURLWithPath_(inputfile)
+   pdfDoc = Quartz.PDFDocument.alloc().initWithURL_(pdfURL)
 # Default value option:
 #   if value == "": value = "Uncle Bob Silly" 
    dict = { 'kCGPDFContextCreator': value }
-   pdf_doc.writeToFile_withOptions_(outputfile, dict)
+   pdfDoc.writeToFile_withOptions_(outputfile, dict)
 
 if __name__ == "__main__":
    main(sys.argv[1:])

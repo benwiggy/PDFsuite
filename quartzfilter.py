@@ -39,12 +39,12 @@ def main(argv):
 		print 'Unable to create output context'
 		sys.exit(2)
 
-	pdf_url = NSURL.fileURLWithPath_(inputfile)
-	pdf_doc = PDFDocument.alloc().initWithURL_(pdf_url)
-	furl = NSURL.fileURLWithPath_(filter)
-	value = QuartzFilter.quartzFilterWithURL_(furl)
+	pdfURL = NSURL.fileURLWithPath_(inputfile)
+	pdfDoc = PDFDocument.alloc().initWithURL_(pdfURL)
+	filterURL = NSURL.fileURLWithPath_(filter)
+	value = QuartzFilter.quartzFilterWithURL_(filterURL)
 	dict = { 'QuartzFilter': value }
-	pdf_doc.writeToFile_withOptions_(outputfile, dict)
+	pdfDoc.writeToFile_withOptions_(outputfile, dict)
 
 if __name__ == "__main__":
    main(sys.argv[1:])

@@ -43,11 +43,11 @@ def strip(filename):
 			mediaBox = Quartz.CGPDFPageGetBoxRect(page, Quartz.kCGPDFMediaBox)
 			outFile = shortName +"//" + prefix + " %03d.pdf"%i
 	# get context?
-			ctx = createOutputContextWithPath(outFile)
-			Quartz.CGContextBeginPage(ctx, mediaBox)
-			Quartz.CGContextDrawPDFPage(ctx, page)
-			Quartz.CGContextEndPage(ctx)
-			contextDone(ctx)
+			writeContext = createOutputContextWithPath(outFile)
+			Quartz.CGContextBeginPage(writeContext, mediaBox)
+			Quartz.CGContextDrawPDFPage(writeContext, page)
+			Quartz.CGContextEndPage(writeContext)
+			contextDone(writeContext)
 
 
 if __name__ == "__main__":

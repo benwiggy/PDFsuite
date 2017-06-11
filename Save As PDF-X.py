@@ -30,7 +30,7 @@ def save_dialog(directory, filename):
         
 
 def main(argv):
-	(title, options, inputfile) = argv[0:3]
+	(title, options, pathToFile) = argv[0:3]
 
 	# Set the default location where the PDFs will go (you'll need to make sure this exists)
 	
@@ -48,12 +48,12 @@ def main(argv):
 	
 	if outputfile != "":
 
-		pdf_url = NSURL.fileURLWithPath_(inputfile)
-		pdf_doc = PDFDocument.alloc().initWithURL_(pdf_url)
-		furl = NSURL.fileURLWithPath_(filter)
-		value = QuartzFilter.quartzFilterWithURL_(furl)
+		pdfURL = NSURL.fileURLWithPath_(pathToFile)
+		pdfDoc = PDFDocument.alloc().initWithURL_(pdfURL)
+		filterURL = NSURL.fileURLWithPath_(filter)
+		value = QuartzFilter.quartzFilterWithURL_(filterURL)
 		dict = { 'QuartzFilter': value }
-		pdf_doc.writeToFile_withOptions_(outputfile, dict)
+		pdfDoc.writeToFile_withOptions_(outputfile, dict)
 	
 if __name__ == "__main__":
     main(sys.argv[1:])

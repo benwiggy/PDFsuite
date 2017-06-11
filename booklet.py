@@ -110,7 +110,7 @@ def contextDone(context):
 		
 # MAIN 
 def main(argv):
-	(title, options, pdfFile) = argv[0:3]
+	(title, options, pathToFile) = argv[0:3]
 	global verbose
 	writeContext = None
 	shortName = os.path.splitext(title)[0]
@@ -118,7 +118,7 @@ def main(argv):
 	writeContext = Quartz.CGPDFContextCreateWithURL(CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, writeFilename, len(writeFilename), False), sheetSize, None)
 
 # Initiate new PDF, get source PDF, number of pages.
-	source = createPDFDocumentWithPath(pdfFile)
+	source = createPDFDocumentWithPath(pathToFile)
 	pageNo = Quartz.CGPDFDocumentGetNumberOfPages(source)
 
 # Get imposed page order
