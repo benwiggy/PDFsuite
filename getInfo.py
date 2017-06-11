@@ -18,8 +18,8 @@ if __name__ == '__main__':
 		for key in metadata:
 			print key, ":", metadata[key]
 		print "Number of Pages:", pdfDoc.pageCount()
-    	print "Is Encrypted:", pdfDoc.isEncrypted()
-    	print "Is Locked:", pdfDoc.isLocked()
-    	print "Allows Copying:", pdfDoc.allowsCopying()
-    	print "Allows Printing:", pdfDoc.allowsPrinting()
-    	print "Version:", pdfDoc.majorVersion(), pdfDoc.minorVersion()
+		print "Is Encrypted:", pdfDoc.isEncrypted()
+		print "Is Locked:", pdfDoc.isLocked()
+		print "Allows Copying:", pdfDoc.allowsCopying()
+		print "Allows Printing:", pdfDoc.allowsPrinting()
+		print "Version:", pdfDoc.majorVersion(), pdfDoc.minorVersion()
