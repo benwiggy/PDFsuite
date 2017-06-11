@@ -1,7 +1,9 @@
 # PDFsuite
 Python scripts for MacOS (OS X) that create, manipulate, and query PDF files
 
-These scripts provide 'front ends' to MacOS's Core Graphics APIs, thereby allowing the automation of a variety of tasks, such as creating bookets, applying Quartz Filters and querying page count of input PDFs. Most can be used directly in a shell, taking one or more PDF files as their argument. As a result, they can be used in Automator actions very easily to produce Services or Drop-applets. One (Apply Quartz Filter) takes three arguments. A few others are PDF Services. PDF Services need to go in the /Library/PDF Services folder (or the same folder in the User Library).
+These scripts provide 'front ends' to MacOS's Core Graphics APIs, thereby allowing the automation of a variety of tasks, such as creating bookets, applying Quartz Filters and querying page count of input PDFs. Most can be used directly in a shell, taking one or more PDF files as their argument. As a result, they can also be used in Automator actions very easily to produce Services or Drop-applets. (Use the "Run Shell Script" action, copy the script in and set the shell drop-down setting to python.) 
+One script -- Apply Quartz Filter -- takes three arguments.
+A few are PDF Services. PDF Services need to go in the /Library/PDF Services folder (or the same folder in the User Library). They will then be available in the PDF button of the print menu.
 
 1. Booklet Imposition (booklet.py)
 
