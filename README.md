@@ -1,7 +1,7 @@
 # PDFsuite
 Python scripts for MacOS (OS X) that create, manipulate, and query PDF files
 
-These scripts provide 'front ends' to MacOS's Core Graphics APIs, allowing the automation of a variety of tasks, such as creating bookets, rotating pages, converting to/from images and querying metadata of PDFs. Most can be used directly in a shell, taking one or more PDF files as their argument. As a result, they can also be used in Automator actions very easily to produce Services or Drop-applets. (Use the "Run Shell Script" action, copy the script in and set the shell drop-down setting to python.) 
+These scripts provide 'front ends' to MacOS's Core Graphics APIs, allowing the automation of a variety of tasks, such as creating bookets, rotating pages, converting to/from images and querying metadata of PDFs. Most can be used directly in a shell, taking one or more PDF files as their argument. As a result, they can also be used in Automator actions very easily to produce Services or Drop-applets. (Use the "Run Shell Script" action, copy the script in and set the shell drop-down setting to python, and Pass input to "as arguments".) 
 One script -- Apply Quartz Filter -- takes three arguments.
 
 A few are PDF Services. PDF Services need to go in the /Library/PDF Services folder (or the same folder in the User Library). They will then be available in the PDF button of the print menu.
@@ -12,7 +12,7 @@ This script is set to work as a PDF Service. However, it could easily be adjuste
 
 2. Apply Quartz Filter (quartzfilter.py)
 
-This replaces Apple's own quartzfilter command, which was removed from OS X (in Lion?). (Also, there was a sample script in Xcode, which used now-deprecated APIs.) Like its predecessors, it takes three arguments: quartz filter, input file and output file.
+This replaces Apple's own quartzfilter command, which was removed from OS X (in Lion?). (Also, there was a sample script in Xcode, which used now-deprecated APIs.) Like its predecessors, it takes three arguments: quartz filter, input file and output file. It could be easily modified along the lines of the other scripts, to apply one fixed filter to all files given as arguments.
 
 3. Count pages in PDF (countpages.py)
 
