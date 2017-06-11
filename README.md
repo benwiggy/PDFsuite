@@ -1,8 +1,9 @@
 # PDFsuite
 Python scripts for MacOS (OS X) that create, manipulate, and query PDF files
 
-These scripts provide 'front ends' to MacOS's Core Graphics APIs, thereby allowing the automation of a variety of tasks, such as creating bookets, applying Quartz Filters and querying page count of input PDFs. Most can be used directly in a shell, taking one or more PDF files as their argument. As a result, they can also be used in Automator actions very easily to produce Services or Drop-applets. (Use the "Run Shell Script" action, copy the script in and set the shell drop-down setting to python.) 
+These scripts provide 'front ends' to MacOS's Core Graphics APIs, allowing the automation of a variety of tasks, such as creating bookets, rotating pages, converting to/from images and querying metadata of PDFs. Most can be used directly in a shell, taking one or more PDF files as their argument. As a result, they can also be used in Automator actions very easily to produce Services or Drop-applets. (Use the "Run Shell Script" action, copy the script in and set the shell drop-down setting to python.) 
 One script -- Apply Quartz Filter -- takes three arguments.
+
 A few are PDF Services. PDF Services need to go in the /Library/PDF Services folder (or the same folder in the User Library). They will then be available in the PDF button of the print menu.
 
 1. Booklet Imposition (booklet.py)
@@ -53,7 +54,7 @@ REVISION HISTORY
 Minor improvements continue to be made to all the scripts: this includes improved Unicode string handling; standardized variable and API naming conventions, so that the code can be mixed and used in other scripts more easily; and better sanity checking and error handling. Any contributions on these terms are welcome.
 
 NB:
-There are some python scripts written by Apple, in /System/Library/Automator, inside the bundles of PDF Automator actions for Combining PDF Pages, Extracting PDF pages, Watermarking PDFs, and adding gridlines to PDFs. You may want to have a look at those.
+If you're interested in these, there are some python scripts written by Apple, in /System/Library/Automator, inside the bundles of PDF Automator actions for Combining PDF Pages, Extracting PDF pages, Watermarking PDFs, and adding gridlines to PDFs. There are also some open source python scripts on Apple's open source pages, though some of these don't work on default installations.
 
 LICENCE:
 
