@@ -54,14 +54,13 @@ This replaces the PDF Service that Apple removed from MacOS, which saved the PDF
 
 This scripts outputs all the available PDF metadata for a file: Author, Creator, etc, Number of Pages, Version number, flags for encryption and security.
 
-REVISION HISTORY
+## REVISION HISTORY
 Minor improvements continue to be made to all the scripts: this includes improved Unicode string handling; standardized variable and API naming conventions, so that the code can be mixed and used in other scripts more easily; and better sanity checking and error handling. Any contributions on these terms are welcome.
 
 NB:
 If you're interested in these, there are some python scripts written by Apple, in /System/Library/Automator, inside the bundles of PDF Automator actions for Combining PDF Pages, Extracting PDF pages, Watermarking PDFs, and adding gridlines to PDFs. There are also some open source python scripts on Apple's open source pages, though some of these don't work on default installations.
 
-LICENCE:
-
+## LICENCE:
 "I have gathered a garland of other men's flowers, and nothing is mine but the cord that binds them." These scripts were not possible without looking at other code examples; nor without help and advice from a range of people. I cannot make any claim to them, and they are free to be used and adapted in any way, though I ask that you retain the acknowledgements within. I welcome help in improving them.
 
 Ben Byram-Wigfield
