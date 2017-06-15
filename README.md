@@ -28,7 +28,8 @@ This script writes a copy of the PDF, changing the "Creator" metadata to the val
 
 ### 6. Add Page Number (pagenumber.py)
 
-This script adds a folio number to facing pages of PDFs. Users can set the offset position from the outer top corner, font, size. There are also settings for the scale, opacity and angle of text. A new file is produced, suffixed "NUM".
+This script adds a folio number to facing pages of PDFs. Users can set the offset position from the outer top corner, font, size. There are also settings for the scale, opacity and angle of text. A new file is produced, suffixed "NUM". 
+This script can be easily adjusted to produce watermark text on PDFs.
 
 ### 7. Export pages as images (pdf2tiff.py)
 
