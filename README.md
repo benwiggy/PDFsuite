@@ -1,14 +1,14 @@
 # PDFsuite
-Python scripts for MacOS (OS X) that create, manipulate, and query PDF files
+## Python scripts for MacOS (OS X) that create, manipulate, and query PDF files
 
-These scripts provide 'front ends' to MacOS's Core Graphics APIs, allowing the automation of a variety of tasks, such as creating bookets, rotating pages, converting to/from images and querying metadata of PDFs. Most can be used directly in a shell, taking one or more PDF files as their argument. As a result, they can also be used in Automator actions very easily to produce Services or Drop-applets. (Use the "Run Shell Script" action, copy the script in and set the shell drop-down setting to python, and Pass input to "as arguments".) 
+These scripts provide 'front ends' to MacOS's Core Graphics Quartz APIs, allowing the automation of a variety of tasks, such as creating bookets, rotating pages, converting to/from images and getting or setting metadata of PDFs. Most can be used directly in a shell, taking one or more PDF files as their argument. As a result, they can also be used in Automator actions very easily to produce Services or Drop-applets. (Use the "Run Shell Script" action, copy the script in and set the shell drop-down setting to python, and Pass input to "as arguments".) 
 One script -- Apply Quartz Filter -- takes three arguments.
 
-A few are PDF Services. PDF Services need to go in the /Library/PDF Services folder (or the same folder in the User Library). They will then be available in the PDF button of the print menu.
+A few are PDF Services. PDF Services need to go in the /Library/PDF Services folder (or the same folder in the User Library). They will then be available in the PDF button of the print menu. (They also need the executable flag set.)
 
 ### 1. Booklet Imposition (booklet.py)
 
-This script is set to work as a PDF Service. However, it could easily be adjusted to work as an Automator workflow. It takes the input PDF file and lays out the pages on a larger sheet, in booklet spread page order. NEW: Checks for page rotation and adjusts if necessary.
+This script is set to work as a PDF Service. However, it could easily be adjusted to work as an Automator workflow. It takes the input PDF file and lays out the pages on a larger sheet, in booklet spread page order. NEW: Checks for page rotation and adjusts if necessary. NEWER!: Option to arrange for 4pp signatures (stacked sheets, not gathered).
 
 ### 2. Apply Quartz Filter (quartzfilter.py)
 
@@ -56,12 +56,12 @@ This replaces the PDF Service that Apple removed from MacOS, which saved the PDF
 This scripts outputs all the available PDF metadata for a file: Author, Creator, etc, Number of Pages, Version number, flags for encryption and security.
 
 ## REVISION HISTORY
-Minor improvements continue to be made to all the scripts: this includes improved Unicode string handling; standardized variable and API naming conventions, so that the code can be mixed and used in other scripts more easily; and better sanity checking and error handling. Any contributions on these terms are welcome.
+Minor improvements continue to be made to all the scripts: this includes improved Unicode string handling; standardized naming conventions, so that the code can be mixed and used in other scripts more easily; and better sanity checking and error handling. Any contributions on these terms are welcome.
 
 NB:
 If you're interested in these, there are some python scripts written by Apple, in /System/Library/Automator, inside the bundles of PDF Automator actions for Combining PDF Pages, Extracting PDF pages, Watermarking PDFs, and adding gridlines to PDFs. There are also some open source python scripts on Apple's open source pages, though some of these don't work on default installations.
 
 ## LICENCE:
-"I have gathered a garland of other men's flowers, and nothing is mine but the cord that binds them." These scripts were not possible without looking at other code examples; nor without help and advice from a range of people. I cannot make any claim to them, and they are free to be used and adapted in any way, though I ask that you retain the acknowledgements within. I welcome help in improving them.
+"I have gathered a garland of other men's flowers, and nothing is mine but the cord that binds them." These scripts were not possible without looking at other code examples; nor without help and advice from a range of people. I cannot make much claim to them beyond 'compiling' them, and they are free to be used and adapted in any way, though I ask that you retain the acknowledgements within. I welcome help in improving them.
 
 Ben Byram-Wigfield
