@@ -1,10 +1,12 @@
 # PDFsuite
 ## Python scripts for MacOS (OS X) that create, manipulate, and query PDF files
 
-These scripts provide 'front ends' to MacOS's Core Graphics Quartz APIs, allowing the automation of a variety of tasks, such as creating bookets, rotating pages, converting to/from images and getting or setting metadata of PDFs. Most can be used directly in a shell, taking one or more PDF files as their argument. As a result, they can also be used in Automator actions very easily to produce Services or Drop-applets. (Use the "Run Shell Script" action, copy the script in and set the shell drop-down setting to python, and Pass input to "as arguments".) 
+These scripts automate a variety of tasks with PDFs, such as creating bookets, rotating pages, converting to/from images and getting or setting metadata. This is done by using Apple's Core Graphics Quartz APIs. Most can be run directly in a shell (Terminal), taking one or more PDF files as their argument. _(Drag the script file onto a Terminal window; then drag the PDF files you want to the same window; then press Enter!)_
+They can also be used in Automator actions very easily to make Finder Services or Drop-applets. _(Use the "Run Shell Script" action, copy the script in and set the shell drop-down setting to python, and Pass input to "as arguments".)_
+
 One script -- Apply Quartz Filter -- takes three arguments.
 
-A few are PDF Services. PDF Services need to go in the /Library/PDF Services folder (or the same folder in the User Library). They will then be available in the PDF button of the print menu. (They also need the executable flag set.)
+A few are PDF Services. PDF Services need to go in the /Library/PDF Services folder (or the same folder in the User Library). They will then be available in the PDF button of the print menu. _(They also need the executable flag set.)_
 
 ### 1. Booklet Imposition (booklet.py)
 
@@ -12,15 +14,15 @@ This script is set to work as a PDF Service. However, it could easily be adjuste
 
 ### 2. Apply Quartz Filter (quartzfilter.py)
 
-This replaces Apple's own quartzfilter command, which was removed from OS X (in Lion?). (Also, there was a sample script in Xcode, which used now-deprecated APIs.) Like its predecessors, it takes three arguments: quartz filter, input file and output file. It could be easily modified along the lines of the other scripts, to apply one fixed filter to all files given as arguments.
+This replaces Apple's own _quartzfilter_ command, which was removed from OS X (in Lion?). (Also, there was a sample script in Xcode, which used now-deprecated APIs.) Like its predecessors, it takes three arguments: the path to the quartz filter, input file and output file. It could be easily modified along the lines of the other scripts, to apply one fixed filter to all files given as arguments.
 
 ### 3. Count pages in PDF (countpages.py)
 
-This uses Core Graphics objects and methods to count the number of pages in one or more PDF files passed to it. It provides a cumulative count for multiple file arguments.
+This counts the number of pages in one or more PDF files passed to it. It provides a cumulative count for multiple file arguments.
 
 ### 4. Rotate (rotate.py)
 
-This will rotate all the pages of any PDF files by 90˚ into a new file suffixed "+90". There are two rotate scripts: one uses CoreGraphics's CGPDFDocument and CGPDFPage, to create a PDF object, apply a graphical transform to each page and re-save. The second one uses PDFKit's PDFDocument and PDFPage, which allow the direct setting and getting of a rotation parameter for each page. Easier, but not as much fun.
+This will rotate all the pages of any PDF files by 90˚ into a new file suffixed "+90". There are two rotate scripts: one uses CoreGraphics's _CGPDFDocument_ and _CGPDFPage_ to create a PDF object, apply a graphical transform to each page and re-save. The second one uses PDFKit's _PDFDocument_ and _PDFPage_, which allow the direct setting and getting of a rotation parameter for each page. Easier, but not as much fun.
 
 ### 5. Creator (creator.py)
 
@@ -59,9 +61,9 @@ This scripts outputs all the available PDF metadata for a file: Author, Creator,
 Minor improvements continue to be made to all the scripts: this includes improved Unicode string handling; standardized naming conventions, so that the code can be mixed and used in other scripts more easily; and better sanity checking and error handling. Any contributions on these terms are welcome.
 
 NB:
-If you're interested in these, there are some python scripts written by Apple, in /System/Library/Automator, inside the bundles of PDF Automator actions for Combining PDF Pages, Extracting PDF pages, Watermarking PDFs, and adding gridlines to PDFs. There are also some open source python scripts on Apple's open source pages, though some of these don't work on default installations.
+If you're interested in these, there are some python scripts written by Apple, in _/System/Library/Automator_, inside the bundles of PDF Automator actions for Combining PDF Pages, Extracting PDF pages, Watermarking PDFs, and adding gridlines to PDFs. There are also some open source python scripts on Apple's open source pages, though some of these don't work on default installations.
 
 ## LICENCE:
-"I have gathered a garland of other men's flowers, and nothing is mine but the cord that binds them." These scripts were not possible without looking at other code examples; nor without help and advice from a range of people. I cannot make much claim to them beyond 'compiling' them, and they are free to be used and adapted in any way, though I ask that you retain the acknowledgements within. I welcome help in improving them.
+_"I have gathered a garland of other men's flowers, and nothing is mine but the cord that binds them."_ These scripts were not possible without looking at other code examples; nor without help and advice from a range of people. I cannot make much claim to them beyond 'compiling' them, and they are free to be used and adapted in any way, though I ask that you retain the acknowledgements within. I welcome help in improving them.
 
 Ben Byram-Wigfield
