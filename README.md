@@ -64,7 +64,9 @@ This script provides functions to draw rectangles, lines, and text on a PDF page
 ## REVISION HISTORY
 Minor improvements continue to be made to all the scripts: this includes improved Unicode string handling; standardized naming conventions, so that the code can be mixed and used in other scripts more easily; and better sanity checking and error handling. Any contributions on these terms are welcome.
 
-NB:
+## Other notes
+
+These scripts are designed to work with the PyObjC Cocoa bridge and Python version bundled with MacOS. There are newer versions out there, but the portability of the vanilla experience is preferred. 
 If you're interested in these, there are some python scripts written by Apple, in _/System/Library/Automator_, inside the bundles of PDF Automator actions for Combining PDF Pages, Extracting PDF pages, Watermarking PDFs, and adding gridlines to PDFs. There are also some open source python scripts on Apple's open source pages, though some of these don't work on default installations.
 
 ## LICENCE:
