@@ -22,24 +22,24 @@ This counts the number of pages in one or more PDF files passed to it. It provid
 
 ### 4. Rotate (rotate.py)
 
-This will rotate all the pages of any PDF files by 90˚ into a new file suffixed "+90". There are two rotate scripts: one uses CoreGraphics's _CGPDFDocument_ and _CGPDFPage_ to create a PDF object, apply a graphical transform to each page and re-save. The second one uses PDFKit's _PDFDocument_ and _PDFPage_, which allow the direct setting and getting of a rotation parameter for each page. Easier, but not as much fun.
+This will rotate all the pages of any PDF files passed as arguments by 90˚ into a new file suffixed "+90". There are two rotate scripts: one uses CoreGraphics's _CGPDFDocument_ and _CGPDFPage_ to create a PDF object, apply a graphical transform to each page and re-save. The second one uses PDFKit's _PDFDocument_ and _PDFPage_, which allow the direct setting and getting of a rotation parameter for each page. Easier, but not as much fun.
 
 ### 5. Creator (creator.py)
 
-This script writes a copy of the PDF, changing the "Creator" metadata to the value supplied. Other metadata keys are supplied, allowing the script to be easily modified for other metadata values. If no output file is set, it will overwrite the input file.
+This script alters PDF, changing the "Creator" metadata to the value supplied. Other metadata keys are supplied, allowing the script to be easily modified for other metadata values. If no output file is set, it will overwrite the input file.
 
 ### 6. Add Page Number (pagenumber.py)
 
-This script adds a folio number to facing pages of PDFs. Users can set the offset position from the outer top corner, font, size. There are also settings for the scale, opacity and angle of text. A new file is produced, suffixed "NUM". 
+This script adds a folio number to facing pages of PDF files supplied as arguments. Users can set the offset position from the outer top corner, font, size. There are also settings for the scale, opacity and angle of text. A new file is produced, suffixed "NUM". 
 This script can be easily adjusted to produce watermark text on PDFs.
 
 ### 7. Export pages as images (pdf2tiff.py)
 
-This script exports each page as a 300dpi RGB TIFF image. Options in the script alow for JPEG and PNG filetypes, resolution, transparency and other parameters. Images are saved to a folder with the name of the original file (minus file extension). If the folder cannot be created, the script fails.
+This script exports each page as 300dpi RGB TIFF images from PDFs supplied as arguments. Options in the script alow for JPEG and PNG filetypes, resolution, transparency and other parameters. Images are saved to a folder with the name of the original file (minus file extension). If the folder cannot be created, the script fails.
 
 ### 8. Combine images to one PDF (imagestopdf.py)
 
-Modified (improved!) version of an Apple open source script (I hope that's ok!), which takes any number of image files and combines them into pages of one PDF file. 
+Modified (improved!) version of an Apple open source script (I hope that's ok!), which takes any number of image files (supplied as arguments) and combines them into pages of one PDF file.
 
 ### 9. Split PDF into separate files (splitPDF.py)
 
