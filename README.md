@@ -57,6 +57,10 @@ This replaces the PDF Service that Apple removed from MacOS, which saved the PDF
 
 This scripts outputs all the available PDF metadata for a file: Author, Creator, etc, Number of Pages, Version number, flags for encryption and security.
 
+### 13. Page Layout (pagelayout.py)
+
+This script provides functions to draw rectangles, lines, and text on a PDF page, with colours and transparency.
+
 ## REVISION HISTORY
 Minor improvements continue to be made to all the scripts: this includes improved Unicode string handling; standardized naming conventions, so that the code can be mixed and used in other scripts more easily; and better sanity checking and error handling. Any contributions on these terms are welcome.
 
