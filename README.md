@@ -2,9 +2,9 @@
 ## Python scripts for MacOS (OS X) that create, manipulate, and query PDF files
 
 These scripts automate a variety of tasks with PDFs, such as creating bookets, rotating pages, converting to/from images and getting or setting metadata. This is done by using Apple's Core Graphics Quartz APIs. Most can be run directly in a shell (Terminal), taking one or more PDF files as their argument. _(Drag the script file onto a Terminal window; then drag the PDF files you want to the same window; then press Enter!)_
-They can also be used in Automator actions very easily to make Finder Services or Drop-applets. _(Use the "Run Shell Script" action, copy the script in and set the shell drop-down setting to python, and Pass input to "as arguments".)_
+They can also be used in Automator actions very easily to make Finder Services or Drop-applets. _(Use the "Run Shell Script" action, copy the script in and set the shell drop-down setting to python, and Pass input to "as arguments".)_ 
 
-One script -- Apply Quartz Filter -- takes three arguments.
+Two scripts -- _Apply Quartz Filter_ and _Creator_ -- take three arguments.
 
 A few are PDF Services. PDF Services need to go in the /Library/PDF Services folder (or the same folder in the User Library). They will then be available in the PDF button of the print menu. _(They also need the executable flag set.)_
 
@@ -59,7 +59,7 @@ This scripts outputs all the available PDF metadata for a file: Author, Creator,
 
 ### 13. Page Layout (pagelayout.py)
 
-This script provides functions to easily draw rectangles, circles, lines, and text on a PDF page, with colours and transparency.
+This script provides functions to easily draw rectangles, circles, lines, and text on a PDF page, with colours and transparency. It saves the results to file called "Test.pdf" on the user's Desktop.
 
 ## REVISION HISTORY
 Minor improvements continue to be made to all the scripts: this includes improved Unicode string handling; standardized naming conventions, so that the code can be mixed and used in other scripts more easily; and better sanity checking and error handling. Any contributions on these terms are welcome.
