@@ -66,8 +66,9 @@ Minor improvements continue to be made to all the scripts: this includes improve
 
 ## Other notes
 
-These scripts are designed to work with the PyObjC Cocoa bridge and Python version bundled with MacOS. There are newer versions out there, but the portability of the vanilla experience is preferred. 
-If you're interested in these, there are some python scripts written by Apple, in _/System/Library/Automator_, inside the bundles of PDF Automator actions for Combining PDF Pages, Extracting PDF pages, Watermarking PDFs, and adding gridlines to PDFs. There are also some open source python scripts on Apple's open source pages, though some of these don't work on default installations.
+These scripts are designed to work with the PyObjC Cocoa bridge and Python version currently bundled with MacOS. There are newer versions of python and PyObjC available, but the portability of the vanilla experience is preferred. 
+
+If you're interested in python scripts, there are some python scripts written by Apple, in _/System/Library/Automator_, inside the bundles of PDF Automator actions for Combining PDF Pages, Extracting PDF pages, Watermarking PDFs, and adding gridlines to PDFs. There are also some open source python scripts on Apple's open source pages, though some of these don't work on default installations.
 
 ## LICENCE:
 _"I have gathered a garland of other men's flowers, and nothing is mine but the cord that binds them."_ These scripts were not possible without looking at other code examples; nor without help and advice from a range of people. I cannot make much claim to them beyond 'compiling' them, and they are free to be used and adapted in any way, though I ask that you retain the acknowledgements within. I welcome help in improving them.
