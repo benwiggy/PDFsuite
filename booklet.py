@@ -1,8 +1,9 @@
 #!/usr/bin/python
+# -*- coding: UTF-8 -*-
 
 # ----------------------------------------------------------------
 # PDF Booklet Imposition Script for MacOS
-# by Ben Byram-Wigfield v.2.0
+# by Ben Byram-Wigfield v.2.1
 # Feel free to use, modify and pass on with acknowledgement.
 
 # 1. Set OPTIONS below for output folder, sheet size, and creep
@@ -18,7 +19,8 @@
 import os, sys
 import copy
 import Quartz as Quartz
-from CoreFoundation import (CFURLCreateFromFileSystemRepresentation, kCFAllocatorDefault)
+from CoreFoundation import (NSURL, CFURLCreateFromFileSystemRepresentation, kCFAllocatorDefault)
+from AppKit import NSSavePanel
 
 
 # define Page and Sheet Sizes in points. Might need CGRect, but works as is.
@@ -30,7 +32,7 @@ A3 = [[0,0], [1190.55, 841.88]]
 # OPTIONS
 # Change this to one of the sizes listed above, if you want.
 sheetSize = A3
-# Set the location for saving the files. 
+# Set the default location for saving the files. 
 destination = os.path.expanduser("~/Desktop")
 # Set file suffix
 suffix = " booklet.pdf"
@@ -41,6 +43,19 @@ creep = 0.5 # in points. NB: Eventually, the pages will collide.
 imposedOrder = [] 
 
 # FUNCTIONS
+
+def save_dialog(directory, filename):
+	panel = NSSavePanel.savePanel()
+	panel.setTitle_("Save PDF booklet")
+	panel.setFloatingPanel_(True)
+	myUrl = NSURL.fileURLWithPath_isDirectory_(directory, True)
+	panel.setDirectoryURL_(myUrl)
+	panel.setNameFieldStringValue_(filename)
+	ret_value = panel.runModal()
+	if ret_value:
+		return panel.filename()
+	else:
+		return ''
 
 def createPDFDocumentWithPath(path):
 	return Quartz.CGPDFDocumentCreateWithURL(CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False))
@@ -76,7 +91,9 @@ def contextDone(context):
 def main(argv):
 	(title, options, pathToFile) = argv[:]
 	shortName = os.path.splitext(title)[0]
-	writeFilename = os.path.join(destination, shortName + suffix)
+	# writeFilename = os.path.join(destination, shortName + suffix)
+	writeFilename = save_dialog(destination, shortName + suffix)
+	writeFilename = writeFilename.encode('utf-8')
 	leftPage = copy.deepcopy(sheetSize)
 	shift = sheetSize[1][0]/2
 	leftPage[1][0] = shift
