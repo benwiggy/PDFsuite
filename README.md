@@ -1,7 +1,16 @@
 # PDFsuite
 ## Python scripts for MacOS (OS X) that create, manipulate, and query PDF files
 
-This suite of python scripts for MacOS perform a complete range of PDF manipulation: Merging PDFs, Splitting PDFs, Converting PDFs to images, Converting images to PDFs, Rotating the pages of PDFs, Adding page numbers or other text to PDFs, Applying Quartz filters to PDFs, Adding metadata to PDFs and querying existing metadata. There are also scripts to create booklet imposition schemes from PDFs, to add blank pages, and to add text and graphics to PDFs. This is all done by accessing Apple's Core Graphics Quartz APIs. They should run on any Mac using 10.6 Snow Leopard or higher!
+This suite of python scripts for MacOS perform a complete range of PDF manipulation: 
+Merging PDFs, 
+Splitting PDFs, 
+Converting PDFs to images, 
+Converting images to PDFs, 
+Rotating the pages of PDFs, 
+Adding page numbers or other text to PDFs, 
+Applying Quartz filters to PDFs, 
+Adding metadata to PDFs and querying existing metadata. 
+There are also scripts to create booklet imposition schemes from PDFs, to add blank pages, and to add text and graphics to PDFs. This is all done by accessing Apple's Core Graphics Quartz APIs. They should run on any Mac using 10.6 Snow Leopard or higher!
 
 Most scripts can be run directly in a shell (Terminal), taking one or more PDF files as their argument. _(Drag the script file onto a Terminal window; then drag the PDF files you want to the same window; then press Enter!)_
 These scripts will also work in Automator Services, providing an easier interface. Once created, they will be available in the Finder's Services menu when PDF files are selected. _See the ReadMe in the subfolder for installation instructions._
@@ -10,7 +19,7 @@ Some are designed as PDF Services. This means they will be available in the PDF 
 
 The remainder will run as Unix shell scripts, and may need other arguments besides the filenames for processing. They may need further work for other purposes.
 
-## Automator Services##
+## Automator Services
 ### Count pages in PDF (countpages.py)
 This counts the number of pages in one or more PDF files passed to it. It provides a cumulative count for multiple file arguments.
 
@@ -39,7 +48,7 @@ This script creates separate PDFs for each page in an existing PDF. The page fil
 This script will combine all PDF files supplied as arguments into one file, called "Combined.pdf". 
 
 
-## PDF Services##
+## PDF Services
 ### Booklet Imposition (booklet.py)
 
 This script is set to work as a PDF Service. However, it could easily be adjusted to work as an Automator workflow. It takes the input PDF file and lays out the pages on a larger sheet, in booklet spread page order. NEW: Checks for page rotation and adjusts if necessary. NEWER!: Option to arrange for 4pp signatures (stacked sheets, not gathered).
@@ -48,7 +57,7 @@ This script is set to work as a PDF Service. However, it could easily be adjuste
 
 This replaces the PDF Service that Apple removed from MacOS, which saved the PDF after applying a filter that makes the PDF conform to PDF-X3 spec. It will even bring up a Save file dialog. Apple's built-in PDF-X filter is quite poor, so you may want to use a better one.
 
-## Shell scripts##
+## Shell scripts
 ### Apply Quartz Filter (quartzfilter.py)
 
 This replaces Apple's own _quartzfilter_ command, which was removed from OS X (in Lion?). (Also, there was a sample script in Xcode, which used now-deprecated APIs.) Like its predecessors, it takes three arguments: the path to the quartz filter, input file and output file. It could be easily modified along the lines of the other scripts, to apply one fixed filter to all files given as arguments.
