@@ -2,15 +2,18 @@
 ## Python scripts for MacOS (OS X) that create, manipulate, and query PDF files
 
 This suite of python scripts for MacOS perform a complete range of PDF manipulation:  
-* Merging PDFs,  
-* Splitting PDFs,  
-* Converting PDFs to images,  
-* Converting images to PDFs,  
-* Rotating the pages of PDFs,  
-* Adding page numbers or other text to PDFs,  
-* Applying Quartz filters to PDFs,  
-* Adding metadata to PDFs and querying existing metadata.  
-There are also scripts to create booklet imposition schemes from PDFs, to add blank pages, and to add text and graphics to PDFs. This is all done by accessing Apple's Core Graphics Quartz APIs. They should run on any Mac using 10.6 Snow Leopard or higher!
+* Merging PDFs
+* Splitting PDFs
+* Converting PDFs to images
+* Converting images to PDFs
+* Rotating the pages of PDFs
+* Adding page numbers or other text to PDFs
+* Applying Quartz filters to PDFs
+* Adding metadata to PDFs and querying existing metadata
+* Booklet imposition
+* Creating pages, text and graphics
+
+This is all done by accessing Apple's Core Graphics Quartz APIs. They should run on any Mac using 10.6 Snow Leopard or higher!
 
 Most scripts can be run directly in a shell (Terminal), taking one or more PDF files as their argument. _(Drag the script file onto a Terminal window; then drag the PDF files you want to the same window; then press Enter!)_
 These scripts will also work in **Automator Services**, providing an easier interface. Once created, they will be available in the Finder's Services menu when PDF files are selected. _See the ReadMe in the subfolder for installation instructions._
