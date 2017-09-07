@@ -2,22 +2,22 @@
 ## Python scripts for MacOS (OS X) that create, manipulate, and query PDF files
 
 This suite of python scripts for MacOS perform a complete range of PDF manipulation: 
-Merging PDFs, 
-Splitting PDFs, 
-Converting PDFs to images, 
-Converting images to PDFs, 
-Rotating the pages of PDFs, 
-Adding page numbers or other text to PDFs, 
-Applying Quartz filters to PDFs, 
-Adding metadata to PDFs and querying existing metadata. 
+Merging PDFs,  
+Splitting PDFs,  
+Converting PDFs to images,  
+Converting images to PDFs,  
+Rotating the pages of PDFs,  
+Adding page numbers or other text to PDFs,  
+Applying Quartz filters to PDFs,  
+Adding metadata to PDFs and querying existing metadata.  
 There are also scripts to create booklet imposition schemes from PDFs, to add blank pages, and to add text and graphics to PDFs. This is all done by accessing Apple's Core Graphics Quartz APIs. They should run on any Mac using 10.6 Snow Leopard or higher!
 
 Most scripts can be run directly in a shell (Terminal), taking one or more PDF files as their argument. _(Drag the script file onto a Terminal window; then drag the PDF files you want to the same window; then press Enter!)_
-These scripts will also work in Automator Services, providing an easier interface. Once created, they will be available in the Finder's Services menu when PDF files are selected. _See the ReadMe in the subfolder for installation instructions._
+These scripts will also work in **Automator Services**, providing an easier interface. Once created, they will be available in the Finder's Services menu when PDF files are selected. _See the ReadMe in the subfolder for installation instructions._
 
-Some are designed as PDF Services. This means they will be available in the PDF button of the OS X print menu. PDF Services should be installed in the <user>/Library/PDF Services folder (or the top-level /Library/PDF Services folder). They will then be available in the PDF button of the print menu. _See the ReadMe in the subfolder for installation instructions._
+Some are designed as **PDF Services**. This means they will be available in the PDF button of the OS X print menu. PDF Services should be installed in the <user>/Library/PDF Services folder (or the top-level /Library/PDF Services folder). They will then be available in the PDF button of the print menu. _See the ReadMe in the subfolder for installation instructions._
 
-The remainder will run as Unix shell scripts, and may need other arguments besides the filenames for processing. They may need further work for other purposes.
+The remainder will run as Unix **shell scripts**, and may need other arguments besides the filenames for processing. They may need further work for other purposes.
 
 ## Automator Services
 ### Count pages in PDF (countpages.py)
@@ -64,7 +64,7 @@ This replaces Apple's own _quartzfilter_ command, which was removed from OS X (i
 
 ### Creator (creator.py)
 
-This script alters PDF, changing the "Creator" metadata to the value supplied. Other metadata keys are supplied, allowing the script to be easily modified for other metadata values. If no output file is set, it will overwrite the input file.
+This script alters PDFs, changing the "Creator" metadata to the value supplied. Other metadata keys are supplied, allowing the script to be easily modified for other metadata values. If no output file is set, it will overwrite the input file.
 
 ### Get Info (getInfo.py)
 
