@@ -1,7 +1,8 @@
 #! /usr/bin/python
-
+# coding: utf-8
 # by Ben Byram-Wigfield
 # Script to apply a MacOS Quartz Filter to a PDF file.
+# quartzfilter.py filter input output
 #
 import os, getopt, sys
 from Quartz import PDFDocument
