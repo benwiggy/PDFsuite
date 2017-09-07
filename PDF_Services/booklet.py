@@ -20,10 +20,10 @@ import os, sys
 import copy
 import Quartz as Quartz
 from CoreFoundation import (NSURL, CFURLCreateFromFileSystemRepresentation, kCFAllocatorDefault)
-from AppKit import NSSavePanel
+from AppKit import NSSavePanel, NSApp
 
 
-# define Page and Sheet Sizes in points. Might need CGRect, but works as is.
+# Uncomment the page size you want.
 A3 = [[0,0], [1190.55, 841.88]]
 # A4 = [[0,0], [841.88, 595.28]]
 # USLetter = [[0,0], [792, 612]]
@@ -47,10 +47,10 @@ imposedOrder = []
 def save_dialog(directory, filename):
 	panel = NSSavePanel.savePanel()
 	panel.setTitle_("Save PDF booklet")
-	panel.setFloatingPanel_(True)
 	myUrl = NSURL.fileURLWithPath_isDirectory_(directory, True)
 	panel.setDirectoryURL_(myUrl)
 	panel.setNameFieldStringValue_(filename)
+	NSApp.activateIgnoringOtherApps_(True)
 	ret_value = panel.runModal()
 	if ret_value:
 		return panel.filename()

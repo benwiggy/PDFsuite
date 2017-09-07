@@ -1,7 +1,7 @@
 #!/usr/bin/python
-
+# coding=utf-8
 # PDF Service to apply Quartz filter and move PDF to designated folder
-# by Ben Byram-Wigfield v1.1
+# by Ben Byram-Wigfield v1.2
 
 # Includes MacOS Save dialog.
 
@@ -12,25 +12,25 @@ import os
 import sys
 from Quartz.CoreGraphics import PDFDocument
 from CoreFoundation import (NSURL, QuartzFilter)
-from AppKit import NSSavePanel
+from AppKit import NSSavePanel, NSApp
 
 
 def save_dialog(directory, filename):
     panel = NSSavePanel.savePanel()
     panel.setTitle_("Save PDF-X3 document")
-    panel.setFloatingPanel_(True)
     myUrl = NSURL.fileURLWithPath_isDirectory_(directory, True)
     panel.setDirectoryURL_(myUrl)
     panel.setNameFieldStringValue_(filename)
+    NSApp.activateIgnoringOtherApps_(True)
     ret_value = panel.runModal()
     if ret_value:
         return panel.filename()
     else:
-        return u''
+        return ''
         
 
 def main(argv):
-	(title, options, pathToFile) = argv[0:3]
+	(title, options, pathToFile) = argv[:]
 
 	# Set the default location where the PDFs will go (you'll need to make sure this exists)
 	
