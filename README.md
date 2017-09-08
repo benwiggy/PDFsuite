@@ -23,14 +23,14 @@ Some are designed as **PDF Services**. PDF Services should be installed in the <
 A few scripts take more complex arguments and so will work best as Unix **shell scripts**. They may need further work for other purposes. _(Don't forget to set the execute flag!)_
 
 ## Automator Services
-###Add Blank Page (addpage.py)
+### Add Blank Page (addpage.py)
 This script adds a blank page to the front of a PDF file.
 
 ### Add Page Number (pagenumber.py)
 This script adds a folio number to facing pages of PDF files supplied as arguments. Users can set the offset position from the outer top corner, font, size. There are also settings for the scale, opacity and angle of text. A new file is produced, suffixed "NUM". A slightly modified version of this script is used to produce text watermarks (watermark.py).
 
 ### Combine images to one PDF (imagestopdf.py)
-Modified (improved!) version of an Apple open source script, which takes any number of image files (supplied as arguments) and combines them into pages of one PDF file.
+Modified (improved!) version of an Apple open source script, which takes any number of image files (supplied as arguments) and combines them into pages of one PDF file. This script is several seconds faster than Apple's own Automator action.
 
 ### Count pages in PDF (countpages.py)
 This counts the number of pages in one or more PDF files passed to it. It provides a cumulative count for multiple file arguments.
@@ -47,7 +47,7 @@ This will rotate all the pages of any PDF files passed as arguments by 90˚ into
 ### Split PDF into separate files (splitPDF.py)
 This script creates separate PDFs for each page in an existing PDF. The page files are saved inside a folder with the name of the source file (minus .pdf extension). The script fails if the folder cannot be made.
 
-###Watermark all pages of PDF (watermark.py)
+### Watermark all pages of PDF (watermark.py)
 By default, this script adds the word "SAMPLE" in 150pt Helvetica-Bold, at 45˚ angle, with 50% opacity, to every page of PDFs passed to it. These settings can easily be altered.
 
 ## PDF Services
