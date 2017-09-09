@@ -19,7 +19,7 @@
 import os, sys
 import copy
 import Quartz as Quartz
-from CoreFoundation import (NSURL, CFURLCreateFromFileSystemRepresentation, kCFAllocatorDefault)
+from Foundation import (NSURL, CFURLCreateFromFileSystemRepresentation, kCFAllocatorDefault)
 from AppKit import NSSavePanel, NSApp
 
 

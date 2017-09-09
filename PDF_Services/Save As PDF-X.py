@@ -10,8 +10,8 @@
 
 import os
 import sys
-from Quartz.CoreGraphics import PDFDocument
-from CoreFoundation import (NSURL, QuartzFilter)
+from Quartz.CoreGraphics import PDFDocument, QuartzFilter
+from Foundation import NSURL
 from AppKit import NSSavePanel, NSApp
 
 
