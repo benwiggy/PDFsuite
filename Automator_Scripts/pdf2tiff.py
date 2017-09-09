@@ -3,29 +3,27 @@
 """
 by Ben Byram-Wigfield
 Creates a bitmap image from each page of each PDF supplied to it.
-Acknowledgement is made to Jeff Laing for a similar script.
+Acknowledgement is made to Jeff Laing for the basis of the script.
 """
 import os, sys, objc
 import Quartz as Quartz
 from LaunchServices import (kUTTypeJPEG, kUTTypeTIFF, kUTTypePNG, kCFAllocatorDefault) 
-
-# os.environ["CG_CONTEXT_SHOW_BACKTRACE"] = '1'
-# os.environ["CGBITMAP_CONTEXT_LOG_ERRORS"] = '1'
 
 resolution = 300.0 #dpi
 scale = resolution/72.0
 
 cs = Quartz.CGColorSpaceCreateWithName(Quartz.kCGColorSpaceSRGB)
 whiteColor = Quartz.CGColorCreate(cs, (1, 1, 1, 1))
-# Options: kCGImageAlphaNoneSkipLast (no trans), kCGImageAlphaPremultipliedLast 
 transparency = Quartz.kCGImageAlphaNoneSkipLast
 
 #Save image to file
 def writeImage (image, url, type, options):
+	options = unicode(options).encode('utf-8')
 	destination = Quartz.CGImageDestinationCreateWithURL(url, type, 1, None)
-	Quartz.CGImageDestinationAddImage(destination, image, options)
+	Quartz.CGImageDestinationAddImage(destination, image, None)
 	Quartz.CGImageDestinationSetProperties(destination, options)
 	Quartz.CGImageDestinationFinalize(destination)
+	print destination
 	return
 
 if __name__ == '__main__':
@@ -68,12 +66,13 @@ if __name__ == '__main__':
 		# kUTTypeJPEG, kUTTypeTIFF, kUTTypePNG
 				type = kUTTypeTIFF
 		# For some reason, this doesn't seem to be passed to the TIFF file.
+		# Image is right number of pixels, but resolution not set.
 				options = {
-					Quartz.kCGImagePropertyTIFFDictionary: 'TIFFDictionary',
-					Quartz.kCGImagePropertyTIFFXResolution: '300',
-					Quartz.kCGImagePropertyTIFFYResolution: '300',
+					Quartz.kCGImagePropertyTIFFDictionary: "TIFF Dictionary",
+					Quartz.kCGImagePropertyTIFFXResolution: "300",
+					Quartz.kCGImagePropertyTIFFYResolution: "300",
+					Quartz.kCGImagePropertyTIFFResolutionUnit: 2
 					}
 				writeImage (image, url, type, options)
 				del page
-				#CGContextRelease(writeContext) # Not needed apparently. Causes crash.
 	

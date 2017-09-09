@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+# coding=utf-8
 """
 by Ben Byram-Wigfield
 Takes an existing PDF and creates individual page documents
@@ -8,7 +8,6 @@ import os, sys, objc
 import Quartz as Quartz
 from LaunchServices import (kUTTypeJPEG, kUTTypeTIFF, kUTTypePNG, kCFAllocatorDefault) 
 from CoreFoundation import (CFAttributedStringCreate, CFURLCreateFromFileSystemRepresentation)
-
 
 # Creates a Context for drawing
 def createOutputContextWithPath(path):
@@ -19,9 +18,6 @@ def contextDone(context):
 	if context:
 		Quartz.CGPDFContextClose(context)
 		del context
-
-
-
 
 def strip(filename):
 	# 
@@ -48,7 +44,6 @@ def strip(filename):
 			Quartz.CGContextDrawPDFPage(writeContext, page)
 			Quartz.CGContextEndPage(writeContext)
 			contextDone(writeContext)
-
 
 if __name__ == "__main__":
 	for filename in sys.argv[1:]:

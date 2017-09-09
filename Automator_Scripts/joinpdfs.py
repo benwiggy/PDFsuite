@@ -1,7 +1,8 @@
 #! /usr/bin/python
+# coding=utf-8
 #
 # Tool to concatenate PDFs.
-# Based on the Apple script in /System/Library/Automator/Combine PDF Pages.action
+# Modified from the Apple script in /System/Library/Automator/Combine PDF Pages.action
 # Optimized for speed (importing * takes many seconds); shuffle and verbose modes removed.
 # Joins all PDF files given as arguments. No sanity checking: if used in Automator, no need.
 

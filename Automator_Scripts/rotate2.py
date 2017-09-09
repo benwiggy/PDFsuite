@@ -1,4 +1,5 @@
 #! /usr/bin/python
+# coding=utf-8
 # Produces new PDF file with all pages rotated by 90 degrees.
 # by Ben Byram-Wigfield v2.1
 
@@ -15,6 +16,7 @@ from CoreFoundation import NSURL
 if __name__ == '__main__':
 
 	for filename in sys.argv[1:]:
+		filename = filename.decode('utf-8')
 		shortName = os.path.splitext(filename)[0]
 		outFilename = shortName + "+90.pdf"
 		pdfURL = NSURL.fileURLWithPath_(filename)

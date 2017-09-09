@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # coding: utf-8
 # This script places page numbers on facing pages. Options for position, size, font are below.
+# By Ben Byram-Wigfield.
 # With thanks to user Hiroto on Apple Support Communities.
 
 import sys
@@ -10,20 +11,12 @@ import Quartz.CoreGraphics as Quartz
 from CoreText import (kCTFontAttributeName, CTFontCreateWithName, CTLineDraw, CTLineCreateWithAttributedString, kCTFontAttributeName, CTLineGetImageBounds)
 from CoreFoundation import (CFAttributedStringCreate, CFURLCreateFromFileSystemRepresentation, kCFAllocatorDefault)
 
-verbose = False
-
 # Creates a PDF Object from incoming file.
 def createPDFDocumentFromPath(path):
-	global verbose
-	if verbose:
-		print "Creating PDF document from file %s" % (path)
 	return Quartz.CGPDFDocumentCreateWithURL(Quartz.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False))
 	
 # Creates a Context for drawing
 def createOutputContextWithPath(path):
-	global verbose
-	if verbose:
-		print "Setting %s as the destination." % (path)
 	return Quartz.CGPDFContextCreateWithURL(Quartz.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False), None, None)
 
 # Closes the Context
@@ -33,9 +26,6 @@ def contextDone(context):
 		del context
 
 def drawWatermarkText(writeContext, line, xOffset, yOffset, angle, scale, opacity):
-    #   CGContextRef writeContext
-    #   CTLineRef line
-    #   float xOffset, yOffset, angle ([degree]), scale, opacity ([0.0, 1.0])
 	if line:
 		rect = CTLineGetImageBounds(line, writeContext)
 		imageWidth = rect.size.width
@@ -78,7 +68,6 @@ if pdf:
 			Quartz.CGContextBeginPage(writeContext, mbox)
 			Quartz.CGContextDrawPDFPage(writeContext, page)
 			text = str(i)
-			print i
 			astr = CFAttributedStringCreate(kCFAllocatorDefault, text, { kCTFontAttributeName : font })
 			line = CTLineCreateWithAttributedString(astr)
 			x = Quartz.CGRectGetWidth(mbox)
@@ -86,7 +75,7 @@ if pdf:
 			y -= yOffset
 			if i == 1: # Don't put number on page 1
 				pass
-			elif i%2 == 1:
+			elif i%2 == 1: # Move right hand number in by its own width.
 				textWidth = astr.size().width
 				x = x - xOffset
 				x = x - textWidth
