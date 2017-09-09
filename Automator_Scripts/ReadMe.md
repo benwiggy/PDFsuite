@@ -23,7 +23,7 @@ This counts the number of pages in one or more PDF files passed to it. It provid
 This script exports each page as 300dpi RGB TIFF images from PDFs supplied as arguments. Options in the script alow for JPEG and PNG filetypes, resolution, transparency and other parameters. Images are saved to a folder with the name of the original file (minus file extension). If the folder cannot be created, the script fails.
 
 ### Join PDF files into one file (myjoin.py)
-This script will combine all PDF files supplied as arguments into one file, called "Combined.pdf". 
+This script will combine all PDF files supplied as arguments into one file, called "Combined.pdf". Files are passed in the order they appear in the Finder window, so re-ordering the List or Column will change the order of selected items for combining.
 
 ### Rotate all pages in PDF (rotate.py and rotate2.py)
 This will rotate all the pages of any PDF files passed as arguments by 90˚ into a new file suffixed "+90". There are two rotate scripts: one uses CoreGraphics's _CGPDFDocument_ and _CGPDFPage_ to create a PDF object, apply a graphical transform to each page and re-save. The second one uses PDFKit's _PDFDocument_ and _PDFPage_, which allow the direct setting and getting of a rotation parameter for each page.
