@@ -7,7 +7,7 @@
 
 import sys
 from Quartz import PDFDocument
-from CoreFoundation import NSURL
+from Foundation import NSURL
 		
 if __name__ == '__main__':
 

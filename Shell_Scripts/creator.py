@@ -1,5 +1,5 @@
 #! /usr/bin/python
-
+# coding=utf-8
 # by Ben Byram-Wigfield
 # Script to save Creator information into PDF metadata
 #
@@ -21,7 +21,7 @@ def main(argv):
       sys.exit(2)
    for opt, arg in opts:
       if opt == '-h':
-         print 'creator.py -c <filter> -i <inputfile> -o <outputfile>'
+         print 'creator.py -c <creator> -i <inputfile> -o <outputfile>'
          print 'longnames are: --creator, --input, --output'
          print "If no output is specified, the input will be over-written."
          sys.exit()

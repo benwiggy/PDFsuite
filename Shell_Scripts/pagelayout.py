@@ -1,6 +1,7 @@
 #!/usr/bin/python
+# coding=utf-8
 
-# by Ben Byram-Wigfield v. 0.1
+# by Ben Byram-Wigfield v. 0.5
 # TO DO: 
 # Add bitmap image or PDF file.
 # Include Rounded Rectangles and other BezierPaths.
@@ -10,9 +11,6 @@ import Quartz as Quartz
 from CoreText import (kCTFontAttributeName, CTFontCreateWithName, CTLineDraw, CTLineCreateWithAttributedString, kCTFontAttributeName, CTLineGetImageBounds)
 from CoreFoundation import (CFAttributedStringCreate, CFURLCreateFromFileSystemRepresentation, kCFAllocatorDefault)
 from math import pi as PI
-
-os.environ["CG_CONTEXT_SHOW_BACKTRACE"] = '1'
-os.environ["CGBITMAP_CONTEXT_LOG_ERRORS"] = '1'
 
 pageSize = [[0.,0.], [595.28, 841.88]] # A4
 whiteSwatch = [1.,1.,1.]

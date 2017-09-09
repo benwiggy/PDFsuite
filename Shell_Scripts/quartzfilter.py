@@ -1,7 +1,8 @@
 #! /usr/bin/python
 # coding: utf-8
-# by Ben Byram-Wigfield
+# by Ben Byram-Wigfield v.1.2
 # Script to apply a MacOS Quartz Filter to a PDF file.
+# Altered the order of arguments to conform to pre-10.6 Apple command.
 # quartzfilter.py filter input output
 #
 import os, getopt, sys
@@ -15,7 +16,7 @@ def main(argv):
 	filter = ""
 
 	try:
-		opts, args = getopt.getopt(sys.argv[1:], "fio", ["filter", "input", "output"])
+		opts, args = getopt.getopt(sys.argv[1:], "ifo", ["input", "filter", "output"])
 	except getopt.GetoptError as err:
 		print(err)
 		usage()
@@ -25,14 +26,14 @@ def main(argv):
 		print("Not enough arguments")
 		sys.exit(2)
 
-	filter = args[0].decode('utf-8')
-	if not filter:
-		print 'Unable to create context filter'
-		sys.exit(2)
-
-	inputfile =args[1].decode('utf-8')
+	inputfile =args[0].decode('utf-8')
 	if not inputfile:
 		print 'Unable to open input file'
+		sys.exit(2)
+
+	filter = args[1].decode('utf-8')
+	if not filter:
+		print 'Unable to create context filter'
 		sys.exit(2)
 
 	outputfile = args[2].decode('utf-8')
