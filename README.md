@@ -59,10 +59,11 @@ This replaces the PDF Service that Apple removed from MacOS, which saved the PDF
 
 ## Shell scripts
 ### Apply Quartz Filter (quartzfilter.py)
-This replaces Apple's own _quartzfilter_ command, which was removed from OS X (in Lion?). (Also, there was a sample script in Xcode, which used now-deprecated APIs.) Like its predecessors, it takes three arguments: the path to the quartz filter, input file and output file. It could be easily modified along the lines of the other scripts, to apply one fixed filter to all files given as arguments.
+This replaces Apple's own _quartzfilter_ command, which was removed from OS X (in Lion?). (Also, there was a sample script in Xcode, which used now-deprecated APIs.) Like its predecessor, it takes three arguments: the input file, the path to the quartz filter, and an output filename. It could be easily modified along the lines of the other scripts, to apply one fixed filter to all files given as arguments.
 
 ### Creator (creator.py)
-This script alters PDFs, changing the "Creator" metadata to the value supplied. Other metadata keys are supplied, allowing the script to be easily modified for other metadata values. If no output file is set, it will overwrite the input file.
+This script alters PDFs, changing the "Creator" metadata to the value supplied. Other metadata keys are supplied, allowing the script to be easily modified for other metadata values. If no output file is set, it will overwrite the input file.  
+creator.py -c <CreatorName> -i <inputfile> [-o <outputfile>]
 
 ### Get Info (getInfo.py)
 This scripts outputs all the available PDF metadata for a file: Author, Creator, etc, Number of Pages, Version number, flags for encryption and security.
