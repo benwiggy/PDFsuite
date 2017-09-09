@@ -63,7 +63,7 @@ This replaces Apple's own _quartzfilter_ command, which was removed from OS X (i
 
 ### Creator (creator.py)
 This script alters PDFs, changing the "Creator" metadata to the value supplied. Other metadata keys are supplied, allowing the script to be easily modified for other metadata values. If no output file is set, it will overwrite the input file.  
-creator.py -c <CreatorName> -i <inputfile> [-o <outputfile>]
+creator.py -c CreatorName -i inputfile [-o outputfile]
 
 ### Get Info (getInfo.py)
 This scripts outputs all the available PDF metadata for a file: Author, Creator, etc, Number of Pages, Version number, flags for encryption and security.
