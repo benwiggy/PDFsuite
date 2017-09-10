@@ -8,7 +8,7 @@
 6. Paste in the script you want to use (replacing the existing text). 
 
 ### Add Blank Page (addpage.py)
-This script adds a blank page to the front of a PDF file.
+This script adds a blank page to the front of a PDF file. Currently, the page size is set in the script. Default is A4.
 
 ### Add Page Number (pagenumber.py)
 This script adds a folio number to facing pages of PDF files supplied as arguments. Users can set the offset position from the outer top corner, font, size. There are also settings for the scale, opacity and angle of text. A new file is produced, suffixed "NUM". A slightly modified version of this script is used to produce text watermarks (watermark.py).
