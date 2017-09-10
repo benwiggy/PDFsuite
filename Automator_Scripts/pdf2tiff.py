@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+
 """
 by Ben Byram-Wigfield
 Creates a bitmap image from each page of each PDF supplied to it.
@@ -18,12 +19,11 @@ transparency = Quartz.kCGImageAlphaNoneSkipLast
 
 #Save image to file
 def writeImage (image, url, type, options):
-	options = unicode(options).encode('utf-8')
+	print options
 	destination = Quartz.CGImageDestinationCreateWithURL(url, type, 1, None)
-	Quartz.CGImageDestinationAddImage(destination, image, None)
-	Quartz.CGImageDestinationSetProperties(destination, options)
+	Quartz.CGImageDestinationAddImage(destination, image, options)
+	# Quartz.CGImageDestinationSetProperties(destination, options)
 	Quartz.CGImageDestinationFinalize(destination)
-	print destination
 	return
 
 if __name__ == '__main__':
@@ -65,14 +65,13 @@ if __name__ == '__main__':
 				url = Quartz.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, outFile, len(outFile), False)
 		# kUTTypeJPEG, kUTTypeTIFF, kUTTypePNG
 				type = kUTTypeTIFF
-		# For some reason, this doesn't seem to be passed to the TIFF file.
-		# Image is right number of pixels, but resolution not set.
+		# See the full range of image properties on Apple's developer pages.
 				options = {
-					Quartz.kCGImagePropertyTIFFDictionary: "TIFF Dictionary",
-					Quartz.kCGImagePropertyTIFFXResolution: "300",
-					Quartz.kCGImagePropertyTIFFYResolution: "300",
+					Quartz.kCGImagePropertyTIFFDictionary: {
+					Quartz.kCGImagePropertyTIFFXResolution: 300,
+					Quartz.kCGImagePropertyTIFFYResolution: 300,
 					Quartz.kCGImagePropertyTIFFResolutionUnit: 2
-					}
+					}}
 				writeImage (image, url, type, options)
 				del page
 	
