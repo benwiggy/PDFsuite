@@ -15,7 +15,7 @@ This suite of python scripts for MacOS performs a wide range of PDF manipulation
 
 This is all done by accessing Apple's Core Graphics Quartz APIs. They should therefore run on any Mac using 10.6 Snow Leopard or higher!
 
-Most of these scripts are designed to be used within **Automator Services**, which provide an easy interface. Once created, they will be available in the Finder's Services menu when PDF files are selected. You will need to create a Service in Automator, and add the script to it. _See the ReadMe in the subfolder for full installation instructions._  
+Most of these scripts are designed to be used within **Automator Services**, which provide an easy interface for use. Once created, they will be available in the Finder's Services menu (or right-click context menu) when PDF files are selected. You will need to create a Service in Automator, and add the script to it. _See the ReadMe in the subfolder for full installation instructions._  
 These scripts can also be run directly in a shell (Terminal), taking one or more PDF files as their argument. _(Drag the script file onto a Terminal window; then drag the PDF files you want to the same window; then press Enter!)_
 
 Some are designed as **PDF Services**. PDF Services should be installed in the <user>/Library/PDF Services folder (or the top-level /Library/PDF Services folder). They will then be available in the PDF button of the print menu. _See the ReadMe in the subfolder for installation instructions._
