@@ -19,10 +19,8 @@ transparency = Quartz.kCGImageAlphaNoneSkipLast
 
 #Save image to file
 def writeImage (image, url, type, options):
-	print options
 	destination = Quartz.CGImageDestinationCreateWithURL(url, type, 1, None)
 	Quartz.CGImageDestinationAddImage(destination, image, options)
-	# Quartz.CGImageDestinationSetProperties(destination, options)
 	Quartz.CGImageDestinationFinalize(destination)
 	return
 
