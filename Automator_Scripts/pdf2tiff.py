@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+# coding: utf-8
 
 """
 by Ben Byram-Wigfield
@@ -64,11 +64,12 @@ if __name__ == '__main__':
 		# kUTTypeJPEG, kUTTypeTIFF, kUTTypePNG
 				type = kUTTypeTIFF
 		# See the full range of image properties on Apple's developer pages.
+		# Resolution Unit: 2 for inches; 3 for centimetres.
 				options = {
 					Quartz.kCGImagePropertyTIFFDictionary: {
-					Quartz.kCGImagePropertyTIFFXResolution: 300,
-					Quartz.kCGImagePropertyTIFFYResolution: 300,
-					Quartz.kCGImagePropertyTIFFResolutionUnit: 2
+					Quartz.kCGImagePropertyTIFFXResolution: resolution,
+					Quartz.kCGImagePropertyTIFFYResolution: resolution,
+					Quartz.kCGImagePropertyTIFFResolutionUnit: 2 
 					}}
 				writeImage (image, url, type, options)
 				del page
