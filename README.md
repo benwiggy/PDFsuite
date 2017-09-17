@@ -74,7 +74,7 @@ This script provides functions to easily draw rectangles, circles, lines, and te
 ## REVISION HISTORY
 Minor improvements continue to be made to all the scripts: this includes improved Unicode string handling; standardized naming conventions, so that the code can be mixed and used in other scripts more easily; and better sanity checking and error handling. Any contributions on these terms are welcome.
 ### Future Plans
-It would be nice to compile a Unix command line utility that combines all these functions: _'pdfutil --join <filename>'_
+It would be nice to compile a Unix command line utility that combines all these functions: _'pdfutil --join /path/to/filename'_
 
 ## Other notes
 
