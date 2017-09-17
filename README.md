@@ -73,6 +73,8 @@ This script provides functions to easily draw rectangles, circles, lines, and te
 
 ## REVISION HISTORY
 Minor improvements continue to be made to all the scripts: this includes improved Unicode string handling; standardized naming conventions, so that the code can be mixed and used in other scripts more easily; and better sanity checking and error handling. Any contributions on these terms are welcome.
+### Future Plans
+It would be nice to compile a Unix command line utility that combines all these functions: _'pdfutil --join <filename>'_
 
 ## Other notes
 
@@ -81,6 +83,6 @@ These scripts are designed to work with the PyObjC Cocoa bridge and Python versi
 If you're interested in python scripts, there are some python scripts written by Apple, in _/System/Library/Automator_, inside the bundles of PDF Automator actions for Combining PDF Pages, Extracting PDF pages, Watermarking PDFs, and adding gridlines to PDFs. There are also some open source python scripts on Apple's open source pages, though some of these don't work on default installations.
 
 ## LICENCE:
-_"I have gathered a garland of other men's flowers, and nothing is mine but the cord that binds them."_ These scripts were not possible without taking inspiration from other code examples, particularly the [Apple open source python scripts](https://opensource.apple.com/source/pyobjc/); nor without help and advice from a range of people, such as [Jeff Laing](https://stuffineededtoknow.blogspot.co.uk/2009/01/pdf-to-jpeg-conversion.html), user Hiroto on Apple Support Community and the users of [StackOverFlow](http://stackoverflow.com). Also [Cocoa/ObjC code in other languages](http://slitheytoves.blogspot.co.uk/2008/03/pdf-imposition-on-os-x-with-quartz-and.html). They are free to be used and adapted in any way, though I ask that you retain the acknowledgements within. I welcome help in improving them.
+_"I have gathered a garland of other men's flowers, and nothing is mine but the cord that binds them."_  These scripts were not possible without taking inspiration from other code examples, particularly the [Apple open source python scripts](https://opensource.apple.com/source/pyobjc/); nor without help and advice from a range of people, such as [Jeff Laing](https://stuffineededtoknow.blogspot.co.uk/2009/01/pdf-to-jpeg-conversion.html), user Hiroto on Apple Support Community and the users of [StackOverFlow](http://stackoverflow.com). Also [Cocoa/ObjC code in other languages](http://slitheytoves.blogspot.co.uk/2008/03/pdf-imposition-on-os-x-with-quartz-and.html). They are free to be used and adapted in any way, though I ask that you retain the acknowledgements within. I welcome help in improving them.
 
 Ben Byram-Wigfield
