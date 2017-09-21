@@ -13,7 +13,7 @@ from CoreFoundation import NSURL
 def main(argv):
    inputfile = ""
    outputfile = ""
-   filter = ""
+   value=""
    try:
       opts, args = getopt.getopt(argv,"hc:i:o:",["creator=", "input=", "output="])
    except getopt.GetoptError:
@@ -32,14 +32,14 @@ def main(argv):
       elif opt in ("-o", "--output"):
          outputfile = arg.decode('utf-8')
 
-   print value, inputfile, outputfile
    if outputfile == "": outputfile = inputfile
    pdfURL = NSURL.fileURLWithPath_(inputfile)
    pdfDoc = Quartz.PDFDocument.alloc().initWithURL_(pdfURL)
 # Default value option:
-#   if value == "": value = "Uncle Bob Silly" 
-   dict = { 'kCGPDFContextCreator': value }
-   pdfDoc.writeToFile_withOptions_(outputfile, dict)
+   # if value == "": value = "Uncle Bob Silly" 
+   options = { Quartz.kCGPDFContextCreator: value }
+
+   pdfDoc.writeToFile_withOptions_(outputfile, options)
 
 if __name__ == "__main__":
    main(sys.argv[1:])
