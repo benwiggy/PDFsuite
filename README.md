@@ -18,7 +18,7 @@ This is all done by accessing Apple's Core Graphics Quartz APIs. They should the
 Most of these scripts are designed to be used as **Automator Services**, which provide an easy interface for use. Once installed in the user's Library/Services folder, they will be available in the Finder's Services menu (or right-click context menu) when PDF files are selected.  
 The bare scripts can also be run directly in a shell (Terminal), taking one or more PDF files as their argument. They are found in the **Automator_Scripts** folder. _(Drag the script file onto a Terminal window; then drag the PDF files you want to the same window; then press Enter!)_ 
 
-Some are designed as **PDF Services**. PDF Services should be installed in the <user>/Library/PDF Services folder (or the top-level /Library/PDF Services folder). They will then be available in the PDF button of the print menu. _See the ReadMe in the subfolder for installation instructions._
+Some are designed as **PDF Services**. PDF Services should be installed in the {user}/Library/PDF Services folder (or the top-level /Library/PDF Services folder). They will then be available in the PDF button of the print menu. _See the ReadMe in the subfolder for installation instructions._
 
 A few scripts take more complex arguments and so will work best as Unix **shell scripts**. They may need further work for other purposes. _(Don't forget to set the execute flag!)_
 
@@ -36,7 +36,7 @@ This script adds a folio number to facing pages of PDF files supplied as argumen
 Modified (improved!) version of an Apple open source script, which takes any number of image files (supplied as arguments) and combines them into pages of one PDF file. This script is several seconds faster than Apple's own Automator action.
 
 ### Count pages in PDF (countpages.py)
-This counts the number of pages in one or more PDF files passed to it. It provides a cumulative count for multiple file arguments.
+This counts the total number of pages in one or more PDF files passed to it. It provides a cumulative count for multiple file arguments.
 
 ### Export pages as images (pdf2tiff.py)
 This script exports each page as 300dpi RGB TIFF images from PDFs supplied as arguments. Options in the script alow for JPEG and PNG filetypes, resolution, transparency and other parameters. Images are saved to a folder with the name of the original file (minus file extension). If the folder cannot be created, the script fails.
