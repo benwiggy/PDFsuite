@@ -26,6 +26,9 @@ A few scripts take more complex arguments and so will work best as Unix **shell 
 ### Add Blank Page (addpage.py)
 This script adds a blank page to the front of a PDF file.
 
+### Add Index Numbers to PDFs (indexnumbers.py)
+This adds the text "n/x" to the first page of all selected PDF documents, where x is the total number of PDFs, and n is a sequential index.
+
 ### Add Page Number (pagenumber.py)
 This script adds a folio number to facing pages of PDF files supplied as arguments. Users can set the offset position from the outer top corner, font, size. There are also settings for the scale, opacity and angle of text. A new file is produced, suffixed "NUM". A slightly modified version of this script is used to produce text watermarks (watermark.py).
 
