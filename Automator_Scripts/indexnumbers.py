@@ -49,7 +49,7 @@ def drawWatermarkText(writeContext, line, xOffset, yOffset, angle, scale, opacit
 if __name__ == '__main__':
 
 
-# OPTIONS: Set the RELATIVE distance from outside top corner of page;
+# OPTIONS: Set the distance in points from bottom left corner of page;
 # For other uses, set the angle, scale, and opacity of text
 # Font must be the PostScript name (i.e. no spaces) (See Get Info in FontBook)
 	xOffset, yOffset, angle, scale, opacity = 45.0, 800.0, 0.0, 1.0, 1.0
