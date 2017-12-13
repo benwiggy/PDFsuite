@@ -1,13 +1,17 @@
 #! /usr/bin/python
 # coding: utf-8
-# by Ben Byram-Wigfield v.1.0
-# User Password = "" allows the file to open, 
+
+# ENCRYPT : Encrypt PDF and lock with password.
+# by Ben Byram-Wigfield v.1.1
+# User Password = "" allows the file to open freely
 # but copying or extracting requires the Owner Password.
 # WARNING: Some versions of OS X corrupt PDF metadata after encryption.
 
 import os, sys
 from Quartz import PDFDocument, kCGPDFContextAllowsCopying, kCGPDFContextAllowsPrinting, kCGPDFContextUserPassword, kCGPDFContextOwnerPassword
 from CoreFoundation import (NSURL)
+
+password = "12345678"
 
 def main():
 	inputfile = ""
@@ -25,7 +29,7 @@ def main():
 			options = { 
 				kCGPDFContextAllowsCopying: False, 
 				kCGPDFContextAllowsPrinting: False, 
-				kCGPDFContextOwnerPassword: "12345678",
+				kCGPDFContextOwnerPassword: password,
 				kCGPDFContextUserPassword: ""}
 			pdfDoc.writeToFile_withOptions_(outputfile, options)
 

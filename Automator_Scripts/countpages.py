@@ -1,10 +1,10 @@
 #!/usr/bin/python
 # coding=utf-8
 
-# by Ben Byram-Wigfield v.1.6
+# COUNTPAGES: Adds together the sum of pages from all PDFs supplied as arguments.
+# by Ben Byram-Wigfield v.1.7
 
-# Script returns the total number of pages in all PDFs supplied as arguments
-# Uses NSAlert to report the number!
+# Uses an Alert dialog to report the number!
 
 import sys
 from Quartz import (PDFDocument, CGPDFDocumentCreateWithProvider, CGDataProviderCreateWithFilename, CGPDFDocumentGetNumberOfPages)
@@ -40,7 +40,9 @@ def pageCount2(pdfPath):
 if __name__ == '__main__':
 
 	for filename in sys.argv[1:]:
-	 	pdfnum=pdfnum+pageCount(filename)
+		pdfnum=pdfnum+pageCount(filename)
 
-# print pdfnum
 displayAlert("Combined Page Count:", str(pdfnum), ["OK"])
+
+# Or just print the number to stdout.
+# print(pdfnum)

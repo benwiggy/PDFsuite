@@ -1,8 +1,9 @@
 #!/usr/bin/python
 # coding=utf-8
-#
-#by Ben Byram-Wigfield. v1.0.
-# Adds a blank page to the start of any PDF file sent as arguments.
+
+# ADDPAGE: Adds a blank page to the start of any PDF file sent as arguments.
+# by Ben Byram-Wigfield. v1.0.
+# 
 # Can be used as Automator action or as shell script.
 # To do: Get page size from PDF and match it
 
