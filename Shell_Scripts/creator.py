@@ -1,54 +1,58 @@
 #! /usr/bin/python
 # coding=utf-8
+
+# CREATOR : Add [Creator] metadata to a PDF file.
 # by Ben Byram-Wigfield
-# Script to save Creator information into PDF metadata
+
+# creator -c <creator> - i <inputfile> [-o <outputfile>]
+# NB: Doesn't work on High Sierra 10.13 for unknown reason.
 #
 import sys
 import os
 import getopt
-import Quartz.CoreGraphics  as Quartz
+import Quartz.CoreGraphics as Quartz
 
 from CoreFoundation import NSURL
 
 def main(argv):
-   inputfile = ""
-   outputfile = ""
-   value=""
-   try:
-      opts, args = getopt.getopt(argv,"hc:i:o:",["creator=", "input=", "output="])
-   except getopt.GetoptError:
-      print 'creator.py -c <creator> -i <inputfile> -o <outputfile>'
-      sys.exit(2)
-   for opt, arg in opts:
-      if opt == '-h':
-         print 'creator.py -c <creator> -i <inputfile> -o <outputfile>'
-         print 'longnames are: --creator, --input, --output'
-         print "If no output is specified, the input will be over-written."
-         sys.exit()
-      elif opt in ("-c", "--creator"):
-         value = arg.decode('utf-8')
-      elif opt in ("-i", "--input"):
-         inputfile = arg.decode('utf-8')
-      elif opt in ("-o", "--output"):
-         outputfile = arg.decode('utf-8')
+	inputfile = ""
+	outputfile = ""
+	value=""
+	try:
+		opts, args = getopt.getopt(argv,"hc:i:o:",["creator=", "input=", "output="])
+	except getopt.GetoptError:
+		print 'creator.py -c <creator> -i <inputfile> -o <outputfile>'
+		sys.exit(2)
+	for opt, arg in opts:
+		if opt == '-h':
+			print 'creator.py -c <creator> -i <inputfile> -o <outputfile>'
+			print 'longnames are: --creator, --input, --output'
+			print "If no output is specified, the input will be over-written."
+			sys.exit()
+		elif opt in ("-c", "--creator"):
+			value = arg.decode('utf-8')
+		elif opt in ("-i", "--input"):
+			inputfile = arg.decode('utf-8')
+		elif opt in ("-o", "--output"):
+			outputfile = arg.decode('utf-8')
 
-   if outputfile == "": outputfile = inputfile
-   pdfURL = NSURL.fileURLWithPath_(inputfile)
-   pdfDoc = Quartz.PDFDocument.alloc().initWithURL_(pdfURL)
+	if outputfile == "": outputfile = inputfile
+	pdfURL = NSURL.fileURLWithPath_(inputfile)
+	pdfDoc = Quartz.PDFDocument.alloc().initWithURL_(pdfURL)
+
 # Default value option:
    # if value == "": value = "Uncle Bob Silly" 
-   options = { Quartz.kCGPDFContextCreator: value }
-
-   pdfDoc.writeToFile_withOptions_(outputfile, options)
+	options = { Quartz.kCGPDFContextAuthor: value }
+	pdfDoc.writeToFile_withOptions_(outputfile, options)
 
 if __name__ == "__main__":
-   main(sys.argv[1:])
+	main(sys.argv[1:])
    
 """
 Other Dict keys include: 
 
 kCGPDFContextAuthor (string)
-kCGPDFContextTitle
+kCGPDFContextTitle 
 kCGPDFContextOwnerPassword
 kCGPDFContextUserPassword
 kCGPDFContextAllowsPrinting (boolean)
