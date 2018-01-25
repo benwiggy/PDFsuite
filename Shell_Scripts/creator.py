@@ -42,7 +42,7 @@ def main(argv):
 
 # Default value option:
    # if value == "": value = "Uncle Bob Silly" 
-	options = { Quartz.kCGPDFContextAuthor: value }
+	options = { Quartz.kCGPDFContextCreator: value }
 	pdfDoc.writeToFile_withOptions_(outputfile, options)
 
 if __name__ == "__main__":
