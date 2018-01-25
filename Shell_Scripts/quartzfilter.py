@@ -1,14 +1,14 @@
 #! /usr/bin/python
 # coding: utf-8
+
+# QUARTZFILTER: Script to apply a MacOS Quartz Filter to a PDF file.
 # by Ben Byram-Wigfield v.1.2
-# Script to apply a MacOS Quartz Filter to a PDF file.
-# Altered the order of arguments to conform to pre-10.6 Apple command.
-# quartzfilter.py filter input output
+# 
+# quartzfilter.py <input <filter> <output>
 #
 import os, getopt, sys
 from Quartz import PDFDocument
 from CoreFoundation import (NSURL, QuartzFilter)
-
 
 def main(argv):
 	inputfile = ""
@@ -50,3 +50,5 @@ def main(argv):
 
 if __name__ == "__main__":
    main(sys.argv[1:])
+
+
