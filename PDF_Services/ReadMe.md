@@ -1,6 +1,6 @@
 ## PDF Services
 
-Copy these files to <user>/Library/PDF Services. You may need to create the folder "PDF Services" in your user Library if it isn't there. The scripts will then be available from the PDF button of the print menu.
+Copy these files to {user}/Library/PDF Services. You may need to create the folder "PDF Services" in your user Library if it isn't there. The scripts will then be available from the PDF button of the print menu.
 
 
 ### Booklet Imposition (booklet.py)
@@ -9,3 +9,6 @@ Booklet sheet size is set in the script (default is A3). Other settings and opti
 
 ### Save As PDF-X PDF Service (Save As PDF-X.py)
 This replaces the PDF Service that Apple removed from MacOS, which saved the PDF after applying a filter that makes the PDF conform to PDF-X3 spec. It will even bring up a Save file dialog. Apple's built-in PDF-X filter is quite poor, so you may want to use a better one.
+
+More details about PDF Services can be found here:
+https://developer.apple.com/library/content/documentation/Printing/Conceptual/PDF_Workflow/pdfwf_concepts/pdfwf_concepts.html
