@@ -19,6 +19,9 @@ Modified (improved!) version of an Apple open source script, which takes any num
 ### Count pages in PDF (countpages.py)
 This counts the number of pages in one or more PDF files passed to it. It provides a cumulative count for multiple file arguments.
 
+### Export Text to txt file (getText.py)
+This script outputs the entire readable text from a PDF file to a .txt file. The text file has the same name as the PDF, with the different file extension. If it already exists, an index number will be added to the filename.
+
 ### Export pages as images (pdf2tiff.py)
 This script exports each page as 300dpi RGB TIFF images from PDFs supplied as arguments. Options in the script alow for JPEG and PNG filetypes, resolution, transparency and other parameters. Images are saved to a folder with the name of the original file (minus file extension). If the folder cannot be created, the script fails.
 
