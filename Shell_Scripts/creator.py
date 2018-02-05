@@ -5,7 +5,6 @@
 # by Ben Byram-Wigfield
 
 # creator -c <creator> - i <inputfile> [-o <outputfile>]
-# NB: Doesn't work on High Sierra 10.13 for unknown reason.
 #
 import sys
 import os
