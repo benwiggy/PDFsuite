@@ -1,17 +1,25 @@
 #!/usr/bin/python
 # coding=utf-8
 """
-by Ben Byram-Wigfield
-Takes an existing PDF and creates individual page documents
+SPLITPDF v1.3 : Takes an existing PDF and creates individual page documents in a new folder.
+by Ben Byram-Wigfield 
+
 """
-import os, sys, objc
+import os, sys
 import Quartz as Quartz
 from LaunchServices import (kUTTypeJPEG, kUTTypeTIFF, kUTTypePNG, kCFAllocatorDefault) 
-from CoreFoundation import (CFAttributedStringCreate, CFURLCreateFromFileSystemRepresentation)
+from CoreFoundation import (CFAttributedStringCreate, CFURLCreateFromFileSystemRepresentation, NSURL)
 
 # Creates a Context for drawing
-def createOutputContextWithPath(path):
-	return Quartz.CGPDFContextCreateWithURL(CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False), None, None)
+def createOutputContextWithPath(path, dictarray):
+	return Quartz.CGPDFContextCreateWithURL(CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False), None, dictarray)
+
+# Gets DocInfo from input file to pass to output.
+def getDocInfo(file):
+	file = file.decode('utf-8')
+	pdfURL = NSURL.fileURLWithPath_(file)
+	pdfDoc = Quartz.PDFDocument.alloc().initWithURL_(pdfURL)
+	return pdfDoc.documentAttributes()
 
 # Closes the Context
 def contextDone(context):
@@ -25,6 +33,7 @@ def strip(filename):
 	numPages = Quartz.CGPDFDocumentGetNumberOfPages(pdf)
 	shortName = os.path.splitext(filename)[0]
 	prefix = os.path.splitext(os.path.basename(filename))[0]
+	metaDict = getDocInfo(filename)
 	try:
 		os.mkdir(shortName)
 	except:
@@ -38,8 +47,7 @@ def strip(filename):
 	#Get mediabox
 			mediaBox = Quartz.CGPDFPageGetBoxRect(page, Quartz.kCGPDFMediaBox)
 			outFile = shortName +"//" + prefix + " %03d.pdf"%i
-	# get context?
-			writeContext = createOutputContextWithPath(outFile)
+			writeContext = createOutputContextWithPath(outFile, metaDict)
 			Quartz.CGContextBeginPage(writeContext, mediaBox)
 			Quartz.CGContextDrawPDFPage(writeContext, page)
 			Quartz.CGContextEndPage(writeContext)

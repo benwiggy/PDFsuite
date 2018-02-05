@@ -23,7 +23,7 @@ from Foundation import (NSURL, CFURLCreateFromFileSystemRepresentation, kCFAlloc
 from AppKit import NSSavePanel, NSApp
 
 
-# Uncomment the page size you want.
+# Uncomment the sheet size you want.
 A3 = [[0,0], [1190.55, 841.88]]
 # A4 = [[0,0], [841.88, 595.28]]
 # USLetter = [[0,0], [792, 612]]
@@ -60,6 +60,11 @@ def save_dialog(directory, filename):
 def createPDFDocumentWithPath(path):
 	return Quartz.CGPDFDocumentCreateWithURL(CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False))
 
+# Creates a Context for drawing
+def createOutputContextWithPath(path, dictarray):
+	return Quartz.CGPDFContextCreateWithURL(Quartz.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False), None, dictarray)
+
+
 def imposition(pageRange):
 	for i in range(1, (len(pageRange)/2), 2):
 		# First we do recto
@@ -82,6 +87,13 @@ def getRotation(pdfpage):
 		displayAngle -=  rotValue
 	return displayAngle	
 
+# Gets DocInfo from input file to pass to output.
+def getDocInfo(file):
+	file = file.decode('utf-8')
+	pdfURL = NSURL.fileURLWithPath_(file)
+	pdfDoc = Quartz.PDFDocument.alloc().initWithURL_(pdfURL)
+	return pdfDoc.documentAttributes()
+
 def contextDone(context):
 	if context:
 		Quartz.CGPDFContextClose(context)
@@ -91,6 +103,7 @@ def contextDone(context):
 def main(argv):
 	(title, options, pathToFile) = argv[:]
 	shortName = os.path.splitext(title)[0]
+	# If you want to save to a consistent location, use:
 	# writeFilename = os.path.join(destination, shortName + suffix)
 	writeFilename = save_dialog(destination, shortName + suffix)
 	writeFilename = writeFilename.encode('utf-8')
@@ -102,7 +115,8 @@ def main(argv):
 	blanks = 0
 
 # Initiate new PDF, get source PDF data, number of pages.
-	writeContext = Quartz.CGPDFContextCreateWithURL(CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, writeFilename, len(writeFilename), False), sheetSize, None)
+	metaDict = getDocInfo(filename)
+	writeContext = createOutputContextWithPath(writeFilename, metaDict)
 	source = createPDFDocumentWithPath(pathToFile)
 	totalPages = Quartz.CGPDFDocumentGetNumberOfPages(source)
 

@@ -1,17 +1,18 @@
 #!/usr/bin/python
 # coding: utf-8
-# This script stamps "N Out Of X" on the first page of all PDF documents passed to it,
+
+# INDEX NUMBERS  v.1.2
+# This script stamps "N / X" on the first page of all PDF documents passed to it,
 # where N is the sequential number of each document and X is the total.
+# by Ben Byram-Wigfield
 # Options for position, size, font are below.
 # With thanks to user Hiroto on Apple Support Communities.
 
-import sys
-import os
-import math
+import sys, os, math
 import Quartz.CoreGraphics as Quartz
 from CoreText import (kCTFontAttributeName, CTFontCreateWithName, CTLineDraw, CTLineCreateWithAttributedString, kCTFontAttributeName, CTLineGetImageBounds)
-from CoreFoundation import (CFAttributedStringCreate, CFURLCreateFromFileSystemRepresentation, kCFAllocatorDefault)
-
+from CoreFoundation import (CFAttributedStringCreate, CFURLCreateFromFileSystemRepresentation, kCFAllocatorDefault, NSURL)
+from AppKit import NSFontManager
 
 
 # Creates a PDF Object from incoming file.
@@ -19,8 +20,15 @@ def createPDFDocumentFromPath(path):
 	return Quartz.CGPDFDocumentCreateWithURL(Quartz.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False))
 	
 # Creates a Context for drawing
-def createOutputContextWithPath(path):
-	return Quartz.CGPDFContextCreateWithURL(Quartz.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False), None, None)
+def createOutputContextWithPath(path, dictarray):
+	return Quartz.CGPDFContextCreateWithURL(Quartz.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False), None, dictarray)
+
+# Gets DocInfo from input file to pass to output.
+def getDocInfo(file):
+	file = file.decode('utf-8')
+	pdfURL = NSURL.fileURLWithPath_(file)
+	pdfDoc = Quartz.PDFDocument.alloc().initWithURL_(pdfURL)
+	return pdfDoc.documentAttributes()
 
 # Closes the Context
 def contextDone(context):
@@ -45,6 +53,14 @@ def drawWatermarkText(writeContext, line, xOffset, yOffset, angle, scale, opacit
 		CTLineDraw(line, writeContext)
 		Quartz.CGContextRestoreGState(writeContext)
 
+# Check that the selected font is active, else use Helvetica Bold.
+def selectFont(typeface, pointSize):
+	manager = NSFontManager.sharedFontManager()
+	fontList = list(manager.availableFonts()) 
+	if typeface not in fontList:
+		typeface = 'Helvetica-Bold'
+	return CTFontCreateWithName(typeface, pointSize, None)
+
 
 if __name__ == '__main__':
 
@@ -53,13 +69,13 @@ if __name__ == '__main__':
 # For other uses, set the angle, scale, and opacity of text
 # Font must be the PostScript name (i.e. no spaces) (See Get Info in FontBook)
 	xOffset, yOffset, angle, scale, opacity = 45.0, 800.0, 0.0, 1.0, 1.0
-	font = CTFontCreateWithName('Helvetica-Bold', 12.0, None)
-
-
+	font = selectFont('Helvetica-Bold', 12.0)
+	
+	
 	for index, filename in enumerate(sys.argv[1:], start = 1):
 # Get path, create new folder
 		totalCount = len(sys.argv[1:])
-		text = str(index) + "/" + str(totalCount)
+		text = str(index) + " / " + str(totalCount)
 		if index == 1:
 			dirPath = os.path.dirname(filename)
 			location = os.path.join(dirPath, "Indexed")
@@ -72,7 +88,8 @@ if __name__ == '__main__':
 		outFilename = os.path.join(location, nameOnly)
 		pdf = createPDFDocumentFromPath(filename)
 		pages = Quartz.CGPDFDocumentGetNumberOfPages(pdf)
-		writeContext = createOutputContextWithPath(outFilename)
+		metaDict = getDocInfo(filename)
+		writeContext = createOutputContextWithPath(outFilename, metaDict)
 
 # Write page 1 with the added text
 		if pdf:

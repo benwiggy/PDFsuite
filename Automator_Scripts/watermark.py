@@ -2,14 +2,14 @@
 # coding: utf-8
 
 # WATERMARK: Superimposed text on pages of PDF documents.
-# By Ben Byram-Wigfield v1.2
+# By Ben Byram-Wigfield v1.3
 # Options for position, size, font, text and opacity are below.
 # With thanks to user Hiroto on Apple Support Communities.
 
 import sys, os, math
 import Quartz.CoreGraphics as Quartz
 from CoreText import (kCTFontAttributeName, CTFontCreateWithName, CTLineDraw, CTLineCreateWithAttributedString, kCTFontAttributeName, CTLineGetImageBounds)
-from CoreFoundation import (CFAttributedStringCreate, CFURLCreateFromFileSystemRepresentation, kCFAllocatorDefault)
+from CoreFoundation import (CFAttributedStringCreate, CFURLCreateFromFileSystemRepresentation, kCFAllocatorDefault, NSURL)
 from AppKit import NSFontManager
 
 
@@ -18,8 +18,14 @@ def createPDFDocumentFromPath(path):
 	return Quartz.CGPDFDocumentCreateWithURL(Quartz.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False))
 	
 # Creates a Context for drawing
-def createOutputContextWithPath(path):
-	return Quartz.CGPDFContextCreateWithURL(Quartz.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False), None, None)
+def createOutputContextWithPath(path, dictarray):
+	return Quartz.CGPDFContextCreateWithURL(Quartz.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False), None, dictarray)
+
+def getDocInfo(file):
+	file = file.decode('utf-8')
+	pdfURL = NSURL.fileURLWithPath_(file)
+	pdfDoc = Quartz.PDFDocument.alloc().initWithURL_(pdfURL)
+	return pdfDoc.documentAttributes()
 
 # Closes the Context
 def contextDone(context):
@@ -71,7 +77,8 @@ if __name__ == '__main__':
 		shortName = os.path.splitext(filename)[0]
 		outFilename = getFilename(shortName, " WM")
 		pdf = createPDFDocumentFromPath(filename)
-		writeContext = createOutputContextWithPath(outFilename)
+		metaDict = getDocInfo(filename)
+		writeContext = createOutputContextWithPath(outFilename, metaDict)
 		pages = Quartz.CGPDFDocumentGetNumberOfPages(pdf)
 
 		if pdf:
