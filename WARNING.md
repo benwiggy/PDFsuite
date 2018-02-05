@@ -1,12 +1,14 @@
 # Limitations of MacOS PDF routines
 
-MacOS creates PDFs that conform to the PDF 1.3 specification. Other PDF-creating software, like Adobe Acrobat, can produce PDFs with higher version numbers. Higher version numbers provide newer capabilities like 3D objects, enhanced metadata, better compression and improved encryption. Re-saving those documents using the PDF routines built-in to MacOS may cause the loss of those newer capabilities in the document. (The same issue is true for other apps that use the Quartz APIs, like Apple's own Preview.)
+When generating PDF documents, MacOS creates the document to the lowest PDF version number that can completely describe the document's content. By default, it creates PDFs that conform to the PDF 1.3 specification. However, certain features, such as alpha channels, transparency, 16-bit images, encryption, etc, are implemented in later versions of the PDF format, resulting in a document with a higher PDF version number. MacOS generally creates documents in the range PDF 1.3 to 1.6.
 
-**For most purposes, this will not be a problem**, as the 1.3 version is entirely sufficient to describe 2D graphical output from Mac applications -- graphics, text, etc -- as well as including document structure like annotations and bookmarks.
+Other PDF-creating software, like Adobe Acrobat, can produce PDFs that use features not supported by MacOS. Re-saving those documents using the PDF routines built-in to MacOS may cause the loss of those newer capabilities in the document. (The same issue is true for other apps that use the Quartz APIs, like Apple's own Preview.)
 
-However, it is worth mentioning that many of the utilities here create a new PDF file; some over-write the original. Even editing the metadata (Title, Author, Creator, etc) writes the entire PDF. These new PDFs will be written to PDF 1.3 spec.
+**For most purposes, this will not be a problem**, as MacOS's PDF capabilities are entirely sufficient to describe 2D graphical output from Mac applications -- graphics, text, etc -- as well as including document metadata and structure like annotations, links and bookmarks.
 
-Of course, if your PDFs do NOT originate from any other PDF-creator, then again there is no problem. I use these scripts on a daily basis!
+However, it is worth mentioning that many of the utilities in _PDFsuite_ create a new PDF file; some can over-write the original. Even editing the metadata (Title, Author, Creator, etc) can re-write the entire PDF. If you have complex workflows that rely on sophisticated features of PDFs, then you should check whether the created files will work for you.
+
+Again, if your PDFs do NOT originate from any other PDF-creator, then there is no problem. I use these scripts on a daily basis!
 
 A list of the features included in each PDF version can be found here:  
 
