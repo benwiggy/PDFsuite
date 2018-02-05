@@ -115,7 +115,7 @@ def main(argv):
 	blanks = 0
 
 # Initiate new PDF, get source PDF data, number of pages.
-	metaDict = getDocInfo(filename)
+	metaDict = getDocInfo(pathToFile)
 	writeContext = createOutputContextWithPath(writeFilename, metaDict)
 	source = createPDFDocumentWithPath(pathToFile)
 	totalPages = Quartz.CGPDFDocumentGetNumberOfPages(source)
