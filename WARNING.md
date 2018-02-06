@@ -2,7 +2,7 @@
 
 There are a few notes of caution that need to be stated when using the Quartz/Core Graphics APIs for PDFs in MacOS.
 
-1. After many years of stability, the PDF routines were re-written in Sierra (10.12). The re-write contained many bugs, meaning that editing and creating PDFs on Sierra can be problematic. **Sierra should be avoided where possible for MacOS-based PDF workflows.**
+1. After many years of stability, the PDF routines were re-written in Sierra (10.12). The re-write contained many bugs, meaning that editing and creating PDFs on Sierra can be problematic. **Sierra should be avoided where possible for MacOS-based PDF workflows.** High Sierra seems to have made some improvements.
 
 2. Other PDF-creating software, like Adobe Acrobat, can produce PDFs that use features not supported by MacOS (3D objects, advanced encryption and metadata, embedded scripts and files). Re-saving these documents using the PDF routines built-in to MacOS may cause the loss of those newer capabilities in the document. (The same issue is true for other apps that use the Quartz APIs, like Apple's own Preview.)
 
