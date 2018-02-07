@@ -7,7 +7,10 @@ This script alters PDFs, changing the "Creator" metadata to the value supplied. 
 creator.py -c CreatorName -i inputfile [-o outputfile]
 
 ### Get Info (getInfo.py)
-This scripts outputs all the available PDF metadata for a file: Author, Creator, etc, Number of Pages, Version number, flags for encryption and security.
+This script outputs all the available PDF metadata for a file: Author, Creator, etc, Number of Pages, Version number, flags for encryption and security.
+
+### Get PDF from Clipboard (getPDFclip.py)
+This script takes PDF data from the MacOS clipboard, and saves it to a named file. If the file already exists, the PDF is added as a new page to the existing file. (Thus making an impromptu Scrapbook of saved PDF data.)
 
 ### Page Layout (pagelayout.py)
 This script provides functions to easily draw rectangles, circles, lines, and text on a PDF page, with colours and transparency. It saves the results to file called "Test.pdf" on the user's Desktop. It is simply a "proof of concept" for a text-based description of graphical items.
