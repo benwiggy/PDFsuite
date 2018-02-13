@@ -9,6 +9,8 @@ Other keywords and custom metadata are not passed to new files. Scripts using PD
 
 3. Currently, scripts that create folders _(pdf2tiff, splitPDF)_ will fail if the folder already exists. They should create a folder with a unique name.
 
-4. Because of (current) concerns about bugs in the PDF frameworks of MacOS, and in order to produce features beyond the scope of MacOS's capabilities, alternative scripts using third-party software libraries are planned. This will include PyPDF2, a python PDF library.
+4. It is assumed that all PDFs are not encrypted. Future versions should check for encryption and ask for passwords or exit gracefully.
 
-5. It is assumed that all PDFs are not encrypted. Future versions should check for encryption and ask for passwords or exit gracefully.
+5. While a feature of these scripts is that they will work on any Mac (from Snow Leopard up) without additional software, some scripts using additional third-party python libraries are planned, in order to produce features beyond the scope of MacOS's native capabilities, and to redress concerns about bugs in the OS. This will include PyPDF2, a python PDF library.
+
+6. The scripts should be a bit more python-y, and be more readily 'pluggable' into larger projects.
