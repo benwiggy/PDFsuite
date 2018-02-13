@@ -7,6 +7,8 @@
 5. Set the shell drop-down list to **/usr/bin/python** and "Pass input" to **as arguments**.
 6. Paste in the script you want to use (replacing the existing text). 
 
+Alternatively, you can use them in the Terminal with PDF files as arguments.
+
 ### Add Blank Page (addpage.py)
 This script adds a blank page to the front of a PDF file. Currently, the page size is set in the script. Default is A4.
 
