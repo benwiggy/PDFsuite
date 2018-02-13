@@ -12,5 +12,8 @@ This script outputs all the available PDF metadata for a file: Author, Creator, 
 ### Get PDF from Clipboard (getPDFclip.py)
 This script takes PDF data from the MacOS clipboard, and saves it to a named file. If the file already exists, the PDF is added as a new page to the existing file. (Thus making an impromptu Scrapbook of saved PDF data.)
 
+### List Quartz Filters (listFilters.py)
+This script returns the internal name and filepath of all Quartz Filters installed. These can be in any of the three Library/Filters folders (user, root, system), or the PDF Services folders.
+
 ### Page Layout (pagelayout.py)
 This script provides functions to easily draw rectangles, circles, lines, and text on a PDF page, with colours and transparency. It saves the results to file called "Test.pdf" on the user's Desktop. It is simply a "proof of concept" for a text-based description of graphical items.
