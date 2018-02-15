@@ -26,7 +26,7 @@ Modified (improved!) version of an Apple open source script, which takes any num
 This counts the number of pages in one or more PDF files passed to it. It provides a cumulative count for multiple file arguments.
 
 ### Encrypt PDF or add security (encrypt.py)
-This adds encryption and passwords to prevent unauthorized copying, printing, or opening.
+This adds encryption and passwords to prevent unauthorized copying, printing, or opening. Note that the passwords are stored in plain text within the body of the script.
 
 ### Export Text to txt file (pdf2txt.py)
 This script outputs the entire readable text from a PDF file to a .txt file. The text file has the same name as the PDF, with the different file extension. If it already exists, an index number will be added to the filename.
