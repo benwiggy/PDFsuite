@@ -1,9 +1,8 @@
 #!/usr/bin/python
 # coding=utf-8
-# PDF Service to apply Quartz filter and move PDF to designated folder
-# by Ben Byram-Wigfield v1.2
 
-# Includes MacOS Save dialog.
+# SAVE AS PDF-X: PDF Service to apply Quartz filter and move PDF to designated folder
+# by Ben Byram-Wigfield v1.4
 
 # $1 is filename; $3 is complete temp filepath and name.
 # $2 is loads of CUPS parameters.
@@ -37,11 +36,10 @@ def main(argv):
 	destination = os.path.expanduser("~/Desktop/")
 	
 	# Set the filepath of the filter. 
-	# By default, use the Not-Very-Good System PDFX-3 filter:
-	filter = "/System/Library/Filters/Create Generic PDFX-3 Document.qfilter"
-	
-	# For custom filters in your user Library, use something like this:
-	# filter = os.path.expanduser("~/Library/Filters/Better PDF-X3.qfilter")
+	# Check for custom user filter; otherwise use the Not-Very-Good System filter.
+	filterpath = os.path.expanduser("~/Library/Filters/Better PDF-X3.qfilter")
+	if not os.path.exists(filterpath):
+		filterpath = "/System/Library/Filters/Create Generic PDFX-3 Document.qfilter"
 	
 	title += ".pdf"
 	outputfile = save_dialog(destination, title)
@@ -50,10 +48,13 @@ def main(argv):
 
 		pdfURL = NSURL.fileURLWithPath_(pathToFile)
 		pdfDoc = PDFDocument.alloc().initWithURL_(pdfURL)
-		filterURL = NSURL.fileURLWithPath_(filter)
+		filterURL = NSURL.fileURLWithPath_(filterpath)
 		value = QuartzFilter.quartzFilterWithURL_(filterURL)
-		dict = { 'QuartzFilter': value }
-		pdfDoc.writeToFile_withOptions_(outputfile, dict)
+		options = { 'QuartzFilter': value }
+		pdfDoc.writeToFile_withOptions_(outputfile, options)
+		
+	# Delete original PDF from spool folder
+	os.remove(pathToFile)
 	
 if __name__ == "__main__":
     main(sys.argv[1:])
