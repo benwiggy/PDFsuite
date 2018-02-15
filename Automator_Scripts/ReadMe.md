@@ -1,5 +1,6 @@
-## Automator Services
+## Automator Scripts
 
+Automator workflows containing these scripts, for use as MacOS 'Services', can be found in the 'Automator Services' folder. You can also make your own Automator workflows with them following these instructions:
 1. Download the scripts.
 2. Launch Automator and create a New Service.
 3. Set the drop-down menus to read "Service receives **PDF Files** in **Finder**".
