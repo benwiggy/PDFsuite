@@ -7,7 +7,7 @@
 # 1: Create a new PDF context, graphically transform each page of the original and save the file.
 # 2: Adjust the 'rotation' parameter in each page.
 # This is the 2nd way, which is easier.
-#  also preserves DocInfo and other metadata.
+#  It also preserves DocInfo and other metadata.
 
 import sys
 import os
