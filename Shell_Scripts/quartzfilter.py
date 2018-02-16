@@ -6,22 +6,23 @@
 # 
 # quartzfilter.py <input <filter> <output>
 #
-# The script will check the folders for installed filters if file path not given.
+# The script will accept the bare name of a filter (without .qfilter) if file path not given.
+# E.g. quartzfilter /path/to/myPDF.pdf 'Sepia Tone.qfilter' /path/to/output.pdf
 
 import os, getopt, sys
 from Quartz import PDFDocument
 from CoreFoundation import (NSURL, QuartzFilter)
 
-def checkFilter(pathname):
-	if not os.path.split(pathname)[0]:
+def checkFilter(name):
+	if not os.path.split(name)[0]:
 		Filters = (Quartz.QuartzFilterManager.filtersInDomains_(None))
 		for eachFilter in Filters:
-			name = eachFilter.url().fileSystemRepresentation()
-			if pathname == os.path.split(name)[1]:
-				return name
+			filterPath = eachFilter.url().fileSystemRepresentation()
+			if name == os.path.split(filterPath)[1]:
+				return filterPath
 	else:
-		if os.path.exists(pathname):
-			return pathname
+		if os.path.exists(name):
+			return name
 				
 def main(argv):
 	inputfile = ""
@@ -51,10 +52,11 @@ def main(argv):
 		sys.exit(2)
 
 	outputfile = args[2].decode('utf-8')
-	# You could just take the inputfile as the outputfile if not explicitly given.
 	if not outputfile:
 		print 'No valid output file specified'
 		sys.exit(2)
+	# You could just take the inputfile as the outputfile if not explicitly given.
+		# outputfile = inputfile
 
 	pdfURL = NSURL.fileURLWithPath_(inputfile)
 	pdfDoc = PDFDocument.alloc().initWithURL_(pdfURL)
