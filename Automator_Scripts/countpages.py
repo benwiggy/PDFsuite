@@ -32,11 +32,6 @@ def pageCount(pdfPath):
 	if pdfDoc:
 		return pdfDoc.pageCount()
 
-def pageCount2(pdfPath):
-	# The second way of counting pages, using CGPDFDocument.
-    pdf = CGPDFDocumentCreateWithProvider(CGDataProviderCreateWithFilename (pdfPath))
-    return CGPDFDocumentGetNumberOfPages(pdf)
-
 if __name__ == '__main__':
 
 	for filename in sys.argv[1:]:
