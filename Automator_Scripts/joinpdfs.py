@@ -1,7 +1,7 @@
 #! /usr/bin/python
 # coding=utf-8
 #
-# JOINPDFS v1.0 : Tool to concatenate PDFs.
+# JOINPDFS v2.0 : Tool to concatenate PDFs.
 # New tool built from the ground up using PDFKit, instead of Core Graphics.
 # by Ben Byram-Wigfield
 
