@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # INDEX NUMBERS  v.1.2
-# This script stamps "N / X" on the first page of all PDF documents passed to it,
+# This script stamps "N of X" on the first page of all PDF documents passed to it,
 # where N is the sequential number of each document and X is the total.
 # by Ben Byram-Wigfield
 # Options for position, size, font are below.
@@ -75,7 +75,7 @@ if __name__ == '__main__':
 	for index, filename in enumerate(sys.argv[1:], start = 1):
 # Get path, create new folder
 		totalCount = len(sys.argv[1:])
-		text = str(index) + " / " + str(totalCount)
+		text = str(index) + " of " + str(totalCount)
 		if index == 1:
 			dirPath = os.path.dirname(filename)
 			location = os.path.join(dirPath, "Indexed")
