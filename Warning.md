@@ -12,7 +12,7 @@ It is therefore worth mentioning that because many of the utilities in _PDFsuite
 
 2. Recent versions of OS X (Sierra 10.12 and High Sierra 10.13) have introduced a number of bugs into the PDFKit framework.  **Sierra should be avoided where possible for MacOS-based PDF workflows.** High Sierra seems to have made some improvements. However, the bugs are mainly in areas such as annotations, hidden text layers and outlines, which are not the focus of these scripts (yet). The only known issue that affects the scripts is that PDFs encrypted on Sierra will have their metadata (Title, Creator, Author, etc.) corrupted. The last two characters of each field will be lost.
 
-***I use these scripts on a daily basis, as part of print workflow!***
+***I use these scripts on a daily basis, as part of a print workflow!***
 
 
 I hope to add python scripts that use third-party libraries to create and manipulate PDFs beyond the limitations of MacOS's routines in the near future.
