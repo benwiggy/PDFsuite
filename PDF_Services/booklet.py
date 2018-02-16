@@ -120,7 +120,6 @@ def main(argv):
 	source = createPDFDocumentWithPath(pathToFile)
 	totalPages = Quartz.CGPDFDocumentGetNumberOfPages(source)
 
-
 # Add blank pages to round up to multiple of pages per sheet.
 	UnsortedOrder = range(1, totalPages+1)
 	if totalPages%pagesPerSheet:
