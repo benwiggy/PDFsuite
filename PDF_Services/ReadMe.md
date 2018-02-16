@@ -8,7 +8,9 @@ This script is set to work as a PDF Service. However, it could easily be adjuste
 Booklet sheet size is set in the script (default is A3). Other settings and options, such as creep, can also be set.
 
 ### Save As PDF/X PDF Service (Save As PDF-X.py)
-This replaces the PDF Service that Apple removed from MacOS, which saved the PDF after applying a filter that makes the PDF conform to PDF/X-3 spec. It will even bring up a Save file dialog. Apple's built-in PDF/X filter is a very minimal attempt at compliance with the standard, so you may want to use a better one.
+This replaces the PDF Service that Apple removed from MacOS, which saved the PDF after applying a filter that makes the PDF conform to PDF/X-3 spec. It will even bring up a Save file dialog. Apple's built-in PDF/X filter is a very minimal attempt at compliance with the standard, so you may want to use a better one. 
+Some better Quartz Filters can be found here:
+https://github.com/benwiggy/QuartzFilters
 
 More details about PDF Services can be found here:
 https://developer.apple.com/library/content/documentation/Printing/Conceptual/PDF_Workflow/pdfwf_concepts/pdfwf_concepts.html
