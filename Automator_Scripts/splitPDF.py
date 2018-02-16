@@ -38,7 +38,7 @@ def strip(filename):
 	try:
 		os.mkdir(folderName)
 	except:
-		print "Can't create directory '%s'"%(shortName)
+		print "Can't create directory '%s'"%(folderName)
 		sys.exit()
 		
 	# For each page, create a file. Index starts at ZERO!!!

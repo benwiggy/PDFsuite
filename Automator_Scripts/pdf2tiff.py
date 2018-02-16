@@ -2,11 +2,12 @@
 # coding: utf-8
 
 """
+PDF2TIFF : Creates a bitmap image from each page of each PDF supplied to it.
 by Ben Byram-Wigfield
-Creates a bitmap image from each page of each PDF supplied to it.
+
 Acknowledgement is made to Jeff Laing for the basis of the script.
 """
-import os, sys, objc
+import os, sys
 import Quartz as Quartz
 from LaunchServices import (kUTTypeJPEG, kUTTypeTIFF, kUTTypePNG, kCFAllocatorDefault) 
 
@@ -25,6 +26,14 @@ def writeImage (image, url, type, options):
 	Quartz.CGImageDestinationFinalize(destination)
 	return
 
+def getFilename(filepath):
+	i=0
+	newName = filepath
+	while os.path.exists(newName):
+		i += 1
+		newName = filepath + " %02d"%i
+	return newName
+
 if __name__ == '__main__':
 
 	for filename in sys.argv[1:]:
@@ -32,10 +41,11 @@ if __name__ == '__main__':
 		numPages = Quartz.CGPDFDocumentGetNumberOfPages(pdf)
 		shortName = os.path.splitext(filename)[0]
 		prefix = os.path.splitext(os.path.basename(filename))[0]
+		folderName = getFilename(shortName)
 		try:
-			os.mkdir(shortName)
+			os.mkdir(folderName)
 		except:
-			print "Can't create directory '%s'"%(shortName)
+			print "Can't create directory '%s'"%(folderName)
 			sys.exit()
 					
 		# For each page, create a file
@@ -60,7 +70,7 @@ if __name__ == '__main__':
 		# Convert to an "Image"
 				image = Quartz.CGBitmapContextCreateImage(writeContext)	
 		# Create unique filename per page
-				outFile = shortName +"//" + prefix + " %03d.tif"%i
+				outFile = folderName +"/" + prefix + " %03d.tif"%i
 				url = Quartz.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, outFile, len(outFile), False)
 		# kUTTypeJPEG, kUTTypeTIFF, kUTTypePNG
 				type = kUTTypeTIFF
