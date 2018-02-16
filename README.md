@@ -58,7 +58,7 @@ By default, this script adds the word "SAMPLE" in 150pt Helvetica-Bold, at 45˚ 
 This script is set to work as a PDF Service. However, it could easily be adjusted to work as an Automator workflow. It takes the input PDF file and lays out the pages on a larger sheet, in booklet spread page order. It checks for page rotation and adjusts if necessary. There's an option to arrange for 4pp signatures (stacked sheets, not gathered). The script brings up a Save dialog.
 
 ### Save As PDF-X PDF Service (Save As PDF-X.py)
-This replaces the PDF Service that Apple removed from MacOS, which saved the PDF after applying a filter that makes the PDF conform to PDF-X3 spec. It will even bring up a Save file dialog. Apple's built-in PDF-X filter is quite poor, so you may want to use a better one.
+This replaces the PDF Service that Apple removed from MacOS, which saved the PDF after applying a filter that makes the PDF conform to PDF-X3 spec. It will even bring up a Save file dialog. Apple's built-in PDF-X filter is quite poor, so you may want to use a better one. Look at my other Github project for Better Quartz Filters!
 
 ## Shell scripts
 ### Apply Quartz Filter (quartzfilter.py)
@@ -69,15 +69,13 @@ This script alters PDFs, changing the "Creator" metadata to the value supplied. 
 creator.py -c CreatorName -i inputfile [-o outputfile]
 
 ### Get Info (getInfo.py)
-This scripts outputs all the available PDF metadata for a file: Author, Creator, etc, Number of Pages, Version number, flags for encryption and security.
+This script outputs all the available PDF metadata for a file: Author, Creator, etc, Number of Pages, Version number, flags for encryption and security.
+
+### Get PDF from Clipboard (getPDFclip.py)
+This script saves PDF data on the MacOS Clipboard to a file, adding pages for each save.
 
 ### Page Layout (pagelayout.py)
 This script provides functions to easily draw rectangles, circles, lines, and text on a PDF page, with colours and transparency. It saves the results to file called "Test.pdf" on the user's Desktop. It is simply a "proof of concept" for a text-based description of graphical items.
-
-## REVISION HISTORY
-Minor improvements continue to be made to all the scripts: this includes improved Unicode string handling; standardized naming conventions, so that the code can be mixed and used in other scripts more easily; and better sanity checking and error handling. Any contributions on these terms are welcome.
-### Future Plans
-It would be nice to compile a Unix command line utility that combines all these functions: _'pdfutil --join /path/to/filename'_
 
 ## Other notes
 
