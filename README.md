@@ -77,11 +77,9 @@ Saves PDF data on the MacOS Clipboard to a file, adding pages for each save.
 ***Page Layout (pagelayout.py)***  
 Provides simple functions to easily draw rectangles, circles, lines, and text on a PDF page, with colours and transparency. 
 
-## Other notes
+## Notes
 
-These scripts are designed to work with the PyObjC Cocoa bridge and Python version currently bundled with MacOS. There are newer versions of python and PyObjC available, but the portability of the vanilla experience is preferred. 
-
-If you're interested in python scripts, there are some python scripts written by Apple, in _/System/Library/Automator_, inside the bundles of PDF Automator actions for Combining PDF Pages, Extracting PDF pages, Watermarking PDFs, and adding gridlines to PDFs. There are also some open source python scripts on [Apple's open source pages](https://opensource.apple.com/source/pyobjc/pyobjc-49/pyobjc/pyobjc-framework-Quartz-2.5.1/Examples/), though some of these don't work on default installations.
+Please read the Notes.md file for details of future plans, limitations and known issues.
 
 ## LICENCE:
 These scripts were not possible without taking inspiration from other code examples, particularly the [Apple open source python scripts](https://opensource.apple.com/source/pyobjc/); nor without help and advice from a range of people, such as Jeff Laing, user Hiroto on Apple Support Community and the users of [StackOverFlow](http://stackoverflow.com). Also Cocoa/ObjC code in other languages. The scripts are free to be used and adapted in any way, though I ask that you retain the acknowledgements within. I welcome help in improving them.
