@@ -15,16 +15,16 @@ This suite of python scripts for MacOS performs a wide range of PDF manipulation
 
 This is all done by accessing Apple's Core Graphics Quartz APIs. They should therefore run on any Mac using 10.6 Snow Leopard or higher!
 
-Most of these scripts are designed to be used as **Automator Services**, which provide an easy interface for use. Once installed in the user's Library/Services folder, they will be available in the Finder's Services menu (or right-click context menu) when PDF files are selected.  
+Most of these scripts are **Automator Services**, which provide an easy interface for use. Once installed in the user's Library/Services folder, they will be available in the Finder's Services menu (or right-click context menu) when PDF files are selected. They can be modified in Apple's Automator utility.  
 The bare scripts can also be run directly in a shell (Terminal), taking one or more PDF files as their argument. They are found here in the **Automator_Scripts** folder. _(Drag the script file onto a Terminal window; then drag the PDF files you want to the same window; then press Enter!)_ 
 
 Some are designed as **PDF Services**. PDF Services should be installed in the {user}/Library/PDF Services folder (or the top-level /Library/PDF Services folder). They will then be available in the PDF button of the print menu. _See the ReadMe in the subfolder for installation instructions._
 
-A few scripts take more complex arguments and so will work best as Unix **shell scripts**. They may need further work for other purposes.
+A few scripts take more complex arguments and so will work only as Unix **shell scripts**. They may need further work for other purposes.
 
 ## Automator Services
-***Add Blank Page (addpage.py)*** 
-Adds a blank page to the front of a PDF file.
+***Add Blank Page (addpage.py)***  
+Adds a blank page to the end of a PDF file.
 
 ***Add Index Numbers to PDFs (indexnumbers.py)***  
 Adds the text "n of x" to the first page of all selected PDF documents, where x is the total number of PDFs, and n is a sequential index. New PDFs are saved to a folder, named "Indexed".
@@ -33,10 +33,10 @@ Adds the text "n of x" to the first page of all selected PDF documents, where x 
 Adds a folio number to facing pages of PDF files supplied as arguments. Users can set the offset position from the outer top corner, font, size.
 
 ***Combine images to one PDF (imagestopdf.py)***  
-This script is several seconds faster than Apple's own Automator action! It also adds a Table of Contents for each component file.
+This script is several seconds faster than Apple's own Automator action! It also adds a Table of Contents entry for each component file.
 
 ***Count pages in PDF (countpages.py)***  
-Counts the total number of pages in one or more PDF files passed to it. It provides a cumulative count for multiple file arguments.
+Counts the cumulative number of pages in all the PDF files passed to it.
 
 ***Export pages as images (pdf2tiff.py)***  
 Exports each page as 300dpi RGB TIFF images from PDFs supplied as arguments. Options in the script alow for JPEG and PNG filetypes, resolution, transparency and other parameters. 
