@@ -12,7 +12,9 @@ Future plans for these scripts, which are also an indication of their current li
 
 4. The scripts should be a bit more python-y, and be more readily 'pluggable' into larger projects.
 
-5. If there's something you want these scripts to do, or something they're not doing that you think they should, please let me know.
+5. I hope to add python scripts that use third-party libraries to create and manipulate PDFs beyond the limitations of MacOS's routines in the future. _(See below.)_
+
+6. If there's something you want these scripts to do, or something they're not doing that you think they should, please let me know.
 
 ## Limitations ##
 
@@ -25,4 +27,7 @@ It is therefore worth mentioning that because many of the utilities in _PDFsuite
 ***I use these scripts on a daily basis, as part of a print workflow!*** I needed to find an alternative to Acrobat for creating PDFs from images, combining PDF files generated from apps and producing booklet spreads for printing. It was this need that led me to create these scripts.
 
 
-I hope to add python scripts that use third-party libraries to create and manipulate PDFs beyond the limitations of MacOS's routines in the near future.
+## Python on the Mac ##
+These scripts are designed to work with the PyObjC Cocoa bridge and Python version currently bundled with MacOS. There are newer versions of python and PyObjC available, but the portability of the vanilla experience is preferred. 
+
+If you're interested in python scripts, there are some python scripts written by Apple, in _/System/Library/Automator_, inside the bundles of PDF Automator actions for Combining PDF Pages, Extracting PDF pages, Watermarking PDFs, and adding gridlines to PDFs. There are also some open source python scripts on [Apple's open source pages](https://opensource.apple.com/source/pyobjc/pyobjc-49/pyobjc/pyobjc-framework-Quartz-2.5.1/Examples/), though some of these don't work on default installations.
