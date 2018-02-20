@@ -74,6 +74,9 @@ Outputs all the available PDF metadata for a file: Author, Creator, etc, Number 
 ***Get PDF from Clipboard (getPDFclip.py)***  
 Saves PDF data on the MacOS Clipboard to a file, adding pages for each save.
 
+***List Quartz Filters (listFilters.py)***  
+Lists all Quartz Filters installed on the system.
+
 ***Page Layout (pagelayout.py)***  
 Provides simple functions to easily draw rectangles, circles, lines, and text on a PDF page, with colours and transparency. 
 
