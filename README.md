@@ -23,42 +23,59 @@ Some are designed as **PDF Services**. PDF Services should be installed in the {
 A few scripts take more complex arguments and so will work best as Unix **shell scripts**. They may need further work for other purposes.
 
 ## Automator Services
-***Add Blank Page (addpage.py)*** Adds a blank page to the front of a PDF file.
+***Add Blank Page (addpage.py)*** 
+Adds a blank page to the front of a PDF file.
 
-***Add Index Numbers to PDFs (indexnumbers.py)*** Adds the text "n of x" to the first page of all selected PDF documents, where x is the total number of PDFs, and n is a sequential index. New PDFs are saved to a folder, named "Indexed".
+***Add Index Numbers to PDFs (indexnumbers.py)***  
+Adds the text "n of x" to the first page of all selected PDF documents, where x is the total number of PDFs, and n is a sequential index. New PDFs are saved to a folder, named "Indexed".
 
-***Add Page Number (pagenumber.py)*** Adds a folio number to facing pages of PDF files supplied as arguments. Users can set the offset position from the outer top corner, font, size.
+***Add Page Number (pagenumber.py)***  
+Adds a folio number to facing pages of PDF files supplied as arguments. Users can set the offset position from the outer top corner, font, size.
 
-***Combine images to one PDF (imagestopdf.py)*** This script is several seconds faster than Apple's own Automator action! It also adds a Table of Contents for each component file.
+***Combine images to one PDF (imagestopdf.py)***  
+This script is several seconds faster than Apple's own Automator action! It also adds a Table of Contents for each component file.
 
-***Count pages in PDF (countpages.py)*** Counts the total number of pages in one or more PDF files passed to it. It provides a cumulative count for multiple file arguments.
+***Count pages in PDF (countpages.py)***  
+Counts the total number of pages in one or more PDF files passed to it. It provides a cumulative count for multiple file arguments.
 
-***Export pages as images (pdf2tiff.py)*** Exports each page as 300dpi RGB TIFF images from PDFs supplied as arguments. Options in the script alow for JPEG and PNG filetypes, resolution, transparency and other parameters. 
+***Export pages as images (pdf2tiff.py)***  
+Exports each page as 300dpi RGB TIFF images from PDFs supplied as arguments. Options in the script alow for JPEG and PNG filetypes, resolution, transparency and other parameters. 
 
-***Join PDF files into one file (joinpdfs.py)*** Combine all PDF files supplied as arguments into one file, called _Combined.pdf_. 
+***Join PDF files into one file (joinpdfs.py)***  
+Combine all PDF files supplied as arguments into one file, called _Combined.pdf_. 
 
-***Rotate all pages in PDF (rotate.py)*** Rotate all the pages of any PDF files passed as arguments by 90˚ into a new file suffixed "+90". 
+***Rotate all pages in PDF (rotate.py)***  
+Rotate all the pages of any PDF files passed as arguments by 90˚ into a new file suffixed "+90". 
 
-***Split PDF into separate files (splitPDF.py)*** Creates separate PDFs for each page in an existing PDF. 
+***Split PDF into separate files (splitPDF.py)***  
+Creates separate PDFs for each page in an existing PDF. 
 
-***Watermark all pages of PDF (watermark.py)*** Adds the word "SAMPLE" in 150pt Helvetica-Bold, at 45˚ angle, with 50% opacity, to every page of PDFs passed to it. These settings can easily be altered.
+***Watermark all pages of PDF (watermark.py)***  
+Adds the word "SAMPLE" in 150pt Helvetica-Bold, at 45˚ angle, with 50% opacity, to every page of PDFs passed to it. These settings can easily be altered.
 
 ## PDF Services
-***Booklet Imposition (booklet.py)*** Designed to work from the PDF button of the print menu, this script creates booklet spread sheets, then brings up a Save dialog.
+***Booklet Imposition (booklet.py)***  
+Designed to work from the PDF button of the print menu, this script creates booklet spread sheets, then brings up a Save dialog.
 
-***Save As PDF-X PDF Service (Save As PDF-X.py)*** This replaces the PDF Service that Apple removed from MacOS in Snow Leopard, which saved the PDF after applying a filter that makes the PDF conform to PDF-X3 spec. Apple's built-in PDF-X filter is quite poor, so you may want to use a better one. Look at my other Github project for Better Quartz Filters!
+***Save As PDF-X PDF Service (Save As PDF-X.py)***  
+This replaces the PDF Service that Apple removed from MacOS in Snow Leopard, which saved the PDF after applying a filter that makes the PDF conform to PDF-X3 spec. Apple's built-in PDF-X filter is quite poor, so you may want to use a better one. Look at my other Github project for Better Quartz Filters!
 
 ## Shell scripts
-***Apply Quartz Filter (quartzfilter.py)*** This replaces Apple's own _quartzfilter_ command, which was removed from OS X (in Lion?). It takes three arguments: the input file, the path to the quartz filter, and an output filename. It could be easily modified along the lines of the other scripts, to apply one fixed filter to all files given as arguments.
+***Apply Quartz Filter (quartzfilter.py)***  
+This replaces Apple's own _quartzfilter_ command, which was removed from OS X (in Lion?). It takes three arguments: the input file, the path to the quartz filter, and an output filename. It could be easily modified along the lines of the other scripts, to apply one fixed filter to all files given as arguments.
 
-***Creator (creator.py)*** Changes the "Creator" metadata to the value supplied. Other metadata keys are provided, allowing the script to be easily modified for other metadata values. If no output file is set, it will overwrite the input file.  
+***Creator (creator.py)***  
+Changes the "Creator" metadata to the value supplied. Other metadata keys are provided, allowing the script to be easily modified for other metadata values. If no output file is set, it will overwrite the input file.  
 creator.py -c CreatorName -i inputfile [-o outputfile]
 
-***Get Info (getInfo.py)*** Outputs all the available PDF metadata for a file: Author, Creator, etc, Number of Pages, Version number, flags for encryption and security.
+***Get Info (getInfo.py)***  
+Outputs all the available PDF metadata for a file: Author, Creator, etc, Number of Pages, Version number, flags for encryption and security.
 
-***Get PDF from Clipboard (getPDFclip.py)*** Saves PDF data on the MacOS Clipboard to a file, adding pages for each save.
+***Get PDF from Clipboard (getPDFclip.py)***  
+Saves PDF data on the MacOS Clipboard to a file, adding pages for each save.
 
-***Page Layout (pagelayout.py)*** Provides simple functions to easily draw rectangles, circles, lines, and text on a PDF page, with colours and transparency. 
+***Page Layout (pagelayout.py)***  
+Provides simple functions to easily draw rectangles, circles, lines, and text on a PDF page, with colours and transparency. 
 
 ## Other notes
 
