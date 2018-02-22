@@ -1,13 +1,13 @@
 #!/usr/bin/python
 
-# Get PDF from Clipboard. 
+# getPDFclip v.1.2 : Get PDF from Clipboard image data.
 # by Ben Byram-Wigfield. 
-# This script saves a file with a copy of any PDF data found on the Mac Clipboard.
+# This script saves a PDF with a copy of any image data found on the Mac Clipboard.
 
-# If Clipboard.pdf exists, Add Page to it.
+# If Clipboard.pdf exists, the image is added as an extra page.
 
-from AppKit import NSPasteboard, NSPasteboardTypePDF
-from Foundation import NSURL
+from AppKit import NSPasteboard, NSPasteboardTypePDF, NSTIFFPboardType, NSPICTPboardType
+from Foundation import NSURL, NSImage
 import Quartz as Quartz
 import os
 from CoreFoundation import CFDataCreate
@@ -15,27 +15,29 @@ from CoreFoundation import CFDataCreate
 
 outfile=os.path.expanduser("~/Desktop/Clipboard.pdf")
 
-myFavoriteTypes = [NSPasteboardTypePDF]
+# 
+myFavoriteTypes = [NSPasteboardTypePDF, NSTIFFPboardType, NSPICTPboardType, 'com.adobe.encapsulated-postscript']
 pb = NSPasteboard.generalPasteboard()
 best_type = pb.availableTypeFromArray_(myFavoriteTypes)
 if best_type:
 	clipData = pb.dataForType_(best_type)
 	if clipData:
 		data = CFDataCreate(None, clipData, len(clipData))
-		# Next line only if you're using CGPDFDocument
-		# provider = Quartz.CGDataProviderCreateWithCFData(data)
-		clipPDF = Quartz.PDFDocument.alloc().initWithData_(data)
+		image = NSImage.alloc().initWithPasteboard_(pb)
+		if image:
+			page = Quartz.PDFPage.alloc().initWithImage_(image)
 		if os.path.exists(outfile):
 			pdfURL = NSURL.fileURLWithPath_(outfile)
 			myFile = Quartz.PDFDocument.alloc().initWithURL_(pdfURL)
 			if myFile:
 				pagenum = myFile.pageCount()
-				page = clipPDF.pageAtIndex_(0)
 				myFile.insertPage_atIndex_(page, pagenum)
-				myFile.writeToFile_(outfile)		
+		
 		else:
-				clipPDF.writeToFile_(outfile)
-				print "Clipboard file created."
+			pageData = page.dataRepresentation()
+			myFile = Quartz.PDFDocument.alloc().initWithData_(pageData)
+		myFile.writeToFile_(outfile)
+		print "Clipboard file created."
 
 else:
 	print ("No clipboard PDF data retrieved. These types were available:")
