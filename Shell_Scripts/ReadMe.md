@@ -11,8 +11,8 @@ creator.py -c CreatorName -i inputfile [-o outputfile]
 ### Get Info (getInfo.py)
 This script outputs all the available PDF metadata for a file: Author, Creator, etc, Number of Pages, Version number, flags for encryption and security.
 
-### Get PDF from Clipboard (getPDFclip.py)
-This script takes PDF data from the MacOS clipboard, and saves it to a named file. If the file already exists, the PDF is added as a new page to the existing file. (Thus making an impromptu Scrapbook of saved PDF data.)
+### Make PDF from Clipboard (getPDFclip.py)
+This script takes image data from the MacOS clipboard, and saves it to a named PDF file. If the file already exists, the PDF is added as a new page to the existing file. (Thus making an impromptu Scrapbook of saved image data.)
 
 ### List Quartz Filters (listFilters.py)
 This script returns the internal name and filepath of all Quartz Filters installed. These can be in any of the three Library/Filters folders (user, root, system), or the PDF Services folders.
