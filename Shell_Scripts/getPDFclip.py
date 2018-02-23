@@ -9,20 +9,18 @@
 from AppKit import NSPasteboard, NSPasteboardTypePDF, NSTIFFPboardType, NSPICTPboardType
 from Foundation import NSURL, NSImage
 import Quartz as Quartz
-import os
-from CoreFoundation import CFDataCreate
+import os, syslog
 
-
+# Change this to whatever filepath you want:
 outfile=os.path.expanduser("~/Desktop/Clipboard.pdf")
 
-# 
+
 myFavoriteTypes = [NSPasteboardTypePDF, NSTIFFPboardType, NSPICTPboardType, 'com.adobe.encapsulated-postscript']
 pb = NSPasteboard.generalPasteboard()
 best_type = pb.availableTypeFromArray_(myFavoriteTypes)
 if best_type:
 	clipData = pb.dataForType_(best_type)
 	if clipData:
-		data = CFDataCreate(None, clipData, len(clipData))
 		image = NSImage.alloc().initWithPasteboard_(pb)
 		if image:
 			page = Quartz.PDFPage.alloc().initWithImage_(image)
@@ -32,6 +30,7 @@ if best_type:
 			if myFile:
 				pagenum = myFile.pageCount()
 				myFile.insertPage_atIndex_(page, pagenum)
+				print "Image added to Clipboard file."
 		
 		else:
 			pageData = page.dataRepresentation()
@@ -40,5 +39,6 @@ if best_type:
 		print "Clipboard file created."
 
 else:
-	print ("No clipboard PDF data retrieved. These types were available:")
-	print (pb.types())
+	print ("No clipboard image data was retrieved.")
+	# print ("These types were available:")
+	# print (pb.types())
