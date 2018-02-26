@@ -1,9 +1,9 @@
 #! /usr/bin/python
 # coding=utf-8
 #
-# JOINPDFS v2.1 : Tool to concatenate PDFs.
+# JOINPDFS v2.2 : Tool to concatenate PDFs.
 # New tool built from the ground up using PDFKit, instead of Core Graphics.
-# Now writes Table of Contents for each file added.
+# Now writes Table of Contents for each file added; importing existing ToCs in each file!
 # by Ben Byram-Wigfield
 
 import sys
@@ -45,11 +45,21 @@ def join(incomingFiles):
 	outfile = getFilename(prefix, filename)
 	# Load in the first PDF file, to which the rest will be added.
 	firstPDF = createPDFDocumentWithPath(incomingFiles[0])
+	outlineIndex = 0
 	rootOutline = Quartz.PDFOutline.alloc().init()
 	firstLabel = os.path.basename(incomingFiles[0])
 	firstPage = firstPDF.pageAtIndex_(0)
 	firstOutline = getOutline(0, firstLabel, firstPage)
-	rootOutline.insertChild_atIndex_(firstOutline, 0)
+	# Check and copy existing Outlines into new structure.
+	existingOutline = firstPDF.outlineRoot()
+	if existingOutline:
+		i=0
+		while i < (existingOutline.numberOfChildren()):
+			childOutline = existingOutline.childAtIndex_(i)
+			firstOutline.insertChild_atIndex_(childOutline, i)
+			i +=1
+	rootOutline.insertChild_atIndex_(firstOutline, outlineIndex)
+
 	
 	# create PDFDocument object for the remaining files.
 	pdfObjects = map(createPDFDocumentWithPath, incomingFiles[1:])
@@ -62,7 +72,15 @@ def join(incomingFiles):
 				page = doc.pageAtIndex_(p)
 				firstPDF.insertPage_atIndex_(page, pageIndex+p)
 				if p == 0:
-					outline = getOutline(pageIndex, tocLabel, page)		
+					outline = getOutline(pageIndex, tocLabel, page)
+					existingOutline = doc.outlineRoot()
+					if existingOutline:
+						i=0
+						while i < (existingOutline.numberOfChildren()):
+							childOutline = existingOutline.childAtIndex_(i)
+							outline.insertChild_atIndex_(childOutline, i)
+							i +=1
+						
 			rootOutline.insertChild_atIndex_(outline, index+1)
 	# Add the root Outline to the first PDF.
 	firstPDF.setOutlineRoot_(rootOutline)				
