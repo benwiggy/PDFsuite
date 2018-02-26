@@ -30,7 +30,11 @@ pdfURL = NSURL.fileURLWithPath_(infile)
 myPDF = Quartz.PDFDocument.alloc().initWithURL_(pdfURL)
 if myPDF:
 	# Create Outlines. Add the Page Index (from 0) and label in pairs here:
-	myTableOfContents = [(0, 'Page 1'), (1, 'Page 2'), (2, 'Page 3')]
+	myTableOfContents = [
+		(0, 'Page 1'), 
+		(1, 'Page 2'),
+		(2, 'Page 3')
+		]
 	allMyOutlines = []
 	for index, outline in myTableOfContents:
 		allMyOutlines.append(getOutline(index, outline))
