@@ -2,6 +2,7 @@
 # coding=utf-8
 
 # TRIM PDF v.1.0 : Crop the mediabox to the size of the trimbox, if different.
+# This lets you crop a page containing printers crop marks to the trimmed page size.
 # by Ben Byram-Wigfield v1.0
 
 import sys
