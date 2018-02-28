@@ -43,5 +43,8 @@ This will rotate all the pages of any PDF files passed as arguments by 90˚ into
 ### Split PDF into separate files (splitPDF.py)
 This script creates separate PDFs for each page in an existing PDF. The page files are saved inside a folder with the name of the source file (minus .pdf extension). 
 
+### Trim pages to the Crop Marks (trimPDF.py)
+This script compares the trimbox to the mediabox. If the two are different, it crops the page to the trimbox. This may be useful for cropping a PDF that contains crop marks and bleed area to the trimmed page size.
+
 ### Watermark all pages of PDF (watermark.py)
 By default, this script adds the word "SAMPLE" in 150pt Helvetica-Bold, at 45˚ angle, with 50% opacity, to every page of PDFs passed to it. These settings can easily be altered.
