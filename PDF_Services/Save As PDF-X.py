@@ -37,7 +37,7 @@ def main(argv):
 	
 	# Set the filepath of the filter. 
 	# Check for custom user filter; otherwise use the Not-Very-Good System filter.
-	filterpath = os.path.expanduser("~/Library/Filters/Better PDF-X3.qfilter")
+	filterpath = os.path.expanduser("~/Library/Filters/Better PDFX-3.qfilter")
 	if not os.path.exists(filterpath):
 		filterpath = "/System/Library/Filters/Create Generic PDFX-3 Document.qfilter"
 	
