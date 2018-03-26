@@ -20,6 +20,6 @@ It is possible to create or modify Quartz Filters without using ColorSync Utilit
 
 If the Quartz Filter Manager cannot parse the Filter, it will not be loaded. It may also cause ColorSync Utility to hang without opening its window. Large numbers of ICC profiles and Quartz Filters can cause the Utility to spinwheel before its window opens.
 
-You can interogate the OS for the name, url and properties of each Quartz Filter installed. See the listFilters.py script in the Scripts folder. (This script just gives names and filepaths: it's trivial to add .properties to get a representation of the data.) Note that the name of a filter is not its filename, but a data value within the qfilter file.
+You can interogate the OS for the name, url and properties of each Quartz Filter installed. See the listFilters.py script in the Shell_Scripts folder. (This script just gives names and filepaths: it's trivial to add .properties to get a representation of the data.) Note that the name of a filter is not its filename, but a data value within the qfilter file.
 
 You can also create filters programmatically. Make an NSDictionary of the data, then call the quartzFilterWithProperties method. However, this is only for use within your code, there doesn't seem a way of saving it.
