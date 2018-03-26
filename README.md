@@ -13,7 +13,7 @@ This suite of python scripts for MacOS performs a wide range of PDF manipulation
 * Applying Quartz filters to PDFs
 * Adding metadata to PDFs and querying existing metadata.
 
-This is all done by accessing Apple's Core Graphics Quartz APIs. They should therefore run on any Mac using 10.6 Snow Leopard or higher!
+This is all done by accessing Apple's Core Graphics Quartz APIs. They should therefore run on any Mac using 10.6 Snow Leopard or higher! 
 
 Most of these scripts are **Automator Services**, which provide an easy interface for use. Once installed in the user's Library/Services folder, they will be available in the Finder's Services menu (or right-click context menu) when PDF files are selected. They can be modified in Apple's Automator utility.  
 The bare scripts can also be run directly in a shell (Terminal), taking one or more PDF files as their argument. They are found here in the **Automator_Scripts** folder. _(Drag the script file onto a Terminal window; then drag the PDF files you want to the same window; then press Enter!)_ 
@@ -21,6 +21,8 @@ The bare scripts can also be run directly in a shell (Terminal), taking one or m
 Some are designed as **PDF Services**. PDF Services should be installed in the {user}/Library/PDF Services folder (or the top-level /Library/PDF Services folder). They will then be available in the PDF button of the print menu. _See the ReadMe in the subfolder for installation instructions._
 
 A few scripts take more complex arguments and so will work only as Unix **shell scripts**. They may need further work for other purposes.
+
+The Suite also includes some **Quartz Filters**, which can apply various transformations to PDF files, such as PDF/X-3 compliance or reduced file size.
 
 ## Automator Services
 ***Add Blank Page (addpage.py)***  
