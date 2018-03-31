@@ -11,7 +11,8 @@ This suite of python scripts for MacOS performs a wide range of PDF manipulation
 * Rotating the pages of PDFs
 * Adding page numbers, watermarks or other text and graphics to PDFs
 * Applying Quartz filters to PDFs
-* Adding metadata to PDFs and querying existing metadata.
+* Adding metadata to PDFs and querying existing metadata
+* Reading and writing Table of Contents data.
 
 This is all done by accessing Apple's Core Graphics Quartz APIs. They should therefore run on any Mac using 10.6 Snow Leopard or higher! 
 
