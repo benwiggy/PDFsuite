@@ -16,7 +16,7 @@ This suite of python scripts for MacOS performs a wide range of PDF manipulation
 
 This is all done by accessing Apple's Core Graphics Quartz APIs. They should therefore run on any Mac using 10.6 Snow Leopard or higher! 
 
-Most of these scripts are **Automator Services**, which provide an easy interface for use. Once installed in the user's Library/Services folder, they will be available in the Finder's Services menu (or right-click context menu) when PDF files are selected. They can be modified in Apple's Automator utility.  
+Most of these scripts are designed to be used within **Automator Services**, which provide an easy interface for use. Once a service is installed in the user's Library/Services folder, it will be available in the Finder's Services menu (or right-click context menu) when PDF files are selected. Services can be modified in Apple's Automator utility. Example Services can be found in the **Automator Services** folder.  
 The bare scripts can also be run directly in a shell (Terminal), taking one or more PDF files as their argument. They are found here in the **Automator_Scripts** folder. _(Drag the script file onto a Terminal window; then drag the PDF files you want to the same window; then press Enter!)_ 
 
 Some are designed as **PDF Services**. PDF Services should be installed in the {user}/Library/PDF Services folder (or the top-level /Library/PDF Services folder). They will then be available in the PDF button of the print menu. _See the ReadMe in the subfolder for installation instructions._
@@ -61,7 +61,7 @@ Adds the word "SAMPLE" in 150pt Helvetica-Bold, at 45˚ angle, with 50% opacity,
 Designed to work from the PDF button of the print menu, this script creates booklet spread sheets, then brings up a Save dialog.
 
 ***Save As PDF-X PDF Service (Save As PDF-X.py)***  
-This replaces the PDF Service that Apple removed from MacOS in Snow Leopard, which saved the PDF after applying a filter that makes the PDF conform to PDF-X3 spec. Apple's built-in PDF-X filter is quite poor, so you may want to use a better one. Look at my other Github project for Better Quartz Filters!
+This replaces the PDF Service that Apple removed from MacOS in Snow Leopard, which saved the PDF after applying a filter that makes the PDF conform to PDF/X-3 spec. Apple's built-in PDF-X filter is quite poor, so you may want to use a better one. An improved PDF/X-3 filter is included in this suite, and is used by the script, if installed.
 
 ## Shell scripts
 ***Apply Quartz Filter (quartzfilter.py)***  
