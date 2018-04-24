@@ -7,7 +7,7 @@ Put these files in {user}/Library/Filters. Another location is /Library/Filters.
 Because of the problems with ColorSync Utility, it is recommended to Lock user Quartz Filters after installing, before opening ColorSync Utility. That way, the app will not alter the data of your filters. You can either lock filters using Get Info in the Finder, or there is a _Read-only : true_ key/value pair in the XML.
 
 ### Better PDFX-3.qfilter ###
-This filter is designed to modify PDFs so that they are compatible with the PDF/X-3 standard. It's significantly better than Apple's "Create Generic PDFX-3 Document" filter _(if that isn't damning it with faint praise)_. Apple's filter flattens transparency to 72 dpi, which is hopeless for print. It also uses a Generic CMYK profile, which is very flat, and it makes minimal effort to manage colour.  
+This filter is designed to modify PDFs so that they are compatible with the PDF/X-3 standard. It's significantly better than Apple's "Create Generic PDFX-3 Document" filter _(if that isn't damning it with faint praise)_. Apple's filter flattens transparency to 72 dpi, which is hopeless for print. It also uses a Generic CMYK profile, which is very flat, and it makes minimal effort to manage colour. This filter aims to redress all these problems in the Apple default filter.  
 The Better PDFX-3 filter offers improved transparency and colour management, using parameters similar to those in Adobe Distiller's PDF/X-3:2002 joboptions. 
 
 ### Better Reduce File Size ###
