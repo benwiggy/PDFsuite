@@ -7,6 +7,9 @@ It could be easily modified along the lines of the other scripts, to apply one f
 ### Create Outlines (createPDFOutlines.py)
 This script automates the addition of Bookmarks ('outlines') to the Table of Contents of a PDF file. Currently, the filepath of the PDF (and the output) must be set in the script, along with the page numbers and names of the bookmarks.
 
+### Get PDF Outlines (getPDFOutlines.py)  
+This script returns the Table of Contents data from a PDF file, as text. This is made up of an index number, the name of the entry, and the 'action' it represents, (usually a page value, co-ordinate, and zoom factor). 
+
 ### Creator (creator.py)
 This script alters PDFs, changing the "Creator" metadata to the value supplied. Other metadata keys are supplied, allowing the script to be easily modified for other metadata values. If no output file is set, it will overwrite the input file.  
 creator.py -c CreatorName -i inputfile [-o outputfile]
@@ -21,4 +24,4 @@ This script takes image data from the MacOS clipboard, and saves it to a named P
 This script returns the internal name and filepath of all Quartz Filters installed. These can be in any of the three Library/Filters folders (user, root, system), or the PDF Services folders.
 
 ### Page Layout (pagelayout.py)
-This script provides functions to easily draw rectangles, circles, lines, and text on a PDF page, with colours and transparency. It saves the results to file called "Test.pdf" on the user's Desktop. It is simply a "proof of concept" for the creation of graphical items using a simple text description. (PostScript it aint!)
+This script provides functions to allow the drawing of rectangles, circles, lines, and text on a PDF page, with colours and transparency, using simple, one-line commands. It saves the results to file called "Test.pdf" on the user's Desktop. It is simply a "proof of concept" for the creation of graphical items using a simple text description. (PostScript it aint!)
