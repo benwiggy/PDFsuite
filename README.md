@@ -4,7 +4,7 @@
 Last updated: February 2018.
 
 This suite of python scripts for MacOS performs a wide range of PDF manipulation:  
-* Merging PDFs
+* Combining PDFs
 * Splitting PDFs
 * Booklet imposition
 * Converting PDFs to images and images to PDFs
@@ -16,7 +16,7 @@ This suite of python scripts for MacOS performs a wide range of PDF manipulation
 
 This is all done by accessing Apple's Core Graphics Quartz APIs. They should therefore run on any Mac using 10.6 Snow Leopard or higher! 
 
-Most of these scripts are designed to be used within **Automator Services**, which provide an easy interface for use. Once a service is installed in the user's Library/Services folder, it will be available in the Finder's Services menu (or right-click context menu) when PDF files are selected. Services can be modified in Apple's Automator utility. Example Services can be found in the **Automator Services** folder.  
+Most of these scripts are designed to be used in the Run Shell Script action of Apple's Automator app, which provides an easy interface for use. Once an Automator service is installed in the user's Library/Services folder, it will be available in the Finder's Services menu (or right-click context menu) when PDF files are selected. Services can be modified in Apple's Automator utility. Example Services can be found in the **Automator_Services** folder.  
 The bare scripts can also be run directly in a shell (Terminal), taking one or more PDF files as their argument. They are found here in the **Automator_Scripts** folder. _(Drag the script file onto a Terminal window; then drag the PDF files you want to the same window; then press Enter!)_ 
 
 Some are designed as **PDF Services**. PDF Services should be installed in the {user}/Library/PDF Services folder (or the top-level /Library/PDF Services folder). They will then be available in the PDF button of the print menu. _See the ReadMe in the subfolder for installation instructions._
@@ -24,6 +24,8 @@ Some are designed as **PDF Services**. PDF Services should be installed in the {
 A few scripts take more complex arguments and so will work only as Unix **shell scripts**. They may need further work for other purposes.
 
 The Suite also includes some **Quartz Filters**, which can apply various transformations to PDF files, such as PDF/X-3 compliance or reduced file size.
+
+Apple already includes Automator actions that provide some (but not all) of these functions -- however, these scripts are faster and more easily configured for different uses than Apple's own actions! Also, they serve as useful algorithmic examples of how to use Apple's APIs, which may benefit programmers working in any language. 
 
 ## Automator Services
 ***Add Blank Page (addpage.py)***  
