@@ -9,8 +9,8 @@ import Quartz as Quartz
 import sys
 
 # You will need to change these filepaths to a local test pdf and an output file.
-# infile = "/path/to/file.pdf"
-# outfile = '/path/to/output.pdf'
+infile = "/path/to/file.pdf"
+outfile = '/path/to/output.pdf'
 
 def getOutline(page, label):
 	# Create Destination
