@@ -8,4 +8,4 @@ Some of the scripts inside the workflows have options that can be altered. Doubl
 
 These workflows were created on MacOS Sierra (10.12). They should work on most OS versions before that, but if they are not recognized, you can 'roll your own' in Automator using the bare scripts. The instructions are in the _Automator_Scripts_ folder.
 
-# These Services must be re-saved in MacOS Mojave 10.14, in order to be accessed from the Quick Actions interface in the Finder. #
+### These Services must be re-saved in MacOS Mojave 10.14, in order to be accessed from the Quick Actions interface in the Finder. #
