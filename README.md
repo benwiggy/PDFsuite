@@ -27,6 +27,9 @@ The Suite also includes some **Quartz Filters**, which can apply various transfo
 
 Apple already includes Automator actions that provide some (but not all) of these functions -- however, these scripts are faster and more easily configured for different uses than Apple's own actions! Also, they serve as useful algorithmic examples of how to use Apple's APIs, which may benefit programmers working in any language. 
 
+## Mojave MacOS 10.14
+This version of MacOS includes new "Quick Actions", which are essentially the same as Services, though they appear in a different interface in the Finder. Old Services need to be opened and re-saved in Automator to become new Quick Actions. (Otherwise they will appear only in the Services menu as before.)
+
 ## Automator Services
 ***Add Blank Page (addpage.py)***  
 Adds a blank page to the end of a PDF file.
