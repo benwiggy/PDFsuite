@@ -7,7 +7,7 @@
 # quartzfilter.py <input <filter> <output>
 #
 # The script will accept the bare name of a filter (without .qfilter) if file path not given.
-# E.g. quartzfilter /path/to/myPDF.pdf 'Sepia Tone.qfilter' /path/to/output.pdf
+# E.g. quartzfilter.py /path/to/myPDF.pdf 'Sepia Tone.qfilter' /path/to/output.pdf
 
 import os, getopt, sys
 from Quartz import PDFDocument
