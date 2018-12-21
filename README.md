@@ -16,7 +16,7 @@ This suite of python scripts for MacOS performs a wide range of PDF manipulation
 
 This is all done by accessing Apple's Core Graphics Quartz APIs. They should therefore run on any Mac using 10.6 Snow Leopard or higher! 
 
-Most of these scripts are designed to be used in the Run Shell Script action of Apple's Automator app, which provides an easy interface for use. Once an Automator service is installed in the user's Library/Services folder, it will be available in the Finder's Services menu (or right-click context menu) when PDF files are selected. Services can be modified in Apple's Automator utility. Example Services can be found in the **Automator_Services** folder.  
+Most of these scripts are designed to be used in the Run Shell Script action of Apple's Automator app, which provides an easy interface for use. Once an Automator service is installed in the user's Library/Services folder, it will be available in the Finder's Quick Actions menu (or right-click context menu) when PDF files are selected. Quick Actions/Services can be modified in Apple's Automator utility. Example Services can be found in the **Automator_Services** folder.  
 The bare scripts can also be run directly in a shell (Terminal), taking one or more PDF files as their argument. They are found here in the **Automator_Scripts** folder. _(Drag the script file onto a Terminal window; then drag the PDF files you want to the same window; then press Enter!)_ 
 
 Some are designed as **PDF Services**. PDF Services should be installed in the {user}/Library/PDF Services folder (or the top-level /Library/PDF Services folder). They will then be available in the PDF button of the print menu. _See the ReadMe in the subfolder for installation instructions._
@@ -41,7 +41,7 @@ Adds the text "n of x" to the first page of all selected PDF documents, where x 
 Adds a folio number to facing pages of PDF files supplied as arguments. Users can set the offset position from the outer top corner, font, size.
 
 ***Combine images to one PDF (imagestopdf.py)***  
-This script is several seconds faster than Apple's own Automator action! It also adds a Table of Contents entry for each component file.
+This script is several seconds faster than the python script in Apple's own Automator action. It also adds a Table of Contents entry for each component file.
 
 ***Count pages in PDF (countpages.py)***  
 Counts the cumulative number of pages in all the PDF files passed to it.
@@ -53,7 +53,7 @@ Exports each page as 300dpi RGB TIFF images from PDFs supplied as arguments. Opt
 Combine all PDF files supplied as arguments into one file, called _Combined.pdf_. 
 
 ***Rotate all pages in PDF (rotate.py)***  
-Rotate all the pages of any PDF files passed as arguments by 90˚ into a new file suffixed "+90". 
+Rotate all the pages of any PDF files passed as arguments by 90º into a new file suffixed "+90". 
 
 ***Split PDF into separate files (splitPDF.py)***  
 Creates separate PDFs for each page in an existing PDF. 
