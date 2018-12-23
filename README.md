@@ -4,31 +4,32 @@
 Last updated: February 2018.
 
 This suite of python scripts for MacOS performs a wide range of PDF manipulation:  
-* Combining PDFs
-* Splitting PDFs
+* Combine and split PDFs
+* Convert PDFs to images and images to PDFs
 * Booklet imposition
-* Converting PDFs to images and images to PDFs
-* Rotating the pages of PDFs
-* Adding page numbers, watermarks or other text and graphics to PDFs
-* Applying Quartz filters to PDFs
-* Adding metadata to PDFs and querying existing metadata
-* Reading and writing Table of Contents data.
+* Rotate the pages of PDFs
+* Add page numbers, watermarks, tints or other text and graphics to PDFs
+* Apply Quartz filters to PDFs
+* Read and write metadata (e.g. Author, Creator, Table of Contents) to PDFs
 
-This is all done by accessing Apple's Core Graphics Quartz APIs. They should therefore run on any Mac using 10.6 Snow Leopard or higher! 
+This is all done by accessing the Core Graphics Quartz APIs inside MacOS. No additional libraries or dependencies are required. They should therefore run on any Mac using 10.6 Snow Leopard or higher!
 
-Most of these scripts are designed to be used in the Run Shell Script action of Apple's Automator app, which provides an easy interface for use. Once an Automator service is installed in the user's Library/Services folder, it will be available in the Finder's Quick Actions menu (or right-click context menu) when PDF files are selected. Quick Actions/Services can be modified in Apple's Automator utility. Example Services can be found in the **Automator_Services** folder.  
-The bare scripts can also be run directly in a shell (Terminal), taking one or more PDF files as their argument. They are found here in the **Automator_Scripts** folder. _(Drag the script file onto a Terminal window; then drag the PDF files you want to the same window; then press Enter!)_ 
+Most of these scripts are designed to be used as Quick Actions _(aka Services);_ PDF Services _(in the PDF button of the Print dialog);_ or as Terminal commands, with filenames as arguments.
 
+### Quick Actions
+The scripts can be used in the Run Shell Script action of Apple's Automator app, which provides an easy interface for use. Once an Automator service is installed in the user's Library/Services folder, it will be available in the Finder's Quick Actions menu (or right-click context menu) when PDF files are selected. Quick Actions/Services can be modified in Apple's Automator utility. 
+Example Services can be found in the **Automator_Services** folder. NB: For MacOS 10.14 Mojave, they need to be re-saved in Automator to be updated to Quick Actions. (Otherwise they will appear only in the Services menu as before.)
+
+### PDF Services
 Some are designed as **PDF Services**. PDF Services should be installed in the {user}/Library/PDF Services folder (or the top-level /Library/PDF Services folder). They will then be available in the PDF button of the print menu. _See the ReadMe in the subfolder for installation instructions._
 
-A few scripts take more complex arguments and so will work only as Unix **shell scripts**. They may need further work for other purposes.
+### Terminal shell scripts
+The bare scripts can also be run directly in a Unix shell (Terminal), taking one or more PDF files as their argument. They are found here in the **Automator_Scripts** folder. _(Drag the script file onto a Terminal window; then drag the PDF files you want to the same window; then press Enter!)_ 
+A few scripts take more complex arguments and so will only work as Unix **shell scripts**. They may need further work for other purposes.
 
 The Suite also includes some **Quartz Filters**, which can apply various transformations to PDF files, such as PDF/X-3 compliance or reduced file size.
 
-Apple already includes Automator actions that provide some (but not all) of these functions -- however, these scripts are faster and more easily configured for different uses than Apple's own actions! Also, they serve as useful algorithmic examples of how to use Apple's APIs, which may benefit programmers working in any language. 
-
-## Mojave MacOS 10.14
-This version of MacOS includes new "Quick Actions", which are essentially the same as Services, though they appear in a different interface in the Finder. Old Services need to be opened and re-saved in Automator to become new Quick Actions. (Otherwise they will appear only in the Services menu as before.)
+Apple already includes Automator actions that provide some (but not all) of these functions -- however, PDFSuite python scripts are faster and more easily configured for different uses than Apple's own actions! They also serve as useful algorithmic examples of how to use Apple's APIs, which may benefit programmers working in any language.
 
 ## Automator Services
 ***Add Blank Page (addpage.py)***  
