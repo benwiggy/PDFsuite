@@ -12,7 +12,7 @@ This replaces the PDF Service that Apple removed from MacOS, which saved the PDF
 Some better Quartz Filters can be found here:
 https://github.com/benwiggy/QuartzFilters
 
-### Save PDF from Stupid iWork (PDFfromStupidiWork.py)
+### Save PDF from ~Stupid~ iWork (Save_PDF_from_iWork.py)
 iWork apps (Numbers, Pages, KeyNote) have an annoying feature/bug that they do not remove their file extension from saved PDFs. (E.g. "MyFile.number.pdf".) Using this PDF Service will strip the iWork extension before saving the PDF. (E.g. "MyFile.pdf").
 
 More details about PDF Services can be found here:
