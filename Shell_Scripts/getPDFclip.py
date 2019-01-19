@@ -6,8 +6,8 @@
 
 # If Clipboard.pdf exists, the image is added as an extra page.
 
-from AppKit import NSPasteboard, NSPasteboardTypePDF, NSTIFFPboardType, NSPICTPboardType
-from Foundation import NSURL, NSImage
+from AppKit import NSPasteboard, NSPasteboardTypePDF, NSTIFFPboardType, NSPICTPboardType, NSImage
+from Foundation import NSURL
 import Quartz as Quartz
 import os, syslog
 
