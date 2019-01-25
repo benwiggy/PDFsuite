@@ -22,7 +22,7 @@ Most of these scripts are designed to be used as Quick Actions _(aka Services);_
 ![examples](doc/quickactionmenu.png)
 <!-- <img src="doc/quickactionmenu.png" alt="layers"> -->
 Most of the scripts are designed  be used in the Run Shell Script action of Apple's Automator app, which provides an easy interface for use. Once an Automator service is installed in the user's Library/Services folder, it will be available in the Finder's Quick Actions menu (or right-click context menu) when PDF files are selected. Quick Actions/Services can be modified in Apple's Automator utility. 
-Example Services can be found in the **Automator_Services** folder. NB: For MacOS 10.14 Mojave, they need to be re-saved in Automator to be updated to Quick Actions. (Otherwise they will appear only in the Services menu as before.)
+NB: Quick Actions were introduced with MacOS 10.14 Mojave. Earlier OS versions will need to create their own Automator workflows from the bare python scripts. Instructions are available.
 
 ### PDF Services
 Some are designed as **PDF Services**. PDF Services should be installed in the {user}/Library/PDF Services folder (or the top-level /Library/PDF Services folder). They will then be available in the PDF button of the print menu. _See the ReadMe in the subfolder for installation instructions._
