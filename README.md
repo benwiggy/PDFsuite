@@ -1,6 +1,5 @@
 # PDFsuite
-### Python scripts for MacOS (OS X) that create, manipulate, and query PDF files.  
-### Everything you could possibly want to do to a PDF is just a click away!
+### Python scripts for MacOS (OS X) that create, manipulate, and query PDF files.<br/> Everything you could possibly want to do to a PDF is just a click away!
 
 * Combine and split PDFs
 * Convert PDFs to images and images to PDFs
