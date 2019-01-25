@@ -1,13 +1,13 @@
 # PDFsuite
-## Python scripts for MacOS (OS X) that create, manipulate, and query PDF files
+### Python scripts for MacOS (OS X) that create, manipulate, and query PDF files.  Everything you could possible want to do to a PDF is just a script away!
 
-Last updated: February 2018.
+Last updated: January 2019.
 
 This suite of python scripts for MacOS performs a wide range of PDF manipulation:  
 * Combine and split PDFs
 * Convert PDFs to images and images to PDFs
-* Booklet imposition
-* Rotate the pages of PDFs
+* Booklet imposition, crop and trim PDFs
+* Rotate PDFs
 * Add page numbers, watermarks, tints or other text and graphics to PDFs
 * Apply Quartz filters to PDFs
 * Read and write metadata (e.g. Author, Creator, Table of Contents) to PDFs
@@ -17,11 +17,18 @@ This is all done by accessing the Core Graphics Quartz APIs inside MacOS. No add
 Most of these scripts are designed to be used as Quick Actions _(aka Services);_ PDF Services _(in the PDF button of the Print dialog);_ or as Terminal commands, with filenames as arguments.
 
 ### Quick Actions
-The scripts can be used in the Run Shell Script action of Apple's Automator app, which provides an easy interface for use. Once an Automator service is installed in the user's Library/Services folder, it will be available in the Finder's Quick Actions menu (or right-click context menu) when PDF files are selected. Quick Actions/Services can be modified in Apple's Automator utility. 
+
+<!-- ![sample](docs/example.svg) -->
+![examples](doc/quickactionmenu.png)
+<!-- <img src="doc/quickactionmenu.png" alt="layers"> -->
+Most of the scripts are designed  be used in the Run Shell Script action of Apple's Automator app, which provides an easy interface for use. Once an Automator service is installed in the user's Library/Services folder, it will be available in the Finder's Quick Actions menu (or right-click context menu) when PDF files are selected. Quick Actions/Services can be modified in Apple's Automator utility. 
 Example Services can be found in the **Automator_Services** folder. NB: For MacOS 10.14 Mojave, they need to be re-saved in Automator to be updated to Quick Actions. (Otherwise they will appear only in the Services menu as before.)
 
 ### PDF Services
 Some are designed as **PDF Services**. PDF Services should be installed in the {user}/Library/PDF Services folder (or the top-level /Library/PDF Services folder). They will then be available in the PDF button of the print menu. _See the ReadMe in the subfolder for installation instructions._
+<!-- ![sample](docs/example.svg) -->
+![examples](doc/PDFbutton.png)
+<!-- <img src="doc/PDFbutton.png" alt="layers"> -->
 
 ### Terminal shell scripts
 The bare scripts can also be run directly in a Unix shell (Terminal), taking one or more PDF files as their argument. They are found here in the **Automator_Scripts** folder. _(Drag the script file onto a Terminal window; then drag the PDF files you want to the same window; then press Enter!)_ 
@@ -29,13 +36,13 @@ A few scripts take more complex arguments and so will only work as Unix **shell 
 
 The Suite also includes some **Quartz Filters**, which can apply various transformations to PDF files, such as PDF/X-3 compliance or reduced file size.
 
-Apple already includes Automator actions that provide some (but not all) of these functions -- however, PDFSuite python scripts are faster and more easily configured for different uses than Apple's own actions! They also serve as useful algorithmic examples of how to use Apple's APIs, which may benefit programmers working in any language.
+Apple already includes Automator actions that provide some (but not all) of these functions -- however, PDFSuite python scripts are faster, better and more easily configured for different uses than Apple's own actions! They also serve as useful algorithmic examples of how to use Apple's APIs, which may benefit programmers working in any language.
 
-## Automator Services
+## Quick Actions
 ***Add Blank Page (addpage.py)***  
 Adds a blank page to the end of a PDF file.
 
-***Add Index Numbers to PDFs (indexnumbers.py)***  
+***Add Index Numbers (indexnumbers.py)***  
 Adds the text "n of x" to the first page of all selected PDF documents, where x is the total number of PDFs, and n is a sequential index. New PDFs are saved to a folder, named "Indexed".
 
 ***Add Page Number (pagenumber.py)***  
@@ -48,26 +55,32 @@ This script is several seconds faster than the python script in Apple's own Auto
 Counts the cumulative number of pages in all the PDF files passed to it.
 
 ***Export pages as images (pdf2tiff.py)***  
-Exports each page as 300dpi RGB TIFF images from PDFs supplied as arguments. Options in the script alow for JPEG and PNG filetypes, resolution, transparency and other parameters. 
+Two actions are provided: one to produce TIFFs, and one to produce PNGs, both at 300dpi RGB. Options in the script allow for JPEG filetype, and changes to resolution, transparency and other parameters. 
 
-***Join PDF files into one file (joinpdfs.py)***  
+***Join PDF files into one file (joinpdfs.py)*** 
 Combine all PDF files supplied as arguments into one file, called _Combined.pdf_. 
 
 ***Rotate all pages in PDF (rotate.py)***  
 Rotate all the pages of any PDF files passed as arguments by 90º into a new file suffixed "+90". 
 
 ***Split PDF into separate files (splitPDF.py)***  
-Creates separate PDFs for each page in an existing PDF. 
+Creates separate PDFs for each page in an existing PDF. A new folder is created for the paged documents of each original PDF.
 
 ***Watermark all pages of PDF (watermark.py)***  
-Adds the word "SAMPLE" in 150pt Helvetica-Bold, at 45˚ angle, with 50% opacity, to every page of PDFs passed to it. These settings can easily be altered.
+Adds the word "SAMPLE" in 150pt Helvetica-Bold, at 45˚ angle, with 50% opacity, to every page of PDFs passed to it. These settings can easily be altered to other font, angle and opacity.
 
 ## PDF Services
 ***Booklet Imposition (booklet.py)***  
 Designed to work from the PDF button of the print menu, this script creates booklet spread sheets, then brings up a Save dialog.
 
+***PDF From  iWork (Save_PDF_from_iWork.py)***
+Apple's iWork apps (Pages, Numbers, KeyNote) will append the .pdf file extension onto the existing file extension (e.g. Myfile.pages.pdf) when saving PDFs through the Print dialog. This script removes the iWork file extension and prompts to save the correctly named PDF. This will work for other apps that also leave their file extension on.
+
 ***Save As PDF-X PDF Service (Save As PDF-X.py)***  
 This replaces the PDF Service that Apple removed from MacOS in Snow Leopard, which saved the PDF after applying a filter that makes the PDF conform to PDF/X-3 spec. Apple's built-in PDF-X filter is quite poor, so you may want to use a better one. An improved PDF/X-3 filter is included in this suite, and is used by the script, if installed.
+
+***Watermark PDF (watermark PDF.py)***
+This script merges the printed output with a PDF template file of your choosing. Ideal for creating 'letterhead' PDFs that can be applied to the printed output of any application.
 
 ## Shell scripts
 ***Apply Quartz Filter (quartzfilter.py)***  
