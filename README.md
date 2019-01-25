@@ -9,9 +9,9 @@
 * Apply Quartz filters to PDFs
 * Read and write metadata (e.g. Author, Creator, Table of Contents) to PDFs
 
-This is all done by accessing the Core Graphics Quartz APIs inside MacOS. No additional libraries or dependencies are required. They should therefore run on any Mac using 10.6 Snow Leopard or higher!
+This is all done with python scripts that access the Core Graphics Quartz APIs inside MacOS. No additional libraries or dependencies are required. They should therefore run on any Mac using 10.6 Snow Leopard or higher!
 
-These scripts are designed to be used as Quick Actions _(aka Services);_ PDF Services _(in the PDF button of the Print dialog);_ or as Terminal commands, with filenames as arguments.
+These scripts are designed to be used as Quick Actions in the Finder _(aka Services);_ PDF Services _(in the PDF button of the Print dialog);_ or as Terminal commands, with filenames as arguments.
 
 ### Quick Actions
 
