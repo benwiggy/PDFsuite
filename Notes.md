@@ -8,9 +8,11 @@ Future plans for these scripts, which are also an indication of their current li
 
 2. It is assumed that all PDFs are not encrypted. Future versions should check for encryption and ask for passwords or exit gracefully. (A demonstration script that checks for encryption, ask for a password, unlocks the data and reports on its success is included here as password.py.)
 
-3. The scripts should be a bit more python-y, and be more readily 'pluggable' into larger projects.
+3. The abilities of these scripts will be merged with CUPS backeds, to create virtual print queues that can automatically perform these actions on PDFs.
+
+4. The scripts should be a bit more python-y, and be more readily 'pluggable' into larger projects.
  
-4. If there's something you want these scripts to do, or something they're not doing that you think they should, please let me know.
+5. If there's something you want these scripts to do, or something they're not doing that you think they should, please let me know.
 
 ## Limitations ##
 
