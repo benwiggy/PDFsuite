@@ -8,4 +8,4 @@ Some of the scripts inside the workflows have options that can be altered. Doubl
 
 These workflows were created on MacOS Sierra (10.12). They should work on most OS versions before that, but if they are not recognized, you can 'roll your own' in Automator using the bare scripts. The instructions are in the _Automator_Scripts_ folder.
 
-### For MacOS 10.14 or later, use the Quick Actions workflow instead. #
+### For MacOS 10.14 or later, use the Quick Actions workflows instead. #
