@@ -11,7 +11,7 @@
 
 This is all done by accessing the Core Graphics Quartz APIs inside MacOS. No additional libraries or dependencies are required. They should therefore run on any Mac using 10.6 Snow Leopard or higher!
 
-Most of these scripts are designed to be used as Quick Actions _(aka Services);_ PDF Services _(in the PDF button of the Print dialog);_ or as Terminal commands, with filenames as arguments.
+These scripts are designed to be used as Quick Actions _(aka Services);_ PDF Services _(in the PDF button of the Print dialog);_ or as Terminal commands, with filenames as arguments.
 
 ### Quick Actions
 
@@ -19,6 +19,7 @@ Most of these scripts are designed to be used as Quick Actions _(aka Services);_
 ![examples](doc/quickactionmenu.png)
 <!-- <img src="doc/quickactionmenu.png" alt="layers"> -->
 Most of the scripts are designed  be used in the Run Shell Script action of Apple's Automator app, which provides an easy interface for use. Once an Automator service is installed in the user's Library/Services folder, it will be available in the Finder's Quick Actions menu (or right-click context menu) when PDF files are selected. Quick Actions/Services can be modified in Apple's Automator utility. 
+The scripts used in Automator can also be run in the Terminal with filenames as arguments.
 NB: Quick Actions were introduced with MacOS 10.14 Mojave. Earlier OS versions will need to create their own Automator workflows from the bare python scripts. Instructions are available.
 
 ### PDF Services
