@@ -4,11 +4,11 @@ This replaces Apple's own _quartzfilter_ command, which was removed from OS X (i
 If the filter is supplied as a name only, without full filepath (e.g. "Sepia Tone.qfilter"), the script will search for installed filters of that name and get the complete filepath.  
 It could be easily modified along the lines of the other scripts, to apply one fixed filter to all files given as arguments. _(Like the Save As PDF-X.py script in PDF Services.)_
 
-### Create Outlines (createPDFOutlines.py)
-This script automates the addition of Bookmarks ('outlines') to the Table of Contents of a PDF file. Currently, the filepath of the PDF (and the output) must be set in the script, along with the page numbers and names of the bookmarks.
+### Create Table of Contents (createPDFOutlines.py)
+This script automates the addition of entries ('outlines') in the Table of Contents of a PDF file. Currently, the filepath of the PDF (and the output) must be set in the script, along with the page numbers and names of the bookmarks.
 
 ### Get PDF Outlines (getPDFOutlines.py)  
-This script returns the Table of Contents data from a PDF file, as text. This is made up of an index number, the name of the entry, and the 'action' it represents, (usually a page value, co-ordinate, and zoom factor). 
+This script returns the Table of Contents data from a PDF file, as text. The results are an index number, the name ('label') of the entry, and the 'action' it represents, (usually a page value, co-ordinate, and zoom factor). 
 
 ### Creator (creator.py)
 This script alters PDFs, changing the "Creator" metadata to the value supplied. Other metadata keys are supplied, allowing the script to be easily modified for other metadata values. If no output file is set, it will overwrite the input file.  
