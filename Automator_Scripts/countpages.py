@@ -37,7 +37,7 @@ if __name__ == '__main__':
 	for filename in sys.argv[1:]:
 		pdfnum=pdfnum+pageCount(filename)
 
-displayAlert("Combined Page Count:", str(pdfnum), ["OK"])
+	displayAlert("Combined Page Count:", str(pdfnum), ["OK"])
 
 # Or just print the number to stdout.
 # print(pdfnum)
