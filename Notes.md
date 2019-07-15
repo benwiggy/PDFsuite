@@ -1,5 +1,10 @@
 # PDFSuite Notes #
 
+## Python on the Mac ##
+Apple has announced that Catalina will be the last version of MacOS to ship with python 2.7. Furthermore, python 2 will stop being supported in 2020. This means that the scripts and Quick Actions will no longer function in MacOS 10.16 (to be released in September 2020. I plan to update the scripts to use python 3 and the current version of PyObjC, rather than the versions that have shipped with MacOS before that date. As a result, users will have to install python3 and PyObjC in the future to use the scripts. The alternative might be to rewrite using Swift (Hmmm) or AppleScript-ObjC (Eurghhh), in order to maintain the ease-of-use without dependencies.  
+However, I enjoy writing with python, so will certainly continue using them myself!
+
+## Future plans ##
 PDF Suite was last updated January 2019. If you have downloaded before then, please update.
 
 Future plans for these scripts, which are also an indication of their current limitations, include (in no particular order):
@@ -24,6 +29,3 @@ It is therefore worth mentioning that because many of the utilities in _PDFsuite
 
 ***I use these scripts on a daily basis, as part of a print workflow!*** I needed to find an alternative to Acrobat for creating PDFs from images, combining PDF files generated from apps and producing booklet spreads for printing. It was this need that led me to create these scripts.
 
-
-## Python on the Mac ##
-Apple has announced that Catalina will be the last version of MacOS to ship with python 2.7. Furthermore, python 2 will stop being supported in 2020. This means that the scripts and Quick Actions will no longer function in MacOS 10.16 (to be released in September 2020. I plan to update the scripts to use python 3 and the current version of PyObjC, rather than the versions that have shipped with MacOS before that date. As a result, users will have to install python3 and PyObjC in the future to use the scripts. The alternative might be to rewrite using Swift (Hmmm) or AppleScript-ObjC (Eurghhh), in order to maintain the ease-of-use without dependencies.
