@@ -26,6 +26,4 @@ It is therefore worth mentioning that because many of the utilities in _PDFsuite
 
 
 ## Python on the Mac ##
-These scripts are designed to work with the PyObjC Cocoa bridge and Python version currently bundled with MacOS. There are newer versions of python and PyObjC available, but the portability of the vanilla experience is preferred. 
-
-If you're interested in python scripts, there are some python scripts written by Apple, in _/System/Library/Automator_, inside the bundles of PDF Automator actions for Combining PDF Pages, Extracting PDF pages, Watermarking PDFs, and adding gridlines to PDFs. (Though they're not as good as PDFSuite!) There are also some open source python scripts on [Apple's open source pages](https://opensource.apple.com/source/pyobjc/pyobjc-49/pyobjc/pyobjc-framework-Quartz-2.5.1/Examples/), though some of these no longer work on newer OS versions.
+Apple has announced that Catalina will be the last version of MacOS to ship with python 2.7. Furthermore, python 2 will stop being supported in 2020. This means that the scripts and Quick Actions will no longer function in MacOS 10.16 (to be released in September 2020. I plan to update the scripts to use python 3 and the current version of PyObjC, rather than the versions that have shipped with MacOS before that date. As a result, users will have to install python3 and PyObjC in the future to use the scripts. The alternative might be to rewrite using Swift (Hmmm) or AppleScript-ObjC (Eurghhh), in order to maintain the ease-of-use without dependencies.
