@@ -1,7 +1,7 @@
 # PDFSuite Notes #
 
 ## Python on the Mac ##
-Apple has announced that Catalina will be the last version of MacOS to ship with python 2.7. Furthermore, python 2 will stop being supported in 2020. This means that the scripts and Quick Actions will no longer function in MacOS 10.16 (to be released in September 2020. I plan to update the scripts to use python 3 and the current version of PyObjC, rather than the versions that have shipped with MacOS before that date. As a result, users will have to install python3 and PyObjC in the future to use the scripts. The alternative might be to rewrite using Swift (Hmmm) or AppleScript-ObjC (Eurghhh), in order to maintain the ease-of-use without dependencies.  
+Apple has announced that Catalina will be the last version of MacOS to ship with python 2.7. Furthermore, python 2 will be 'end-of-lifed' in 2020. This means that the scripts and Quick Actions will no longer function in MacOS 10.16 (to be released in September 2020. I plan to update the scripts to use python 3 and the current version of PyObjC, rather than the versions that have shipped with MacOS before that date. As a result, users will have to install python3 and PyObjC in the future to use the scripts. The alternative might be to rewrite using Swift (Hmmm) or AppleScript-ObjC (Eurghhh), in order to maintain the ease-of-use without dependencies.  
 However, I enjoy writing with python, so will certainly continue using them myself!
 
 ## Future plans ##
