@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 #
 # TINT: v1.0
@@ -12,7 +12,9 @@ from Foundation import NSURL, kCFAllocatorDefault
 
 # Loads in PDF document
 def createPDFDocumentWithPath(path):
-	return Quartz.CGPDFDocumentCreateWithURL(Quartz.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False))
+	# return Quartz.CGPDFDocumentCreateWithURL(Quartz.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False))
+	url = NSURL.fileURLWithPath_(path)
+	return Quartz.CGPDFDocumentCreateWithURL(url)
 
 # Creates a Context for drawing
 def createOutputContextWithPath(path, dictarray):
@@ -23,8 +25,22 @@ def makeRectangle(x, y, xSize, ySize, color, alpha):
 	Quartz.CGContextSetRGBFillColor (writeContext, red, green, blue, alpha)
 	Quartz.CGContextFillRect (writeContext, Quartz.CGRectMake(x, y, xSize, ySize))
 	return
-
-
+	
+# Gets DocInfo from input file to pass to output.
+# PyObjC returns Keywords in an NSArray; they must be tupled.
+def getDocInfo(file):
+	# file = file.decode('utf-8')
+	pdfURL = NSURL.fileURLWithPath_(file)
+	pdfDoc = Quartz.PDFDocument.alloc().initWithURL_(pdfURL)
+	if pdfDoc:
+		metadata = pdfDoc.documentAttributes()
+		if "Keywords" in metadata:
+			keys = metadata["Keywords"]
+			mutableMetadata = metadata.mutableCopy()
+			mutableMetadata["Keywords"] = tuple(keys)
+			return mutableMetadata
+		else:
+			return metadata
 			
 def tint(filename): 
 	global writeContext	
