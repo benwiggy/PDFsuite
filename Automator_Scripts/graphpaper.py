@@ -1,7 +1,7 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 #
-# GRAPHPAPER: v1.0
+# GRAPHPAPER: v1.1
 # Modified from /System/Library/Automator/Add Grid to PDF Documents.action/Contents/Resources/graphpaper.py
 # to include small and large gradations; better handling of existing metadata; and made faster!
 
@@ -12,11 +12,13 @@ from Foundation import NSURL, kCFAllocatorDefault
 
 # Loads in PDF document
 def createPDFDocumentWithPath(path):
-	return Quartz.CGPDFDocumentCreateWithURL(Quartz.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False))
+	url = NSURL.fileURLWithPath_(path)
+	return Quartz.CGPDFDocumentCreateWithURL(url)
 
 # Creates a Context for drawing
 def createOutputContextWithPath(path, dictarray):
-	return Quartz.CGPDFContextCreateWithURL(Quartz.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False), None, dictarray)
+	url = NSURL.fileURLWithPath_(path)
+	return Quartz.CGPDFContextCreateWithURL(url, None, dictarray)
 
 # Gets DocInfo from input file to pass to output.
 # PyObjC returns Keywords in an NSArray; they must be tupled.

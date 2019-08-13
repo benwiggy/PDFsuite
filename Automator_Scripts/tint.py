@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 #
-# TINT: v1.0
+# TINT: v1.1
 # Overlays a tint over the entire PDF.
 # by Ben Byram-Wigfield
 
@@ -12,13 +12,14 @@ from Foundation import NSURL, kCFAllocatorDefault
 
 # Loads in PDF document
 def createPDFDocumentWithPath(path):
-	# return Quartz.CGPDFDocumentCreateWithURL(Quartz.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False))
 	url = NSURL.fileURLWithPath_(path)
 	return Quartz.CGPDFDocumentCreateWithURL(url)
 
 # Creates a Context for drawing
 def createOutputContextWithPath(path, dictarray):
-	return Quartz.CGPDFContextCreateWithURL(Quartz.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False), None, dictarray)
+	url = NSURL.fileURLWithPath_(path)
+	return Quartz.CGPDFContextCreateWithURL(url, None, dictarray)
+
 
 def makeRectangle(x, y, xSize, ySize, color, alpha):
 	red, green, blue = color[:]
@@ -62,7 +63,7 @@ def tint(filename):
 	
 	if writeContext != None and readPDF != None:
 		numPages = Quartz.CGPDFDocumentGetNumberOfPages(readPDF)
-		for pageNum in xrange(1, numPages + 1):	
+		for pageNum in range(1, numPages + 1):	
 			page = Quartz.CGPDFDocumentGetPage(readPDF, pageNum)
 			if page:
 				mediaBox = Quartz.CGPDFPageGetBoxRect(page, Quartz.kCGPDFMediaBox)
@@ -77,7 +78,7 @@ def tint(filename):
 		del writeContext
 			
 	else:
-		print "A valid input file and output file must be supplied."
+		print ("A valid input file and output file must be supplied.")
 		sys.exit(1)
 if __name__ == "__main__":
 	for filename in sys.argv[1:]:

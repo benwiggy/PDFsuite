@@ -1,30 +1,43 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # coding: utf-8
 
-# PAGE NUMBER v.1.6
+# PAGE NUMBER v.1.8
 # This script places page numbers on facing pages (excluding page 1). Options for position, size, font are below.
 # By Ben Byram-Wigfield.
 # With thanks to user Hiroto on Apple Support Communities.
 
 import sys, os, math
-import Quartz.CoreGraphics as Quartz
+import Quartz as Quartz
 from CoreText import (kCTFontAttributeName, CTFontCreateWithName, CTLineDraw, CTLineCreateWithAttributedString, kCTFontAttributeName, CTLineGetImageBounds)
 from CoreFoundation import (CFAttributedStringCreate, CFURLCreateFromFileSystemRepresentation, kCFAllocatorDefault, NSURL)
 from AppKit import NSFontManager
 
 # Creates a PDF Object from incoming file.
-def createPDFDocumentFromPath(path):
-	return Quartz.CGPDFDocumentCreateWithURL(Quartz.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False))
-	
+def createPDFDocumentWithPath(path):
+	# return Quartz.CGPDFDocumentCreateWithURL(Quartz.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False))
+	url = NSURL.fileURLWithPath_(path)
+	return Quartz.CGPDFDocumentCreateWithURL(url)
+
 # Creates a Context for drawing
 def createOutputContextWithPath(path, dictarray):
-	return Quartz.CGPDFContextCreateWithURL(Quartz.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, path, len(path), False), None, dictarray)
+	url = NSURL.fileURLWithPath_(path)
+	return Quartz.CGPDFContextCreateWithURL(url, None, dictarray)
 
+# Gets DocInfo from input file to pass to output.
+# PyObjC returns Keywords in an NSArray; they must be tupled.
 def getDocInfo(file):
 	file = file.decode('utf-8')
 	pdfURL = NSURL.fileURLWithPath_(file)
 	pdfDoc = Quartz.PDFDocument.alloc().initWithURL_(pdfURL)
-	return pdfDoc.documentAttributes()
+	if pdfDoc:
+		metadata = pdfDoc.documentAttributes()
+		if "Keywords" in metadata:
+			keys = metadata["Keywords"]
+			mutableMetadata = metadata.mutableCopy()
+			mutableMetadata["Keywords"] = tuple(keys)
+			return mutableMetadata
+		else:
+			return metadata
 
 # Check that the selected font is active, else use Helvetica Bold.
 def selectFont(typeface, pointSize):
