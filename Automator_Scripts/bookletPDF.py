@@ -40,12 +40,12 @@ imposedOrder = []
 
 # FUNCTIONS
 # Loads in PDF document
-def createPDFDocumentWithPath(path):
+def createPDFDocumentFromPath(path):
 	url = NSURL.fileURLWithPath_(path)
 	return Quartz.CGPDFDocumentCreateWithURL(url)
 
 # Creates a Context for drawing
-def createOutputContextWithPath(path, dictarray):
+def createOutputContextFromPath(path, dictarray):
 	url = NSURL.fileURLWithPath_(path)
 	return Quartz.CGPDFContextCreateWithURL(url, None, dictarray)
 
@@ -110,7 +110,7 @@ def makeBooklet(argv):
 	# writeFilename = writeFilename.encode('utf-8')
 	metaDict = getDocInfo(argv)
 	writeContext = createOutputContextWithPath(writeFilename, metaDict)
-	source = createPDFDocumentWithPath(argv)
+	source = createPDFDocumentFromPath(argv)
 	totalPages = Quartz.CGPDFDocumentGetNumberOfPages(source)
 
 # Add 0 to Unsorted Order for each blank page required to be a multiple of pages per sheet.
