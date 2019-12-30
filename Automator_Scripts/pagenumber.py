@@ -77,7 +77,7 @@ if __name__ == '__main__':
 	for filename in sys.argv[1:]:
 		shortName = os.path.splitext(filename)[0]
 		outFilename = shortName + " NUM.pdf"
-		pdf = createPDFDocumentFromPath(filename)
+		pdf = createPDFDocumentWithPath(filename)
 		metaDict = getDocInfo(filename)
 		writeContext = createOutputContextWithPath(outFilename, metaDict)
 		pages = Quartz.CGPDFDocumentGetNumberOfPages(pdf)
