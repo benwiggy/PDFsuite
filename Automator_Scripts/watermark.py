@@ -89,7 +89,7 @@ if __name__ == '__main__':
 		print filename
 		shortName = os.path.splitext(filename)[0]
 		outFilename = getFilename(shortName, " WM")
-		pdf = createPDFDocumentFromPath(filename)
+		pdf = createPDFDocumentWithPath(filename)
 		metaDict = getDocInfo(filename)
 		writeContext = createOutputContextWithPath(outFilename, metaDict)
 		pages = Quartz.CGPDFDocumentGetNumberOfPages(pdf)
