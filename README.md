@@ -47,7 +47,7 @@ Adds the text "n of x" to the first page of all selected PDF documents, where x 
 Adds a folio number to facing pages of PDF files supplied as arguments. Users can set the offset position from the outer top corner, font, size.
 
 ***Combine images to one PDF (imagestopdf.py)***  
-This script is several seconds faster than the python script in Apple's own Automator action. It also adds a Table of Contents entry for each component file.
+Apple's own Automator action places each image on a default page: this script does not alter the images in any way. 
 
 ***Count pages in PDF (countpages.py)***  
 Counts the cumulative number of pages in all the PDF files passed to it.
@@ -56,7 +56,7 @@ Counts the cumulative number of pages in all the PDF files passed to it.
 Two actions are provided: one to produce TIFFs, and one to produce PNGs, both at 300dpi RGB. Options in the script allow for JPEG filetype, and changes to resolution, transparency and other parameters. 
 
 ***Join PDF files into one file (joinpdfs.py)*** 
-Combine all PDF files supplied as arguments into one file, called _Combined.pdf_. 
+Combine all PDF files supplied as arguments into one file, called _Combined.pdf_. This script is several seconds faster than the python script in Apple's own Automator action. It also adds a Table of Contents entry for each component file.
 
 ***Rotate all pages in PDF (rotate.py)***  
 Rotate all the pages of any PDF files passed as arguments by 90º into a new file suffixed "+90". 
