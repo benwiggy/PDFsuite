@@ -23,5 +23,8 @@ This script takes image data from the MacOS clipboard, and saves it to a named P
 ### List Quartz Filters (listFilters.py)
 This script returns the internal name and filepath of all Quartz Filters installed. These can be in any of the three Library/Filters folders (user, root, system), or the PDF Services folders.
 
+### PDF Text Search (pdfsearch.py)
+This script provides the necessary functionality to search a PDF for a given text string. Results may depend on the way that the text has been encoded and formatted.
+
 ### Page Layout (pagelayout.py)
 This script provides functions to allow the drawing of rectangles, circles, lines, and text on a PDF page, with colours and transparency, using simple, one-line commands. It saves the results to file called "Test.pdf" on the user's Desktop. It is simply a "proof of concept" for the creation of graphical items using a simple text description. (PostScript it aint!)
