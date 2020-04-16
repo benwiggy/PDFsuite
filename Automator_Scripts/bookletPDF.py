@@ -109,7 +109,7 @@ def makeBooklet(argv):
 	writeFilename = shortName + suffix
 	# writeFilename = writeFilename.encode('utf-8')
 	metaDict = getDocInfo(argv)
-	writeContext = createOutputContextWithPath(writeFilename, metaDict)
+	writeContext = createOutputContextFromPath(writeFilename, metaDict)
 	source = createPDFDocumentFromPath(argv)
 	totalPages = Quartz.CGPDFDocumentGetNumberOfPages(source)
 
