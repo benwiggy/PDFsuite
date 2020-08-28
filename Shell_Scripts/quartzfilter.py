@@ -1,7 +1,7 @@
 #! /usr/bin/python
 # coding: utf-8
 
-# QUARTZFILTER  v.1.3: Script to apply a MacOS Quartz Filter to a PDF file.
+# QUARTZFILTER  v.1.4: Script to apply a MacOS Quartz Filter to a PDF file.
 # by Ben Byram-Wigfield
 # 
 # quartzfilter.py <input <filter> <output>
@@ -16,10 +16,13 @@ from CoreFoundation import (NSURL, QuartzFilter)
 def checkFilter(name):
 	if not os.path.split(name)[0]:
 		Filters = (Quartz.QuartzFilterManager.filtersInDomains_(None))
+		found = False
 		for eachFilter in Filters:
 			filterPath = eachFilter.url().fileSystemRepresentation()
 			if name == os.path.split(filterPath)[1]:
-				return filterPath
+				found = True
+		if found:
+			return name
 	else:
 		if os.path.exists(name):
 			return name
@@ -42,18 +45,18 @@ def main(argv):
 
 	inputfile =args[0].decode('utf-8')
 	if not inputfile:
-		print 'Unable to open input file'
+		print ('Unable to open input file')
 		sys.exit(2)
 
 	filter = args[1].decode('utf-8')
 	filter = checkFilter(filter)
 	if not filter:
-		print 'Unable to find Quartz Filter'
+		print ('Unable to find Quartz Filter')
 		sys.exit(2)
 
 	outputfile = args[2].decode('utf-8')
 	if not outputfile:
-		print 'No valid output file specified'
+		print ('No valid output file specified')
 		sys.exit(2)
 	# You could just take the inputfile as the outputfile if not explicitly given.
 		# outputfile = inputfile
