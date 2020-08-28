@@ -10,7 +10,7 @@
 # E.g. quartzfilter.py /path/to/myPDF.pdf 'Sepia Tone.qfilter' /path/to/output.pdf
 
 import os, getopt, sys
-from Quartz import PDFDocument
+import Quartz as Quartz
 from CoreFoundation import (NSURL, QuartzFilter)
 
 def checkFilter(name):
@@ -59,7 +59,7 @@ def main(argv):
 		# outputfile = inputfile
 
 	pdfURL = NSURL.fileURLWithPath_(inputfile)
-	pdfDoc = PDFDocument.alloc().initWithURL_(pdfURL)
+	pdfDoc = Quartz.PDFDocument.alloc().initWithURL_(pdfURL)
 	filterURL = NSURL.fileURLWithPath_(filter)
 	value = QuartzFilter.quartzFilterWithURL_(filterURL)
 	dict = { 'QuartzFilter': value }
@@ -67,5 +67,3 @@ def main(argv):
 
 if __name__ == "__main__":
    main(sys.argv[1:])
-
-
