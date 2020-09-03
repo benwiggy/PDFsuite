@@ -11,7 +11,7 @@
 
 import os, getopt, sys
 import Quartz as Quartz
-from CoreFoundation import (NSURL, QuartzFilter)
+from Foundation import NSURL
 
 def checkFilter(name):
 	if not os.path.split(name)[0]:
@@ -64,7 +64,7 @@ def main(argv):
 	pdfURL = NSURL.fileURLWithPath_(inputfile)
 	pdfDoc = Quartz.PDFDocument.alloc().initWithURL_(pdfURL)
 	filterURL = NSURL.fileURLWithPath_(filter)
-	value = QuartzFilter.quartzFilterWithURL_(filterURL)
+	value = Quartz.QuartzFilter.quartzFilterWithURL_(filterURL)
 	dict = { 'QuartzFilter': value }
 	pdfDoc.writeToFile_withOptions_(outputfile, dict)
 
