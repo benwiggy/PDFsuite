@@ -1,8 +1,7 @@
 # PDFSuite Notes #
 
 ## Python on the Mac ##
-Apple has announced that Catalina will be the last version of MacOS to ship with python 2.7. Furthermore, python 2 will be 'end-of-lifed' in 2020. This means that in MacOS 10.16 (to be released in September 2020), the user will have to install python3 and PyObjC to use the scripts. I plan to update the scripts to use python 3 and the latest version of PyObjC before then, rather than the versions that have shipped with MacOS before that date. The alternative might be to rewrite using Swift *(Hmmm)* or AppleScript-ObjC *(Eurghhh)*, in order to maintain the ease-of-use without dependencies.  
-However, I enjoy writing with python, so will certainly continue using them myself!
+Apple has announced that Catalina will be the last version of MacOS to ship with python 2.7. Furthermore, python 2 will be 'end-of-lifed' in 2020. However, MacOS Big Sur (v11.0 or 10.16) still has python 2.7! Catalina and Big Sur both include python3 as part of the Xcode command line tools. It's nice to write a script that works on PPC Macs running Leopard, and still works on Intel and Apple Silicon running Big Sur, without modification! However, I plan to update the scripts to use python 3 and the latest version of PyObjC, rather than the versions that have shipped with MacOS before that date. The alternative might be to rewrite using Swift *(Hmmm)* or AppleScript-ObjC *(Eurghhh)*, in order to maintain the ease-of-use without dependencies.  
 
 Anyone wishing to use these scripts on python3: most should work if you remove all the utf-8 encode-decode functions, and make sure that print has brackets round everything.
 
