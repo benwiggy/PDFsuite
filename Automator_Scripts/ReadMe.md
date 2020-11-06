@@ -16,6 +16,9 @@ This script adds a blank page to the end of a PDF file. The page size for the bl
 ### Count pages in PDF (countpages.py)
 This counts the number of pages in one or more PDF files passed to it. It provides a cumulative count for multiple file arguments.
 
+### deBooklet (DeBooklet.py)
+This splits each PDF page into two pieces: useful to 'de-booklet' a PDF of spreads-as-pages.
+
 ### Encrypt PDF or add security (encrypt.py)
 This adds encryption and passwords to prevent unauthorized copying, printing, or opening. Note that the passwords are stored in plain text within the body of the script.
 
