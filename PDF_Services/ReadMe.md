@@ -2,6 +2,8 @@
 
 Copy these files to {user}/Library/PDF Services. You may need to create the folder "PDF Services" in your user Library if it isn't there. The scripts will then be available from the PDF button of the print menu.
 
+NOTICE: As of Big Sur, Apple has increased security so that scripts won't work. You have to place them inside an Automator APPLICATION. Print plug-in or other workflow document won't work.  
+
 
 ### Booklet Imposition (booklet.py)
 This script is set to work as a PDF Service. However, it could easily be adjusted to work as an Automator workflow. It takes the input PDF file and lays out the pages on a larger sheet, in booklet spread page order. It checks for page rotation and adjusts if necessary. There's an option to arrange for 4pp signatures (stacked sheets, not gathered). The script brings up a Save dialog.
