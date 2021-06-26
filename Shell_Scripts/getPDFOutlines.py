@@ -27,8 +27,8 @@ def recurseOutlines(thisOutline):
 	Otype, pageNum = getDestination(thisOutline)
 	print ("  /Page " + pageNum)
 	
-	# View wil never be specified. 
-	Otype = "qwe"
+	# View type is unnecessary when using output to create new bookmarks.
+	Otype = "qwe" # Duff value.
 	if Otype == "XYZ":
 		print("  /View [/" + Otype + " 0 0 0]")
 	if Otype == "Fit":
