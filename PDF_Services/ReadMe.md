@@ -2,7 +2,7 @@
 
 Copy these files to {user}/Library/PDF Services. You may need to create the folder "PDF Services" in your user Library if it isn't there. The scripts will then be available from the PDF button of the print menu.
 
-NOTICE: As of Big Sur, Apple has increased security so that scripts won't work. You have to place them inside an Automator APPLICATION. Print plug-in or other workflow document won't work.  
+NOTICE: As of Big Sur, Apple has increased security so that python scripts won't work as PDF Services.  The scripts can be revised for use in Automator workflows. This seems to have been fixed in Monterey.
 
 
 ### Booklet Imposition (booklet.py)
