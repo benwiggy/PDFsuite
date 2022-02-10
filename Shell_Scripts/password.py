@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # PASSWORD v1.0: Concept script to unlock encrypted PDFs, (if you know the password)
 # by Ben Byram-Wigfield
