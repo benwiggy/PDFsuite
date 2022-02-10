@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # coding=utf-8
 
 # COUNTPAGES: Adds together the sum of pages from all PDFs supplied as arguments.
