@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # coding=utf-8
 """
 SPLITPDF v2.0 : Takes an existing PDF and creates individual page documents in a new folder.
