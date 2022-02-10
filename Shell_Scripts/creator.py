@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/env python
 # coding=utf-8
 
 # CREATOR : Add [Creator] metadata to a PDF file.
