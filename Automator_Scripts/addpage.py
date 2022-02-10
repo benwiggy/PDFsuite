@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # coding=utf-8
 
 # ADDPAGE v.1.4 : Adds a blank page to the END of any PDF file(s) sent as arguments.
