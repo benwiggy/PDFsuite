@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # coding=utf-8
 
 # REMOVEPAGE v.1.0 : Removes the first page of any PDF file(s) sent as arguments.
