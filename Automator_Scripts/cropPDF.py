@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # coding=utf-8
 
 # CROP PDF v.1.0 : Crop the mediabox by a given set of margins.
