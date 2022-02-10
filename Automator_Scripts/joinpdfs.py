@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/env python
 # coding=utf-8
 #
 # JOINPDFS v2.2 : Tool to concatenate PDFs.
