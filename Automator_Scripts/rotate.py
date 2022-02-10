@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/env python
 # coding=utf-8
 # Produces new PDF file with all pages rotated by 90 degrees.
 # by Ben Byram-Wigfield v2.1
