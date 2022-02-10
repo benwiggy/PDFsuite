@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # coding=utf-8
 
 # METADATA : Add or Change metadata to a PDF file.
