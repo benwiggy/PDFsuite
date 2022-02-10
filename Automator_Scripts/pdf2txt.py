@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/env python
 # coding: utf-8
 
 # PDF2TXT: Output text content of a PDF file to a new text file
