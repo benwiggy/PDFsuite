@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 # getPDFclip v.1.2 : Get PDF from Clipboard image data.
 # by Ben Byram-Wigfield. 
