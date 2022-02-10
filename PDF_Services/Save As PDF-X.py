@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # coding=utf-8
 
 # SAVE AS PDF-X: PDF Service to apply Quartz filter and move PDF to designated folder
