@@ -1,4 +1,16 @@
 # PDFsuite
+### NOTICE: The Retirement of python 2
+
+Apple has finally removed python2 from MacOS with the introduction of Monterey 12.3; thus ending over 15 years of a stable, compatible scripting environment. *Sic transit gloria mundi*, and all that. Python 2 and the essential pyObjC library can still be downloaded and installed, for the time-being, at least, and these scripts should still run (the initial line may need changing to *#!/usr/bin/env python* instead of *#!/usr/bin/python*).
+
+The obvious thing to do would be to update these scripts for python3. However, pyObjC seems to flag errors under python3 for some APIs, where no problems existed before. As users would have to install python 3 and pyObjC for themselves, the lack of a consistent environment might cause problems that I am (frankly) unwilling to spent time on.
+
+However, it's not all bad news. Apple's Shortcuts.app allows scripts to be run, much as Automator does/did, so the question is: what language to use? Ruby and perl are similarly 'scheduled for removal' by Apple; JavaScript and AppleScript are hideous ;-) -- but Shortcuts.app also includes the option to run Swift code as a script. As Apple's prime development language, it's the safe bet. Also, the scripts could be compiled or easily refactored for other projects.
+
+The repository for the Swift version of these scripts (along with shortcuts for Shortcuts.app) can be found here: 
+https://github.com/benwiggy/Swift-PDFSuite
+
+
 ### Everything you could possibly want to do to a PDF is just a click away!
 
 * Combine and split PDFs
@@ -9,7 +21,7 @@
 * Apply Quartz filters to PDFs
 * Read and write metadata (e.g. Author, Creator, Table of Contents) to PDFs
 
-This is all done with python scripts that access the Core Graphics Quartz APIs inside MacOS. No additional libraries or dependencies are required. They should therefore run on any Mac using 10.6 Snow Leopard or higher!
+This is all done with python scripts that access the Core Graphics Quartz APIs inside MacOS. No additional libraries or dependencies are required. They should therefore run on any Mac using 10.5 Leopard or higher!
 
 These scripts are designed to be used as Quick Actions in the Finder _(aka Services);_ PDF Services _(in the PDF button of the Print dialog);_ or as Terminal commands, with filenames as arguments.
 
