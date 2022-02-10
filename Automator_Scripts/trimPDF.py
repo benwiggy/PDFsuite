@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/env python
 # coding=utf-8
 
 # TRIM PDF v.1.0 : Crop the mediabox to the size of the trimbox, if different.
