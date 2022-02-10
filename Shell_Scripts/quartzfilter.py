@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/env python
 # coding: utf-8
 
 # QUARTZFILTER  v.1.4: Script to apply a MacOS Quartz Filter to a PDF file.
