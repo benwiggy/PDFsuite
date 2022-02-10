@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 # CREATE PDF OUTLINES v.1.0 : Add a simple list of Bookmarks to a PDF.
