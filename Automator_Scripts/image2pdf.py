@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # coding: utf-8
 #
 # IMAGE2PDF v.2.0 : Convert image files to one PDF.
