@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 # RINSE PDF v1.0 : This script will re-save a PDF, which may fix some errors in the PDF data.
 # by Ben Byram-Wigfield
