@@ -1,14 +1,18 @@
 # PDFsuite
 ### NOTICE: The Retirement of python 2
 
-Apple has finally removed python2 from MacOS with the introduction of Monterey 12.3; thus ending over 15 years of a stable, compatible scripting environment. *Sic transit gloria mundi*, and all that. Python 2 and the essential pyObjC library can still be downloaded and installed, for the time-being, at least, and these scripts should still run (the initial line may need changing to *#!/usr/bin/env python* instead of *#!/usr/bin/python*).
+Apple has finally removed python2 from MacOS with the introduction of Monterey 12.3; thus ending over 15 years of a stable, compatible scripting environment. *Sic transit gloria mundi*, and all that. Python 2 and the essential pyObjC library can still be downloaded and installed, for the time-being, at least; and these scripts should still run (the initial line may need changing to *#!/usr/bin/env python* instead of *#!/usr/bin/python*).  
 
-However, it's not all bad news. Apple's Shortcuts.app allows scripts to be run, much as Automator does/did, so the question is: what language to use? Ruby and perl are similarly 'scheduled for removal' by Apple; JavaScript and AppleScript are hideous ;-) -- but Shortcuts.app also includes the option to run Swift code as a script. As Apple's prime development language, it's the safe bet. Also, the scripts could be compiled or easily refactored for other projects.
+But if you're going to install python, it should probably be python3. That's what I'm using, and I'm updating all the scripts to work with python 3. 
+
+So, what to do now to offer 'default' scripting to non-technical users?
+
+Apple's Shortcuts.app allows scripts to be run, much as Automator does/did, so the question is: what language to use? Ruby and perl are similarly 'scheduled for removal' by Apple; JavaScript and AppleScript are hideous ;-) -- but Shortcuts.app also includes the option to run Swift code as a script. As Apple's prime development language, it's the safe bet. Also, the scripts could be compiled or easily refactored for other projects.
 
 The repository for the Swift version of these scripts (along with shortcuts for Shortcuts.app) can be found here: 
 https://github.com/benwiggy/Swift-PDFSuite
 
-But... Swift is brick slow as a scripting language, comapred to python. And I much prefer writing with python. So I'll update the scripts for python3. This will require users to install some version of python3 and the pyobjc library. Different versions may inevitably cause different problems, of course.
+But... Swift is brick slow as a scripting language, compared to python. So, swings and roundabouts.
 
 
 ### Everything you could possibly want to do to a PDF is just a click away!
