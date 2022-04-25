@@ -27,6 +27,6 @@ def pdfSearch(filepath, searchString):
 
 if __name__ == "__main__":
 	# Set the filepath and searchString to your desired values
-	filepath = '/Users/ben/Desktop/Blow_Salvator_mundi.pdf'
-	searchString = 'cautionary'
+	filepath = '/path/to/file.pdf'
+	searchString = 'word'
 	pdfSearch(filepath, searchString)

@@ -7,8 +7,8 @@ import Quartz as Quartz
 import sys
 
 # You will need to change these filepaths to a local test pdf and an output file.
-infile = "/Users/Ben/Desktop/Blow_Salvator_mundi.pdf"
-outfile = '/Users/Ben/Desktop/Blow SalvatorX2.pdf'
+infile = "/path/to/file.pdf"
+outfile = '/path/to/file.pdf'
 
 def makeOutline(page, label):
 	# Create Destination
