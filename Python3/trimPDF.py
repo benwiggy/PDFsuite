@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-# coding=utf-8
+#!/usr/bin/env python3
 
 # TRIM PDF v.1.0 : Crop the mediabox to the size of the trimbox, if different.
 # This lets you crop a page containing printers crop marks to the trimmed page size.
@@ -15,7 +14,7 @@ trimbox = kPDFDisplayBoxTrimBox
 	
 def trimPDF(filename):
 	hasBeenChanged = False
-	filename = filename.decode('utf-8')
+	# filename = filename.decode('utf-8')
 	shortName = os.path.splitext(filename)[0]
 	outFilename = shortName + " TPS.pdf"
 	pdfURL = NSURL.fileURLWithPath_(filename)
@@ -35,3 +34,4 @@ def trimPDF(filename):
 if __name__ == '__main__':
 	for filename in sys.argv[1:]:
 		trimPDF(filename)
+		

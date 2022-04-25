@@ -1,12 +1,11 @@
-#!/usr/bin/env python
-# coding=utf-8
+#!/usr/bin/env python3
 
-# CROP PDF v.1.0 : Crop the mediabox by a given set of margins.
-# by Ben Byram-Wigfield v1.0
+# CROP PDF v.1.2 : Crop the mediabox by a given set of margins.
+# by Ben Byram-Wigfield v1.2
 
 # Use on the Command line with filenames as arguments (e.g. cropPDF.py /path/to/file.pdf)
 # Or in Automator as a Quick Action/Service. Select "Receives PDF Files in Finder"
-# Then Add "Run Shell Script" action. Select /usr/bin/env python from the drop-down list;
+# Then Add "Run Shell Script" action. Select /usr/bin/env python3 from the drop-down list;
 # Select "Pass Input" as "as arguments".
 # Paste script into area for scripts, replacing existing text.
 

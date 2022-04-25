@@ -11,6 +11,7 @@ from Foundation import NSURL, kCFAllocatorDefault
 
 # OPTIONS
 scaleSize = 1.41
+A3 = [[0,0], [1190.55, 841.88]]
 
 # Loads in PDF document
 def createPDFDocumentWithPath(path):
@@ -44,18 +45,19 @@ def scale(filename):
 	outFilename = shortName + " size.pdf"
 	metaDict = getDocInfo(filename)
 	writeContext = createOutputContextWithPath(outFilename, metaDict)
-	pdfURL = NSURL.fileURLWithPath_(filename)
-	pdfDoc = Quartz.PDFDocument.alloc().initWithURL_(pdfURL)
+	pdfDoc = createPDFDocumentWithPath(filename)
 	if pdfDoc:
-		pages = pdfDoc.pageCount()
+		pages = Quartz.CGPDFDocumentGetNumberOfPages(pdfDoc)
 		for p in range(0, pages):
-			page = pdfDoc.pageAtIndex_(p)
+			page = Quartz.CGPDFDocumentGetPage(pdfDoc, p)
 			if page:
-				mediaBoxSize = page.boundsForBox_(0)
-				print(writeContext)
+				mediaBoxSize = Quartz.CGPDFPageGetBoxRect(page, Quartz.kCGPDFMediaBox)
 				Quartz.CGContextBeginPage(writeContext, mediaBoxSize)
+				Quartz.CGContextSaveGState(writeContext)
+
 				Quartz.CGContextDrawPDFPage(writeContext, page)
-				Quartz.CGContextDrawPDFPage(writeContext, mergepage)
+				print("qwe")
+				# Quartz.CGContextDrawPDFPage(writeContext, mergepage)
 				Quartz.CGContextEndPage(writeContext)
 		Quartz.CGPDFContextClose(writeContext)
 		del writeContext
@@ -70,3 +72,4 @@ if __name__ == "__main__":
 	for filename in sys.argv[1:]:
 		
 		scale(filename)
+		

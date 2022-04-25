@@ -1,5 +1,4 @@
-#! /usr/bin/env python3
-# coding=utf-8
+#!/usr/bin/env python3
 #
 # JOINPDFS v3.0 : Tool to concatenate PDFs for python3
 # New tool built from the ground up using PDFKit, instead of Core Graphics.

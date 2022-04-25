@@ -1,8 +1,7 @@
-#!/usr/bin/env python
-# coding=utf-8
+#!/usr/bin/env python3
 
 # COUNTPAGES: Adds together the sum of pages from all PDFs supplied as arguments.
-# by Ben Byram-Wigfield v.1.7
+# by Ben Byram-Wigfield v.2.0
 
 # Uses an Alert dialog to report the number!
 

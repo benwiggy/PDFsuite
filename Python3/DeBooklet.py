@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python3
 
 # DeBooklet v.1.1 : Split page spreads into separate pages.
 # by Ben Byram-Wigfield v1.0
@@ -53,7 +52,7 @@ def debooklet(filename):
 				leftPage.setBounds_forBox_(topCrop, mediabox)
 				rightPage.setBounds_forBox_(bottomCrop, mediabox)
 
-			newPDF.insertPage_atIndex_(leftPage, outPageCount)			
+			newPDF.insertPage_atIndex_(leftPage, outPageCount)
 			newPDF.insertPage_atIndex_(rightPage, outPageCount+1)
 
 		newPDF.writeToFile_(outFilename)

@@ -41,7 +41,9 @@ def getFilename(filepath):
 if __name__ == '__main__':
 
 	for filename in sys.argv[1:]:
-		pdf = Quartz.CGPDFDocumentCreateWithProvider(Quartz.CGDataProviderCreateWithFilename(filename))
+		filenameNonU = filename.encode('utf8')
+		pdf = Quartz.CGPDFDocumentCreateWithProvider(Quartz.CGDataProviderCreateWithFilename(filenameNonU))
+		print(pdf, filenameNonU)
 		numPages = Quartz.CGPDFDocumentGetNumberOfPages(pdf)
 		shortName = os.path.splitext(filename)[0]
 		prefix = os.path.splitext(os.path.basename(filename))[0]
@@ -51,11 +53,10 @@ if __name__ == '__main__':
 		except:
 			print("Can't create directory '%s'"%(folderName))
 			sys.exit()
-					
 		# For each page, create a file
 		for i in range (1, numPages+1):
 			page = Quartz.CGPDFDocumentGetPage(pdf, i)
-			if page:
+			if page:	
 		#Get mediabox
 				mediaBox = Quartz.CGPDFPageGetBoxRect(page, Quartz.kCGPDFMediaBox)
 				x = Quartz.CGRectGetWidth(mediaBox)
@@ -74,8 +75,9 @@ if __name__ == '__main__':
 		# Convert to an "Image"
 				image = Quartz.CGBitmapContextCreateImage(writeContext)	
 		# Create unique filename per page
-				outFile = folderName +"/" + prefix + " %03d.tif"%i
-				url = Quartz.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, outFile, len(outFile), False)
+				outFile = folderName +"/" + prefix + " %03d.png"%i
+				outFile_nonU = outFile.encode('utf8')
+				url = Quartz.CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, outFile_nonU, len(outFile_nonU), False)
 		# kUTTypeJPEG, kUTTypeTIFF, kUTTypePNG
 				type = kUTTypePNG
 		# See the full range of image properties on Apple's developer pages.
@@ -85,3 +87,4 @@ if __name__ == '__main__':
 					}
 				writeImage (image, url, type, options)
 				del page
+				

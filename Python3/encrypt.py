@@ -1,5 +1,5 @@
-#!/usr/bin/env python
-# coding: utf-8
+#!/usr/bin/env python3
+
 
 # ENCRYPT : Encrypt PDF and lock with password.
 # by Ben Byram-Wigfield v.1.1
@@ -15,9 +15,8 @@ copyPassword = "12345678" # Password for copying and printing
 openPassword = '' # to allow opening.
 
 def encrypt(filename):
-	filename =filename.decode('utf-8')
 	if not filename:
-		print 'Unable to open input file'
+		print ('Unable to open input file')
 		sys.exit(2)
 	shortName = os.path.splitext(filename)[0]
 	outputfile = shortName+" locked.pdf"

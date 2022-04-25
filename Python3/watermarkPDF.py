@@ -1,5 +1,5 @@
-#!/usr/bin/env python
-# -*- coding: UTF-8 -*-
+#!/usr/bin/env python3
+
 #
 # Merge v. 0.1
 # Merges two PDFs 
@@ -10,7 +10,7 @@ import Quartz as Quartz
 from Foundation import NSURL, kCFAllocatorDefault
 
 # OPTIONS
-
+# Filename of file you want added to all the others.
 watermark = os.path.expanduser("~/Desktop/Test.pdf")
 
 
@@ -27,7 +27,6 @@ def createOutputContextWithPath(path, dictarray):
 # Gets DocInfo from input file to pass to output.
 # PyObjC returns Keywords in an NSArray; they must be tupled.
 def getDocInfo(file):
-	file = file.decode('utf-8')
 	pdfURL = NSURL.fileURLWithPath_(file)
 	pdfDoc = Quartz.PDFDocument.alloc().initWithURL_(pdfURL)
 	if pdfDoc:
@@ -73,7 +72,7 @@ def merge(filename):
 		del writeContext
 			
 	else:
-		print "A valid input file and output file must be supplied."
+		print ("A valid input file and output file must be supplied.")
 		sys.exit(1)
 
 
