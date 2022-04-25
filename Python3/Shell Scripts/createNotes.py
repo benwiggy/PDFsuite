@@ -9,8 +9,8 @@ os.environ["PDFKIT_LOG_ANNOTATIONS"] = 'True'
 
 # You will need to change these filepaths to a local test pdf and an output file.
 
-outfile = '/Users/Ben/Desktop/Blow SalvatorX2.pdf'
-infile = '/Users/Ben/Desktop/Blow_Salvator_mundi.pdf'
+outfile = '/path/to/file.pdf'
+infile = '/path/to/file.pdf'
 myYellow = NSColor.yellowColor()
 
 if __name__ == "__main__":
