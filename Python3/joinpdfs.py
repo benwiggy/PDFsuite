@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 #
 # JOINPDFS v3.0 : Tool to concatenate PDFs for python3
+# Output PDF is called "Combined" in the same folder as the first file.
 # New tool built from the ground up using PDFKit, instead of Core Graphics.
 # Now writes Table of Contents for each file added; importing existing ToCs in each file!
 # by Ben Byram-Wigfield
