@@ -7,7 +7,8 @@ But if you're going to install python, it should probably be python3. That's wha
 
 You'll need to install python yourself. You will also need to install the pyobjc library. Python can be downloaded here:
 https://www.python.org/downloads/
-Once you done that, then typing pip3 install pyobjc should be enough to install the necessary library.
+  
+Once you done that, then typing `pip3 install pyobjc` should be enough to install the necessary library.
 
 So, what to do now to offer 'default' scripting to non-technical users?
 
