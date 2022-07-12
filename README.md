@@ -1,7 +1,7 @@
 # PDFsuite
 ### NOTICE: The Retirement of python 2
 
-Apple has finally removed python2 from MacOS with the introduction of Monterey 12.3; thus ending over 15 years of a stable, compatible scripting environment. *Sic transit gloria mundi*, and all that. Python 2 and the essential pyObjC library can still be downloaded and installed, for the time-being, at least; and these scripts should still run (the initial line may need changing to *#!/usr/bin/env python* instead of *#!/usr/bin/python*).  
+Apple has finally removed python2 from MacOS with the introduction of Monterey 12.3; thus ending over 15 years of a stable, compatible scripting environment. *Sic transit gloria mundi*, and all that. Python 2 and the essential pyObjC library can still be downloaded and installed, for the time-being, at least; and the 'legacy' versions of the scripts should still run (the initial line may need changing to `#!/usr/bin/env python` instead of `#!/usr/bin/python` in some of the Automator workflows).  
 
 But if you're going to install python, it should probably be python3. That's what I'm using, and I've updated all the scripts to work with python 3.
 
