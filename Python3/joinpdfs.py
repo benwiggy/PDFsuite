@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 #
 # JOINPDFS v3.0 : Tool to concatenate PDFs for python3
-# Output PDF is called "Combined.pdf" in the same folder as the first file.
 # New tool built from the ground up using PDFKit, instead of Core Graphics.
 # Now writes Table of Contents for each file added; importing existing ToCs in each file!
 # by Ben Byram-Wigfield
@@ -44,7 +43,7 @@ def join(incomingFiles):
 	filename = "Combined"
 	outfile = getFilename(prefix, filename)
 	# Load in the first PDF file, to which the rest will be added.
-	firstPDF = createPDFDocumentFromPath(incomingFiles[0])
+	firstPDF = createPDFDocumentWithPath(incomingFiles[0])
 	outlineIndex = 0
 	rootOutline = Quartz.PDFOutline.alloc().init()
 	firstLabel = os.path.basename(incomingFiles[0])
