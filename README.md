@@ -3,7 +3,11 @@
 
 Apple has finally removed python2 from MacOS with the introduction of Monterey 12.3; thus ending over 15 years of a stable, compatible scripting environment. *Sic transit gloria mundi*, and all that. Python 2 and the essential pyObjC library can still be downloaded and installed, for the time-being, at least; and these scripts should still run (the initial line may need changing to *#!/usr/bin/env python* instead of *#!/usr/bin/python*).  
 
-But if you're going to install python, it should probably be python3. That's what I'm using, and I'm updating all the scripts to work with python 3. 
+But if you're going to install python, it should probably be python3. That's what I'm using, and I've updated all the scripts to work with python 3.
+
+You'll need to install python yourself. You will also need to install the pyobjc library. Python can be downloaded here:
+https://www.python.org/downloads/
+Once you done that, then typing pip3 install pyobjc should be enough to install the necessary library.
 
 So, what to do now to offer 'default' scripting to non-technical users?
 
@@ -12,7 +16,7 @@ Apple's Shortcuts.app allows scripts to be run, much as Automator does/did, so t
 The repository for the Swift version of these scripts (along with shortcuts for Shortcuts.app) can be found here: 
 https://github.com/benwiggy/Swift-PDFSuite
 
-But... Swift is brick slow as a scripting language, compared to python. So, swings and roundabouts.
+But... Swift is brick slow as a scripting language, compared to python. So, I still prefer using python.
 
 
 ### Everything you could possibly want to do to a PDF is just a click away!
@@ -27,7 +31,7 @@ But... Swift is brick slow as a scripting language, compared to python. So, swin
 
 This is all done with python scripts that access the Core Graphics Quartz APIs inside MacOS. 
 
-These scripts are designed to be used as Quick Actions in the Finder _(aka Services);_ PDF Services _(in the PDF button of the Print dialog);_ or as Terminal commands, with filenames as arguments.
+These scripts are designed to be used as Automator Quick Actions in the Finder _(aka Services);_ PDF Services _(in the PDF button of the Print dialog);_ or as Terminal commands, with filenames as arguments. You can also use them in Shortcuts.app.
 
 ### Quick Actions
 
@@ -50,7 +54,7 @@ A few scripts take more complex arguments and so will only work as Unix **shell 
 
 The Suite also includes some **Quartz Filters**, which can apply various transformations to PDF files, such as PDF/X-3 compliance or reduced file size.
 
-Apple already includes Automator actions that provide some (but not all) of these functions -- however, PDFSuite python scripts are faster, better and more easily configured for different uses than Apple's own actions! They also serve as useful algorithmic examples of how to use Apple's APIs, which may benefit programmers working in any language.
+Apple used to include Automator actions containing python scripts that provide some (but not all) of these functions -- however, PDFSuite python scripts are faster, better and more easily configured for different uses than Apple's own actions! They also serve as useful algorithmic examples of how to use Apple's APIs, which may benefit programmers working in any language.
 
 ## Quick Actions
 ***Add Blank Page (addpage.py)***  
@@ -72,7 +76,7 @@ Counts the cumulative number of pages in all the PDF files passed to it.
 Two actions are provided: one to produce TIFFs, and one to produce PNGs, both at 300dpi RGB. Options in the script allow for JPEG filetype, and changes to resolution, transparency and other parameters. 
 
 ***Join PDF files into one file (joinpdfs.py)*** 
-Combine all PDF files supplied as arguments into one file, called _Combined.pdf_. This script is several seconds faster than the python script in Apple's own Automator action. It also adds a Table of Contents entry for each component file.
+Combine all PDF files supplied as arguments into one file, called _Combined.pdf_. It also adds a Table of Contents entry for each component file.
 
 ***Rotate all pages in PDF (rotate.py)***  
 Rotate all the pages of any PDF files passed as arguments by 90º into a new file suffixed "+90". 
