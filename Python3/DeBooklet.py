@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # DeBooklet v.1.1 : Split page spreads into separate pages.
-# by Ben Byram-Wigfield v1.0
+# by Ben Byram-Wigfield v2.0 (PYTHON 3)
 
 # Doesn't sort the pages.
 # Files produced are 'quite large' as some residual data from the cropped area remains.
