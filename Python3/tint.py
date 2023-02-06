@@ -44,10 +44,10 @@ def getDocInfo(file):
 def tint(filename): 
 	global writeContext	
 	# The color of the tint. Sepia is 0.44, 0.26, 0.08. Some transparency may help.
-	red = 0.5
-	green = 0.3
-	blue = 0.1
-	alpha = 0.5
+	red = 1.0
+	green = 0.93
+	blue = 0.81
+	alpha = 1.0
 	myColor=[red, green, blue]
 	
 	writeContext = None
@@ -68,7 +68,7 @@ def tint(filename):
 				if Quartz.CGRectIsEmpty(mediaBox):
 					mediaBox = None			
 				Quartz.CGContextBeginPage(writeContext, mediaBox)	
-				Quartz.CGContextSetBlendMode(writeContext, Quartz.kCGBlendModeDifference)
+				Quartz.CGContextSetBlendMode(writeContext, Quartz.kCGBlendModeOverlay)
 				Quartz.CGContextDrawPDFPage(writeContext, page)
 				makeRectangle(0, 0, mediaBox.size.width, mediaBox.size.height, myColor, alpha)
 				Quartz.CGContextEndPage(writeContext)
