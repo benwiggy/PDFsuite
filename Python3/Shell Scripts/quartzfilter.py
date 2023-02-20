@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# QUARTZFILTER  v.1.5: Script to apply a MacOS Quartz Filter to a PDF file.
+# QUARTZFILTER  v.1.6: Script to apply a MacOS Quartz Filter to a PDF file.
 # by Ben Byram-Wigfield
 # 
 # quartzfilter.py <input <filter> <output>
@@ -63,6 +63,9 @@ def main(argv):
 
 	pdfURL = NSURL.fileURLWithPath_(inputfile)
 	pdfDoc = Quartz.PDFDocument.alloc().initWithURL_(pdfURL)
+	if not pdfDoc:
+		print("Can't get PDF file. Make sure input is valid.")
+		sys.exit(2)
 	filterURL = NSURL.fileURLWithPath_(filter)
 	value = Quartz.QuartzFilter.quartzFilterWithURL_(filterURL)
 	dict = { 'QuartzFilter': value }
