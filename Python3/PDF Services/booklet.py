@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/local/bin/python3
 
 
 # ----------------------------------------------------------------
@@ -67,7 +67,7 @@ def createOutputContextWithPath(path, dictarray):
 	return Quartz.CGPDFContextCreateWithURL(url, None, dictarray)
 
 def imposition(pageRange):
-	for i in range(1, int()(len(pageRange)/2)), 2):
+	for i in range(1, (int(len(pageRange)/2)), 2):
 		# First we do recto
 		imposedOrder.append(pageRange[i*-1])
 		imposedOrder.append(pageRange[i-1])
